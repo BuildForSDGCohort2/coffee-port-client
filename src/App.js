@@ -1,8 +1,7 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import React from 'react';
+import './App.css';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 function App() {
   const { loading, data } = useQuery(FETCH_TEST_MESSAGE);
