@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 
 function App() {
-  const { loading, data } = useQuery(FETCH_TEST_MESSAGE);
+  const { data } = useQuery(FETCH_TEST_MESSAGE);
 
   if (data) {
     console.log(data);
