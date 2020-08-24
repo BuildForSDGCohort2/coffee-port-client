@@ -1,7 +1,14 @@
 import React from 'react';
-import './App.css';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+
+import './App.css';
+
+const FETCH_TEST_MESSAGE = gql`
+  {
+    getTestMessage
+  }
+`;
 
 function App() {
   const { data } = useQuery(FETCH_TEST_MESSAGE);
@@ -15,11 +22,5 @@ function App() {
     </div>
   );
 }
-
-const FETCH_TEST_MESSAGE = gql`
-  {
-    getTestMessage
-  }
-`;
 
 export default App;
