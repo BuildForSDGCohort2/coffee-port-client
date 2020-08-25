@@ -35,7 +35,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://kdame-gebeya-server.herokuapp.com/",
+  "proxy": "https://coffee-port-server.herokuapp.com/",
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
