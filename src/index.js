@@ -1,10 +1,21 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import ApolloProvider from './ApolloProvider';
-ReactDOM.render(ApolloProvider, document.getElementById('root'));
+import ApolloProviderContainer from './ApolloProvider';
+import { BrowserRouter} from 'react-router-dom';
+import App from './App';
+import { ThemeProvider } from '@material-ui/core';
+import theme from './theme'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render( 
+    <ApolloProviderContainer>
+        <ThemeProvider theme={theme}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+        </ThemeProvider>
+    </ApolloProviderContainer>, document.getElementById('root'));
+
+
 serviceWorker.unregister();
