@@ -4,7 +4,6 @@ import Filter from '../../components/filter/filter.component';
 
 const Products=()=>(
     <div>
-        Products page
         <Filter/>
     </div>
 );
