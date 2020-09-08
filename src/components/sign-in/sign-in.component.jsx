@@ -15,7 +15,7 @@ const SignIn = ({ handler }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography variant="h5" className={classes.title} color="secondary"> 
+      <Typography variant="h5" className={classes.title} color="primary"> 
         Log In To Access Coffee Port
       </Typography>
 

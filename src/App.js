@@ -7,6 +7,7 @@ import Buyers from './pages/buyers/buyers.component';
 import Suppliers from './pages/suppliers/suppliers.component';
 import Products from './pages/products/products.component';
 import Home from './pages/homepage/homepage.component';
+import SingleProductPage from "./pages/single-product/single-product.component"
 import SignUpAndSignInPage from './pages/sign-up-and-sign-in/sign-up-and-sign-in.component'
 import './App.css';
 
@@ -32,12 +33,13 @@ function App() {
         <Route exact path='/suppliers' component={Suppliers}></Route>
         <Route exact path='/buyers' component={Buyers}></Route>
         <Route exact path='/signup' component={SignUpAndSignInPage}></Route>
+        <Route exact path='/describe' component={SingleProductPage}></Route>
 
       </Switch>
       
      
   
-    </div>
+    </div> 
   );
 }
 
