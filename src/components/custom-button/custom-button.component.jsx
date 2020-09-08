@@ -6,12 +6,12 @@ import useStyles from "./custom-button.styles"
 import { ReactComponent as GoogleIcon } from '../../assets/google.svg';
 const CustomButton=({children, googleSignIn,facebookSignIn,...otherProps})=>{
   const classes=useStyles();
-    return   <Button className={googleSignIn || facebookSignIn?classes.externalButton:classes.submit}
+    return  ( <Button className={googleSignIn || facebookSignIn?classes.externalButton:classes.submit}
    {...otherProps}
-   startIcon={facebookSignIn?<FacebookIcon  color="primary"/>:googleSignIn? 
-   <SvgIcon component={GoogleIcon} />:null}
   >
+     {facebookSignIn?<FacebookIcon  color="primary"/>:googleSignIn? 
+   <SvgIcon viewBox="0 0 44 44" className={classes.icon} component={GoogleIcon} />:null}
     {children}
-  </Button>
+  </Button>)
 }
 export default CustomButton;

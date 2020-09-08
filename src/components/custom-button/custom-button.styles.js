@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     margin: theme.spacing(1, 0, 2),
   },
+  icon: {
+    height: '5vh',
+    paddingRight: '4%',
+  },
 }));
 
 export default useStyles;
