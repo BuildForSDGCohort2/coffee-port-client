@@ -7,7 +7,7 @@ import Buyers from './pages/buyers/buyers.component';
 import Suppliers from './pages/suppliers/suppliers.component';
 import Products from './pages/products/products.component';
 import Home from './pages/homepage/homepage.component';
-import SignUp from "./pages/sign-up/sign-up.component"
+import SignUpAndSignInPage from './pages/sign-up-and-sign-in/sign-up-and-sign-in.component'
 import './App.css';
 
 const FETCH_TEST_MESSAGE = gql`
@@ -27,11 +27,11 @@ function App() {
 
       <Header/>
       <Switch>
-        <Route exact path="/" component={Home}></Route>
-        <Route exact path="/products" component={Products}></Route>
-        <Route exact path="/suppliers" component={Suppliers}></Route>
-        <Route exact path="/buyers" component={Buyers}></Route>
-        <Route exact path="/signup" component={SignUp}></Route>
+        <Route exact path='/' component={Home}></Route>
+        <Route exact path='/products' component={Products}></Route>
+        <Route exact path='/suppliers' component={Suppliers}></Route>
+        <Route exact path='/buyers' component={Buyers}></Route>
+        <Route exact path='/signup' component={SignUpAndSignInPage}></Route>
 
       </Switch>
       

@@ -2,13 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: '3%',
+    width: '80%',
+    margin: 'auto',
+    marginTop: '5%',
   },
   paper: {
-    padding: theme.spacing(4, 4),
+    padding: theme.spacing(4, 5),
     diplay: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
