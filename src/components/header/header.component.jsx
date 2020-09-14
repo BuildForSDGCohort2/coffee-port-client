@@ -24,6 +24,7 @@ const Header=()=>{
                 <Link className={link} to="/buyers"> <Typography>Buyers</Typography> </Link>
                 :null}
                 <Link className={link} to="/signup"> <Typography>Signup</Typography> </Link>
+                <Link className={link} to="/describe"> <Typography>Describe</Typography> </Link>
            
 
                 
