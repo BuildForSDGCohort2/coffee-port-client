@@ -19,9 +19,6 @@ const theme = createMuiTheme({
       fontWeight: 600,
     },
   },
-  text: {
-    tertiary: '#ff0000',
-  },
 });
 
 export default theme;
