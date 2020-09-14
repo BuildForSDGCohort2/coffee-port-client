@@ -2,12 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    justifyContent: 'center',
+
   },
   card: {
-    display: 'flex',
+    //display: 'flex',
     height: '180px',
-    width: 900,
     margin: theme.spacing(2),
   },
   details: {
@@ -29,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   playIcon: {
     height: 38,
     width: 38,
+  },
+  companyName: {
+    color: theme.palette.grey[400],
+    flexGrow: 1,
   },
 }));
 
