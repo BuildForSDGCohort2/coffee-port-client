@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Buyers=()=>(
     <div>
         Buyers page
