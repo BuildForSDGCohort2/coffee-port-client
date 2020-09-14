@@ -1,75 +1,60 @@
-/* eslint-disable quote-props */
-const COFFEE_DATA = {
-  GeographicalDesignation: [
-    { origin: 'YIRGACHEFE', specificOrigin: 'YIRGACHEFE A' },
-    { origin: 'YIRGACHEFE', specificOrigin: 'YIRGACHEFE B' },
-    { origin: 'SIDAMA', specificOrigin: 'SIDAMA A' },
-    { origin: 'SIDAMA', specificOrigin: 'SIDAMA B' },
-    { origin: 'SIDAMA', specificOrigin: 'SIDAMA C' },
-    { origin: 'SIDAMA', specificOrigin: 'SIDAMA D' },
-  ],
-  Group: [
-    'Commercial Grade Washed',
-    'Commercial Grade Unwashed',
-    'Speciality Grade Washed',
-    'Speciality Grade unwashed',
+import { filtersVar } from '../../apollo/cache';
+import COFFEE_DATA from './coffee.data';
+import FLOWER_DATA from './flower.data';
+import SESAME_DATA from './sesame.data';
 
-  ],
-  Grade: [
-    'Q1',
-    'Q2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-  ],
-};
-
-const FLOWER_DATA = {
-  FlowerType: ['Chrysanthemums', 'Carnations', 'Amaranth'],
-
-};
-const OILSEED_DATA = {
-  OilSeedType: ['Sesame Seed', 'Mustard Seed', 'Pumpkin Seed'],
-};
-export const TYPE = ['Coffee', 'Oil Seed', 'Flower'];
+export const TYPE = ['Coffee', 'Sesame', 'Flower'];
 export const FILTER_DATA = {
-  'Coffee': [
+  Coffee: [
     {
       id: 'geographical-designation',
       filterSelectedOptions: true,
-      multiple: true,
       label: 'Geographical Designation',
       groupBy: (option) => option.origin,
       getOptionLabel: (option) => option.specificOrigin,
       options: COFFEE_DATA.GeographicalDesignation,
+      onChange: (event, newValue) => {
+        filtersVar({
+          ...filtersVar(),
+          uniqueAttributes: {
+            ...filtersVar().uniqueAttributes,
+            GeographicalDesignation: newValue ? newValue.specificOrigin : '',
+          },
+        });
+      },
 
     },
     {
-      multiple: true,
       id: 'group',
       options: COFFEE_DATA.Group,
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
       label: 'Group',
+      onChange: (event, newValue) => {
+        filtersVar({
+          ...filtersVar(),
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, Group: newValue },
+        });
+      },
     },
     {
-      multiple: true,
       id: 'grade',
       options: COFFEE_DATA.Grade,
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
       label: 'Grade',
+      onChange: (event, newValue) => {
+        filtersVar({
+          ...filtersVar(),
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, Grade: newValue },
+        });
+      },
     },
 
   ],
 
-  'Flower': [
+  Flower: [
     {
-      multiple: true,
       id: 'flower-type',
       options: FLOWER_DATA.FlowerType,
       getOptionLabel: (option) => (option),
@@ -78,14 +63,33 @@ export const FILTER_DATA = {
     },
   ],
 
-  'Oil Seed': [
+  Sesame: [
     {
-      multiple: true,
-      id: 'oilseed-type',
-      options: OILSEED_DATA.OilSeedType,
+      id: 'sesame-type',
+      options: SESAME_DATA.Type,
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
-      label: 'OilSeedType',
+      label: 'SesameType',
+      onChange: (event, newValue) => {
+        filtersVar({
+          ...filtersVar(),
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, Type: newValue },
+        });
+      },
+    },
+
+    {
+      id: 'sesame-grade',
+      options: SESAME_DATA.Grade,
+      getOptionLabel: (option) => (option),
+      filterSelectedOptions: true,
+      label: 'SesameGrade',
+      onInputChange: (event, newValue) => {
+        filtersVar({
+          ...filtersVar(),
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, Grade: newValue },
+        });
+      },
     },
 
   ],

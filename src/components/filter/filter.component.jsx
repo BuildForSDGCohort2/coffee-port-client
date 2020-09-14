@@ -5,10 +5,16 @@ import {
    TYPE, FILTER_DATA
 } from './filter.data';
 import useStyles from './filter.styles';
+import {filtersVar} from '../../apollo/cache';
 
 const Filter=()=>{
   const classes = useStyles();
-  const [selectedType,setSelectedType]=useState('');
+  const [selectedFilter,setSelectedFilter]=useState({type:""});
+  let emptyAttributes = (uniqueAttributes)=>{
+    const newUniqueAttributes={...uniqueAttributes}
+    Object.getOwnPropertyNames(newUniqueAttributes).forEach((key)=>{newUniqueAttributes[key] =''});
+    return newUniqueAttributes;
+  }
   return(
     <div className={classes.root}>
         <Grid container spacing={2}>
@@ -19,9 +25,14 @@ const Filter=()=>{
 
         <Grid item xs={2}>
         <CustomComboBox
-        value={selectedType}
+        value={selectedFilter.type}
         onChange={(event, newValue) => {
-            setSelectedType(newValue);
+          setSelectedFilter({...selectedFilter,type:newValue});
+         newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
+         filtersVar({...filtersVar(), type:newValue})
+            
+     
+
         }}
         id="type"
         options={TYPE}
@@ -30,11 +41,12 @@ const Filter=()=>{
         />
          </Grid>
         {
-          selectedType?
-          FILTER_DATA[selectedType].map(
-            ({...allProps})=>( 
-               <Grid item xs={2}>
-              <CustomComboBox {...allProps}/>
+          selectedFilter.type?
+          FILTER_DATA[selectedFilter.type].map(
+            ({id , ...allProps})=>( 
+               <Grid key={id} item xs={2}>
+              <CustomComboBox 
+              {...allProps}/>
               </Grid>)
           ):null
         
