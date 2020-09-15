@@ -1,6 +1,6 @@
 import React from 'react';
-import Filter from '../../components/filter/filter.component';
-import ProductPreview from '../../components/product-preview/product-preview.component';
+import Filter from '../filter/filter.component';
+import ProductPreview from '../product-preview/product-preview.component';
 
 const Products=()=>{
     return(

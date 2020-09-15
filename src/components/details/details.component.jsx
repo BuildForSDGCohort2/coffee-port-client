@@ -16,13 +16,14 @@ import ListComponent from '../list-item/list-item.component';
 import ProductImage from "../product-image/product-image.component"
 import useStyles from './details.styles';
 
-const Details = () => {
+const Details = ({product}) => {
   const classes = useStyles();
+  const {uniqueAttributes}=product
   return (
     <Card className={classes.root} bgcolor="secondary.main">
       <Grid container>
         <Grid item xs={12} sm={12} md={6} className={classes.contain}>
-         <ProductImage/>
+         {/* <ProductImage/> */}
         </Grid>
         <Grid container
           item
@@ -43,30 +44,26 @@ const Details = () => {
 
           <form>
             <Grid container justify="center" alignItems="center">
-              <Grid item xs={12} sm={12} md={6}>
+              <Grid item xs={12} sm={12} md={12}>
                 <CustomInputField
-                  id="filled-number"
-                  label="Amount"
-                  type="number"
+                  id="filled-multiline-static"
+                  rows={4}
+                  label="Inquiry"
+                  multiline
                   variant="filled"
-                  fullWidth
                   className={classes.formfields}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={6}>
+              <Grid justify="flex-end" alignItems = "center" container  item xs={12} sm={12} md={12}>
                 <CustomButton
-                  variant="contained"
-                  color="primary"
-                  className={classes.formfields}
-                  startIcon={<ShoppingCartIcon />}
+                  variant="contained" size="small" color="primary" mr={2}
                 >
-                  Request
+                  Send Request
                 </CustomButton>
               </Grid>
               <Grid item xs={12} sm={12} md={12}>
                 <List>
-                  <ListComponent 
-              
+                  {/* <ListComponent 
                   avatar
                     person
                     primary="created by"
@@ -78,21 +75,18 @@ const Details = () => {
                     sales
                     primary="Total sales"
                     secondary="13 items"
-                  />
+                  /> */}
+                  { Object.getOwnPropertyNames(uniqueAttributes).map((property)=>( 
+                    <div>
                   <ListComponent
-                    primary="Catagory"
-                    trailing="oil"
+                    primary={property}
+                    trailing={uniqueAttributes[property]}
                   />
-                    <Divider />
-                  <ListComponent
-                    primary="released on"
-                    trailing="1 month ago"
-                  />
-                    <Divider />
-                  <ListComponent
-                    primary="last update"
-                    trailing="3 hrs ago"
-                  />
+                  <Divider />
+                    </div>
+                  ))}
+                 
+
                 </List>
               </Grid>
             </Grid>
