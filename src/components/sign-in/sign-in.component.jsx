@@ -1,25 +1,42 @@
 import React from 'react';
 
+import { Redirect } from 'react-router'
 import Grid from '@material-ui/core/Grid';
 import useForm from '../../hooks/hooks'
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 import CustomButton from '../custom-button/custom-button.component';
+import {  useMutation } from '@apollo/client';
+import LOGIN from "../../apollo/mutations"
 
 
 import useStyles from './sign-in.styles';
 
 const SignIn = ({ handler }) => {
-  const {handleChange,fieldValues,handleSubmit}=useForm({email: '', password: '',})
+  const {handleChange,fieldValues}=useForm({email: '', password: '',})
+  const [loginUser, {  data, error }] = useMutation(LOGIN)
+
   const classes = useStyles();
+ const  handlersubmit=(event)=>{
+  event.preventDefault();
+  loginUser( { variables: {email:fieldValues.email,password:fieldValues.password} });
+  console.log(error,data);
+  if (data) {
+    window.localStorage.setItem('token', data.signIn.token)  
+  }
+ }
+ const token = window.localStorage.getItem('token')
+ if (token)  return <Redirect to='/' />
   return (
+  
+
     <div className={classes.root}>
       <Typography variant="h5" className={classes.title} color="primary"> 
         Log In To Access Coffee Port
       </Typography>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlersubmit}>
         <Grid container spacing={1}>
           <CustomButton
             facebookSignIn

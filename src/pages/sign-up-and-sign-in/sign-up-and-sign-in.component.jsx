@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 
 import CardContent from '@material-ui/core/CardContent';
 import SignUp from "../../components/sign-up/sign-up.component"
-import SignIn from "../../components/sign-in/sign-in.component"
+import  SignIn from "../../components/sign-in/sign-in.component"
 const SignUpAndSignInPage = () => {
   const [selectSignIn,setselectSignIn]=useState(true);
   const handleSignInChange=()=>setselectSignIn(!selectSignIn);
