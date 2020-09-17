@@ -1,11 +1,9 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 import useStyles from './product-item.styles';
 
 const ProductItem = ({ product }) => {
