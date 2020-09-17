@@ -2,7 +2,7 @@ import React from 'react';
 import ProductItem from '../../components/product-item/product-item.component';
 import { GET_ALL_FILTERS} from '../../apollo/filter/filter.operations';
 import { useQuery } from '@apollo/client';
-import  PRODUCT_DATA  from '../../pages/products/products.data';
+import  PRODUCT_DATA  from '../products/products.data';
 import { Grid } from '@material-ui/core';
 import useStyles from './product-preview.styles';
 

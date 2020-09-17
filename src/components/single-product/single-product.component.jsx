@@ -11,11 +11,10 @@ const SingleProduct = ({match}) => {
     const { productId } = match.params;
     const product = PRODUCT_DATA.find((product)=>product.id===productId);
 
-    
   return (
     <div>
      <Box className={classes.root}  bgcolor='primary.main'>   <Typography className={classes.title} variant="h5" >{product.type}</Typography></Box>
-     <Details/>
+     <Details product={product}/>
      <DescriptionComponent/>
      </div>
   );

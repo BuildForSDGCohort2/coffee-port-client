@@ -9,12 +9,13 @@ const theme = createMuiTheme({
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
-      main: '#f5f5f5',
+      main: '#F9B934',
       // dark: will be calculated from palette.secondary.main,
       contrastText: '#ffcc00',
     },
   },
   typography: {
+    fontFamily: `'Nunito', sans-serif`,
     subtitle2: {
       fontWeight: 600,
     },

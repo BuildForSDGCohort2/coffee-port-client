@@ -6,8 +6,9 @@ import {
 } from './filter.data';
 import useStyles from './filter.styles';
 import {filtersVar} from '../../apollo/cache';
+import {GET_ALL_FILTERS} from '../../apollo/filter/filter.operations';
 
-const Filter=()=>{
+const Filter=({search})=>{
   const classes = useStyles();
   const [selectedFilter,setSelectedFilter]=useState({type:""});
   let emptyAttributes = (uniqueAttributes)=>{
@@ -30,8 +31,6 @@ const Filter=()=>{
           setSelectedFilter({...selectedFilter,type:newValue});
          newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
          filtersVar({...filtersVar(), type:newValue})
-            
-     
 
         }}
         id="type"
@@ -43,9 +42,10 @@ const Filter=()=>{
         {
           selectedFilter.type?
           FILTER_DATA[selectedFilter.type].map(
-            ({id , ...allProps})=>( 
+            ({id , handleFilterChange ,...allProps})=>( 
                <Grid key={id} item xs={2}>
               <CustomComboBox 
+              onChange={handleFilterChange}
               {...allProps}/>
               </Grid>)
           ):null
