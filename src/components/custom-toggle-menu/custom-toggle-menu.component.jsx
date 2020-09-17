@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import useStyles from './custom-toggle-menu.styles';
 
@@ -51,8 +52,11 @@ const CustomToggleMenu = ()=> {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-          Company Name
+            <Avatar mr={4} alt="Uravis Howard" src="/static/images/avatar/2.jpg" />
+            <Typography style={{color:'#546e7a', fontSize:'13px'}}>
+            User
+            </Typography>
+          
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (

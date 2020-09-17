@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'grey',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(../../assets/coffeebeans.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',

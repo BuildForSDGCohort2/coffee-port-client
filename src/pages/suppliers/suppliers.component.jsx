@@ -1,10 +1,9 @@
 import React from 'react';
+import CompanyPreview from '../../components/company-preview/company-preview.component';
 
 
 const Suppliers=()=>(
-    <div>
-        Suppliers page
-    </div>
+    <CompanyPreview/>
 );
 
 export default Suppliers;

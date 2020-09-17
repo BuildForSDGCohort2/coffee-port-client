@@ -8,24 +8,24 @@ import NotificationBadge from '../notification-badge/notification-badge.componen
 
 
 const Header=()=>{
-    const {root,logo,link}=useStyles();
-    const currentUser={TYPE:'SUPPLIER'}
+    const {root,logo,link,linkText}=useStyles();
+    const currentUser={TYPE:'BUYER'}
     
     return( 
     <div className={root}>
-            <AppBar position='static'>
+            <AppBar position="static"  style={{ background: 'transparent', boxShadow: 'none',borderBottom:'solid',borderBottomColor:'#546e7a22',borderWidth:'thin'}}>
         <Toolbar>
           <Typography className={logo}>Logo</Typography>
 
             <Route>
-                <Link className={link} to="/"> <Typography >Home</Typography> </Link>
-                <Link className={link} to="/product"> <Typography>Products</Typography> </Link>
+                <Link className={link} to="/"> <Typography className={linkText} >Home</Typography> </Link>
+                <Link className={link} to="/product"> <Typography className={linkText}>Products</Typography> </Link>
                 {currentUser.TYPE==='BUYER'?
-                <Link className={link} to="/supplier"> <Typography>Suppliers</Typography> </Link>
+                <Link className={link} to="/supplier"> <Typography className={linkText}>Suppliers</Typography> </Link>
                 :currentUser.TYPE==='SUPPLIER'?
-                <Link className={link} to="/buyer"> <Typography>Buyers</Typography> </Link>
+                <Link className={link} to="/buyer"> <Typography className={linkText}>Buyers</Typography> </Link>
                 :null}
-                <Link className={link} to="/signup"> <Typography>Signup</Typography> </Link>
+                <Link className={link} to="/signup"> <Typography className={linkText}>Signup</Typography> </Link>
                 <Link className={link} to="/notification"> <NotificationBadge/> </Link>
                 <div className={link} to="/signup"> <CustomToggleMenu/> </div>
            

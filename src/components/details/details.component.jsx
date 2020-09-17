@@ -23,7 +23,7 @@ const Details = ({product}) => {
     <Card className={classes.root} bgcolor="secondary.main">
       <Grid container>
         <Grid item xs={12} sm={12} md={6} className={classes.contain}>
-         {/* <ProductImage/> */}
+          <ProductImage/>
         </Grid>
         <Grid container
           item

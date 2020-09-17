@@ -1,23 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
+import useStyles from './notification-badge.styles';
 
 const NotificationBadge = ()=> {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Badge color="secondary" badgeContent={0}>
-        <NotificationsIcon />
+      <Badge color="secondary" badgeContent={3}>
+        <NotificationsIcon style={{color:'#546e7a'}}/>
       </Badge>
     </div>
   );
