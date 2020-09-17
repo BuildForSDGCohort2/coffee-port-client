@@ -9,10 +9,10 @@ import NotificationBadge from '../notification-badge/notification-badge.componen
 
 
 const Header=()=>{
-    const {root,logo,link}=useStyles();
+    const {root,logo,link,linkText}=useStyles();
     const currentUser={TYPE:'SUPPLIER'}
     const token=getUser();
-    
+
     return( 
     <div className={root}>
             <AppBar position="static"  style={{ background: 'transparent', boxShadow: 'none',borderBottom:'solid',borderBottomColor:'#546e7a22',borderWidth:'thin'}}>
@@ -27,16 +27,12 @@ const Header=()=>{
                 :currentUser.TYPE==='SUPPLIER'?
                 <Link className={link} to="/buyer"> <Typography className={linkText}>Buyers</Typography> </Link>
                 :null}
-<<<<<<< HEAD
-                <Link className={link} to="/signup"> <Typography className={linkText}>Signup</Typography> </Link>
                 <Link className={link} to="/notification"> <NotificationBadge/> </Link>
                 <div className={link} to="/signup"> <CustomToggleMenu/> </div>
-=======
                 {!token? <Link className={link} to="/Signup"> <Typography>Sign in</Typography> </Link>:<Link className={link} onClick={() =>logout()}> <Typography>Sign out</Typography> </Link>
                 }
               
     
->>>>>>> develop
            
 
                 
