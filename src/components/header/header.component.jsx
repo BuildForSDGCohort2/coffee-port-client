@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppBar,Toolbar, Typography} from '@material-ui/core';
 import {Route,Link} from 'react-router-dom';
+import {getUser,logout} from "./header.utils"
 import useStyles from './header.styles';
 import CustomToggleMenu from '../custom-toggle-menu/custom-toggle-menu.component';
 import NotificationBadge from '../notification-badge/notification-badge.component';
@@ -8,8 +9,9 @@ import NotificationBadge from '../notification-badge/notification-badge.componen
 
 
 const Header=()=>{
-    const {root,logo,link,linkText}=useStyles();
-    const currentUser={TYPE:'BUYER'}
+    const {root,logo,link}=useStyles();
+    const currentUser={TYPE:'SUPPLIER'}
+    const token=getUser();
     
     return( 
     <div className={root}>
@@ -25,9 +27,16 @@ const Header=()=>{
                 :currentUser.TYPE==='SUPPLIER'?
                 <Link className={link} to="/buyer"> <Typography className={linkText}>Buyers</Typography> </Link>
                 :null}
+<<<<<<< HEAD
                 <Link className={link} to="/signup"> <Typography className={linkText}>Signup</Typography> </Link>
                 <Link className={link} to="/notification"> <NotificationBadge/> </Link>
                 <div className={link} to="/signup"> <CustomToggleMenu/> </div>
+=======
+                {!token? <Link className={link} to="/Signup"> <Typography>Sign in</Typography> </Link>:<Link className={link} onClick={() =>logout()}> <Typography>Sign out</Typography> </Link>
+                }
+              
+    
+>>>>>>> develop
            
 
                 

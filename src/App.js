@@ -7,9 +7,15 @@ import Buyers from './pages/buyers/buyers.component';
 import Suppliers from './pages/suppliers/suppliers.component';
 import Products from './components/products/products.component';
 import Home from './pages/homepage/homepage.component';
+<<<<<<< HEAD
 import SignUpAndSignInPage from './pages/sign-up-and-sign-in/sign-up-and-sign-in.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
+=======
+import SingleSupplierPage from "./pages/single-supplier/single-supplier.component"
+import SignUpAndSignInPage from './pages/sign-up-and-sign-in/sign-up-and-sign-in.component'
+import './App.css';
+>>>>>>> develop
 
 const FETCH_TEST_MESSAGE = gql`
   {
