@@ -1,5 +1,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/42863d35b8ad4ef5acb2abc58b5aa25f)](https://www.codacy.com/gh/BuildForSDGCohort2/coffee-port-client?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDGCohort2/coffee-port-client&utm_campaign=Badge_Grade)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/40b6e6e1-1640-4ba7-a5fa-0a5e676da313/deploy-status)](https://app.netlify.com/sites/coffee-port/deploys)
+
 # Client app for coffee-port.
 
 ## Here are steps for the setup
