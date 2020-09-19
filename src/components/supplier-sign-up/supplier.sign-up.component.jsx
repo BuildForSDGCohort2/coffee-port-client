@@ -6,14 +6,20 @@ import useForm from '../../hooks/hooks';
 import useStyles from './supplier-sign-up.styles';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 import CustomButton from '../custom-button/custom-button.component';
+import {SIGN_UP} from "../../apollo/mutations"
 const SupplierSignUp = () => {
   const classes = useStyles();
   const { handleChange, fieldValues, handleSubmit } = useForm({
     firstName: '',
     lastName: '',
     email: '',
-    address: '',
+    companyName: '',
+    companyEmail: '',
+    websiteUrl: '',
     country: '',
+    city: '',
+    street: '',
+    postalcode: '',
     phoneNumber: '',
     password: '',
     confirmPassword: '',
@@ -58,27 +64,82 @@ const SupplierSignUp = () => {
               value={fieldValues.email}
               onChange={handleChange}
             />
+            </Grid>
+             <Grid item xs={12} sm={6}>
+            <CustomInputField
+              required
+              fullWidth
+              id="companyName"
+              label="Company Name"
+              name="companyName"
+              value={fieldValues.companyName}
+              onChange={handleChange}
+            />
+            </Grid>
+             <Grid item xs={12} sm={6}>
+             <CustomInputField
+              required
+              fullWidth
+              id="companyEmail"
+              label="Company Email"
+              name="companyEmail"
+              autoComplete="email"
+              value={fieldValues.companyEmail}
+              onChange={handleChange}
+            />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+               <CustomInputField
+              required
+              fullWidth
+              id="websiteUrl"
+              label="website Url"
+              name="websiteUrl"
+              value={fieldValues.websiteUrl}
+              onChange={handleChange}
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <CustomInputField
               required
               fullWidth
-              id="address"
-              label="Address"
-              name="address"
-              autoComplete="address"
-              value={fieldValues.address}
+              id="country"
+              label="country"
+              name="country"
+              value={fieldValues.country}
               onChange={handleChange}
             />
-          </Grid>{' '}
+             </Grid>
+              <Grid item xs={12} sm={6}>
+            <CustomInputField
+              required
+              fullWidth
+              id="city"
+              label="city"
+              name="city"
+              value={fieldValues.city}
+              onChange={handleChange}
+            />
+             </Grid>
           <Grid item xs={12} sm={6}>
             <CustomInputField
               required
               fullWidth
-              id="country"
-              label="Country"
-              name="country"
-              value={fieldValues.country}
+              id="street"
+              label="street"
+              name="street"
+              value={fieldValues.street}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <CustomInputField
+              required
+              fullWidth
+              id="postalcode"
+              label="postalcode"
+              name="postalcode"
+              value={fieldValues.postalcode}
               onChange={handleChange}
             />
           </Grid>

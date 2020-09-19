@@ -1,7 +1,10 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 import {AppBar,Toolbar, Typography} from '@material-ui/core';
 import {Route,Link} from 'react-router-dom';
 import {getUser,logout} from "./header.utils"
+import GET_CURRENT_USER from "../../apollo/queries"
+
 import useStyles from './header.styles';
 
 
@@ -9,10 +12,11 @@ import useStyles from './header.styles';
 const Header=()=>{
     const {root,logo,link}=useStyles();
     const currentUser={TYPE:'SUPPLIER'}
-    const token=getUser();
-    
-    return( 
-    <div className={root}>
+    const { data, loading, error } = useQuery(GET_CURRENT_USER);
+    console.log(data,loading,error);
+   
+    const token=data.currentuser.token;
+   return <div className={root}>
             <AppBar position='static'>
         <Toolbar>
           <Typography className={logo}>Logo</Typography>
@@ -43,7 +47,7 @@ const Header=()=>{
         </div>
 
     
-);}
+}
 
 
 export default Header;

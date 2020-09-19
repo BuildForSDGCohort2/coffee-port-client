@@ -2,8 +2,9 @@ import { gql } from '@apollo/client';
 
 const GET_CURRENT_USER = gql`
   query GetCurrentUser{
-      currentUser @client {
+    currentuser @client {
           token    
-  }
+      }
+   }
 `;
-export default GET_CURRENT_USER ;
+export default GET_CURRENT_USER;

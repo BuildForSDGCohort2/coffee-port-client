@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Redirect } from 'react-router'
 import Grid from '@material-ui/core/Grid';
 import useForm from '../../hooks/hooks'
@@ -8,26 +7,28 @@ import Link from '@material-ui/core/Link';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 import CustomButton from '../custom-button/custom-button.component';
 import {  useMutation } from '@apollo/client';
-import LOGIN from "../../apollo/mutations"
+import {LOGIN} from "../../apollo/mutations"
+import {currentUserVar} from "../../apollo/cache"
 
 
 import useStyles from './sign-in.styles';
 
 const SignIn = ({ handler }) => {
   const {handleChange,fieldValues}=useForm({email: '', password: '',})
-  const [loginUser, {  data, error }] = useMutation(LOGIN)
+  const [loginUser, {  data, loading,error }] = useMutation(LOGIN)
 
   const classes = useStyles();
  const  handlersubmit=(event)=>{
   event.preventDefault();
   loginUser( { variables: {email:fieldValues.email,password:fieldValues.password} });
-  console.log(error,data);
+  console.log(error,loading,data);
   if (data) {
     window.localStorage.setItem('token', data.signIn.token)  
+    currentUserVar({...currentUserVar(),token:data.signIn.token})
   }
  }
  const token = window.localStorage.getItem('token')
- if (token)  return <Redirect to='/' />
+
   return (
   
 
