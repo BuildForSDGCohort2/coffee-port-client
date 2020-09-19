@@ -3,6 +3,7 @@ const PRODUCT_DATA = [
   {
     id: '1',
     type: 'Coffee',
+    companyId: '12',
     uniqueAttributes: {
       GeographicalDesignation: 'YIRGACHEFFE A',
       Grade: '5',
@@ -12,6 +13,7 @@ const PRODUCT_DATA = [
   {
     id: '3',
     type: 'Coffee',
+    companyId: '22',
     uniqueAttributes: {
       GeographicalDesignation: 'YIRGACHEFFE A',
       Grade: '5',
@@ -22,6 +24,7 @@ const PRODUCT_DATA = [
   {
     id: '2',
     type: 'Coffee',
+    companyId: '32',
     uniqueAttributes: {
       GeographicalDesignation: 'YIRGACHEFFE A',
       Grade: '5',
@@ -32,6 +35,7 @@ const PRODUCT_DATA = [
   {
     id: '23',
     type: 'Sesame',
+    companyId: '42',
     uniqueAttributes: {
       Type: 'Humera',
       Grade: '1',
@@ -41,6 +45,7 @@ const PRODUCT_DATA = [
   {
     id: '25',
     type: 'Sesame',
+    companyId: '52',
     uniqueAttributes: {
       Type: 'Humera',
       Grade: '1',

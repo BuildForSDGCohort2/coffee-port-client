@@ -8,7 +8,7 @@ const Authenticated=({Component})=>{
     console.log("nothing")
     console.log(data,loading,error);
     
- if(!data.currentuser.token) return <Redirect to='signup' />
+//  if(!data.currentuser.token) return <Redirect to='signup' />
  return <Component/>
 }
 export default Authenticated;

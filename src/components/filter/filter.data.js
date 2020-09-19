@@ -7,13 +7,14 @@ export const TYPE = ['Coffee', 'Sesame', 'Flower'];
 export const FILTER_DATA = {
   Coffee: [
     {
+      name: 'Geographical Designation',
       id: 'geographical-designation',
       filterSelectedOptions: true,
-      label: 'Geographical Designation',
+      label: 'GeographicalDesignation',
       groupBy: (option) => option.origin,
       getOptionLabel: (option) => option.specificOrigin,
       options: COFFEE_DATA.GeographicalDesignation,
-      onChange: (event, newValue) => {
+      handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
           uniqueAttributes: {
@@ -30,7 +31,7 @@ export const FILTER_DATA = {
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
       label: 'Group',
-      onChange: (event, newValue) => {
+      handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
           uniqueAttributes: { ...filtersVar().uniqueAttributes, Group: newValue },
@@ -43,7 +44,7 @@ export const FILTER_DATA = {
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
       label: 'Grade',
-      onChange: (event, newValue) => {
+      handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
           uniqueAttributes: { ...filtersVar().uniqueAttributes, Grade: newValue },
@@ -70,7 +71,7 @@ export const FILTER_DATA = {
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
       label: 'SesameType',
-      onChange: (event, newValue) => {
+      handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
           uniqueAttributes: { ...filtersVar().uniqueAttributes, Type: newValue },

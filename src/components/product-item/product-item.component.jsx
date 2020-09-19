@@ -4,13 +4,17 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
+import Chip from '@material-ui/core/Chip';
 import useStyles from './product-item.styles';
+import {withRouter} from 'react-router-dom';
+import { CardActionArea } from '@material-ui/core';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product,match,history}) => {
   const classes = useStyles();
   return (
-    <Grid className={classes.root} xs={6}>
+    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} xs={6}>
       <Card className={classes.card}>
+        <CardActionArea>
         {/* <CardMedia
           className={classes.cover}
           image="https://cdn.shopify.com/s/files/1/1003/7044/files/green_coffee_green_coffee_beans_coffee_roaster_unroasted_coffee_beans_raw_coffee_beans_large.jpg?v=1533901791"
@@ -25,7 +29,7 @@ const ProductItem = ({ product }) => {
               by addis export PLC
             </Typography>
            
-            <Rating name="read-only" value={3} readOnly />
+            <Chip color="primary" label='$23.87'/>
             
       </Grid>
             <Typography component="h5" variant="h5">
@@ -47,8 +51,9 @@ const ProductItem = ({ product }) => {
 
           </CardContent>
         </div>
+        </CardActionArea>
       </Card>
     </Grid>
   );
 };
-export default ProductItem;
+export default withRouter(ProductItem);

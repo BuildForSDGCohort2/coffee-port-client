@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'grey',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(../../assets/coffeebeans.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -28,11 +28,13 @@ const useStyles = makeStyles((theme) => ({
     padding: '2%',
   },
   formfields: {
-    height: '7vh',
     width: '90%',
     margin: '5%',
   },
-
+  buttonContainer: {
+    height: '50px',
+    background: 'red',
+  },
   paper: {
     padding: theme.spacing(4, 5),
     diplay: 'flex',
