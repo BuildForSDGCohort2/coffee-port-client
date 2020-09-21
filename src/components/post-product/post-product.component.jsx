@@ -4,8 +4,11 @@ import {FILTER_DATA,TYPE} from '../filter/filter.data';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
+import {POST_PRODUCT} from '../../apollo/product/product.operations';
+import {useMutation} from '@apollo/client';
 
 const PostProduct = () =>{
+  const [postProduct, { data,loading,error }] = useMutation(POST_PRODUCT);
    const [selectedProperties,setSelectedProperties] = useState({productName:'Coffee',uniqueAttributes:{GeographicalDesignation:'',Grade:'',Group:'',productName:''}});
    const classes = useStyles();
    console.log(selectedProperties);
@@ -19,6 +22,11 @@ const PostProduct = () =>{
     const handleSubmit= async event=>{
       event.preventDefault();
       console.log('selectedproducts',selectedProperties);
+      postProduct({variables: {productName:'coffee', geographicalDesignation:'dd',grade:'ll', companyName:'aa',companyEmail:'bb',websiteUrl:'dd',country:'ff',city:'dd',
+      street:'hh',postalCode:'kky',productPrice:45,
+      productQuantity:6,
+      productMeasurementUnit:"kg"}});
+      console.log('trypost',data,loading,error);
       
   
   }
