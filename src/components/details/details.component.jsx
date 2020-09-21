@@ -1,11 +1,7 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-
 import List from '@material-ui/core/List';
-
-
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import CustomInputField from '../custom-input-field/custom-input-field.component';

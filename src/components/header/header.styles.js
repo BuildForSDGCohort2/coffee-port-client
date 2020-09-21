@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     color: '#ffffff',
     paddingRight: theme.spacing(4),
   },
-  linkText:{
+  linkText: {
     fontWeight: 400,
     color: '#546e7a',
-  }
+  },
 }));
 
 export default useStyles;

@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    height: '67vh',
     padding: '0 20%',
   },
   title: {

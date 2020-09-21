@@ -2,11 +2,17 @@ import { InMemoryCache, makeVar } from '@apollo/client';
 
 export const filtersVar = makeVar({
   productName: '',
-  uniqueAttributes:{
-    geographicalDesignation: '', grade: '', group: '', uniqueName: '' },
+  uniqueAttributes: {
+    geographicalDesignation: '', grade: '', group: '', uniqueName: '',
+  },
 });
-export const currentuserVar = makeVar({
-  token: '',
+export const currentUserVar = makeVar({
+  id: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phoneNumber: '',
+  loggedIn: false,
 });
 
 export const cache = new InMemoryCache({
@@ -20,7 +26,7 @@ export const cache = new InMemoryCache({
         },
         currentuser: {
           read() {
-            return currentuserVar();
+            return currentUserVar();
           },
         },
       },

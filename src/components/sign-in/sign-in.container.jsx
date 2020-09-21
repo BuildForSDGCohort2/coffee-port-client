@@ -1,28 +1,26 @@
 import React from 'react';
-import { useMutation } from '@apollo/client';
-import { Redirect } from 'react-router';
 import SignIn from './sign-in.component';
-import LOGIN from '../../apollo/mutations';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../apollo/mutations';
+import { storeUser } from '../../utils';
 
 const SignInContainer = () => {
-  const token = window.localStorage.getItem('token');
-  if (token) return <Redirect to="/" />;
-  const [loginUser, { data, error }] = useMutation(LOGIN);
+  const [loginUser, { data }] = useMutation(LOGIN);
+  if (data) {
+    if (data && data.signIn.__typename === 'Token') {
+      storeUser(data.signIn.token);
+    } else if (data.signIn.__typename === 'SignInError') {
+      console.log(data.signIn.message);
+    } else if (data.signIn.__typename === 'UserInputError') {
+      console.log(data.signIn.message);
+    }
+  }
+
   return (
     <div>
-      <SignIn loginUser />
+      <SignIn loginUser={loginUser} />
     </div>
   );
-  //     if (data) {
-  //         window.localStorage.setItem('token', data.signIn.token)
-
-  //         // Redirect to home page
-
-  //       }
-  //      }
-  //      const token = window.localStorage.getItem('token')
-  //      if (token)  return <Redirect to='/' />
-  // })
 };
 
 export default SignInContainer;
