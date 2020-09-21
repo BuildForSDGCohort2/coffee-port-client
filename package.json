@@ -17,6 +17,7 @@
     "apollo-link-http": "^1.5.17",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
+    "jwt-decode": "^3.0.0-beta.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

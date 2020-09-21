@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import useStyles from './custom-toggle-menu.styles';
 
-const CustomToggleMenu = ()=> {
+const CustomToggleMenu = ({currentUser})=> {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -54,7 +54,7 @@ const CustomToggleMenu = ()=> {
         >
             <Avatar mr={4} alt="Uravis Howard" src="/static/images/avatar/2.jpg" />
             <Typography style={{color:'#546e7a', fontSize:'13px'}}>
-            User
+            {currentUser.firstName}
             </Typography>
           
         </Button>
