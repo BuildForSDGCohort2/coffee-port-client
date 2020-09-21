@@ -3,12 +3,12 @@ import { gql } from '@apollo/client';
 export const GET_ALL_FILTERS = gql`
   query GetAllFilters{
       filters @client {
-          type
+          productName
           uniqueAttributes{
-            GeographicalDesignation
-            Grade
-            Group
-            Type
+            geographicalDesignation
+            grade
+            group
+            uniqueName
           }
       }
   }

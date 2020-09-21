@@ -13,7 +13,7 @@ const SingleProduct = ({match}) => {
 
   return (
     <div>
-     <Box className={classes.root}  bgcolor='primary.main'>   <Typography className={classes.title} variant="h5" >{product.type}</Typography></Box>
+     <Box className={classes.root}  bgcolor='primary.main'>   <Typography className={classes.title} variant="h5" >{product.productName}</Typography></Box>
      <Details product={product}/>
      <DescriptionComponent/>
      </div>

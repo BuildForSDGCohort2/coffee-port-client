@@ -8,7 +8,7 @@ export const FILTER_DATA = {
   Coffee: [
     {
       name: 'Geographical Designation',
-      id: 'geographical-designation',
+      id: 'coffee-geographical-designation',
       filterSelectedOptions: true,
       label: 'GeographicalDesignation',
       groupBy: (option) => option.origin,
@@ -19,7 +19,7 @@ export const FILTER_DATA = {
           ...filtersVar(),
           uniqueAttributes: {
             ...filtersVar().uniqueAttributes,
-            GeographicalDesignation: newValue ? newValue.specificOrigin : '',
+          geographicalDesignation: newValue ? newValue.specificOrigin : '',
           },
         });
       },
@@ -34,7 +34,7 @@ export const FILTER_DATA = {
       handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
-          uniqueAttributes: { ...filtersVar().uniqueAttributes, Group: newValue },
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, group: newValue },
         });
       },
     },
@@ -47,7 +47,7 @@ export const FILTER_DATA = {
       handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
-          uniqueAttributes: { ...filtersVar().uniqueAttributes, Grade: newValue },
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, grade: newValue },
         });
       },
     },
@@ -66,15 +66,15 @@ export const FILTER_DATA = {
 
   Sesame: [
     {
-      id: 'sesame-type',
+      id: 'sesame-geographical-designation',
       options: SESAME_DATA.Type,
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,
-      label: 'SesameType',
+      label: 'GeographicalDesignation',
       handleFilterChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
-          uniqueAttributes: { ...filtersVar().uniqueAttributes, Type: newValue },
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, geographicalDesignation: newValue },
         });
       },
     },
@@ -88,7 +88,7 @@ export const FILTER_DATA = {
       onInputChange: (event, newValue) => {
         filtersVar({
           ...filtersVar(),
-          uniqueAttributes: { ...filtersVar().uniqueAttributes, Grade: newValue },
+          uniqueAttributes: { ...filtersVar().uniqueAttributes, grade: newValue },
         });
       },
     },

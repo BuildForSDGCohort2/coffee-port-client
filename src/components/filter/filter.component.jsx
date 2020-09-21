@@ -29,8 +29,8 @@ const Filter=({search})=>{
         value={selectedFilter.type}
         onChange={(event, newValue) => {
           setSelectedFilter({...selectedFilter,type:newValue});
-         newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
-         filtersVar({...filtersVar(), type:newValue})
+         newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),productName:newValue}):
+         filtersVar({...filtersVar(), productName:newValue})
 
         }}
         id="type"
