@@ -1,5 +1,7 @@
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import jwt_decode from 'jwt-decode';
+import { currentUserVar } from './apollo/cache';
 import Header from './components/header/header.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Buyers from './pages/buyers/buyers.component';
@@ -12,51 +14,63 @@ import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
 
-
 function App() {
-  const { data, loading, error } = useQuery(GET_CURRENT_USER);
-  console.log(data, loading, error);
+  useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      var decoded = jwt_decode(token);
 
-  if (data) {
-    console.log(data);
+      currentUserVar({
+        ...currentUserVar(),
+        id: decoded.id,
+        firstName: decoded.firstName,
+        lastName: decoded.lastName,
+        email: decoded.email,
+        phoneNumber: decoded.phoneNumber,
+        loggedIn: true,
+      });
+    }
+  }, []);
+  const { data, loading, error } = useQuery(GET_CURRENT_USER);
+
+  if (loading) {
+    return <div>...loading</div>;
   }
   return (
     <div>
       <Header />
       <Switch>
         <Route exact path="/" component={Home}></Route>
+        <Route path="/products">
+          {' '}
+          <Authenticated Component={ProductPage} />
+        </Route>
         <Route
           exact
-          path="/products."
-         component={ProductPage}
-        ></Route>
+          path="/suppliers">
+             <Authenticated Component={Suppliers} />
+        </Route>
+        <Route exact path="/buyer">
+          {' '}
+          <Authenticated Component={Buyers} />
+        </Route>
+        <Route exact path="/signup">
+          {data.currentuser.loggedIn ? (
+            <Redirect to="/" />
+          ) : (
+            <SignUpAndSignInPage />
+          )}
+        </Route>
+        <Route exact path="/describe">
+          <SingleSupplierPage />
+        </Route>
         <Route
           exact
-          path="/suppliers"
-          render={() => <Authenticated Component={Suppliers} />}
-        ></Route>
-        <Route
-          exact
-          path="/buyers"
-          render={() => <Authenticated Component={Buyers} />}
-        ></Route>
-        <Route
-          exact
-          path="/signup"
-          render={() =>
-            data.currentuser.token != null ? (
-              <Redirect to="/" />
-            ) : (
-              <SignUpAndSignInPage />
-            )
-          }
-        ></Route>
-        <Route
-          exact
-          path="/describe"
-          component={SingleSupplierPage}
-        ></Route>
-             <Route exact path='/notification'  render={() => <Authenticated Component={NotificationPage} />} ></Route>
+          path="/notification"
+         >
+            <Authenticated Component={NotificationPage} />
+          
+        </Route>
       </Switch>
     </div>
   );

@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
+import PostedProductItem from "../../components/posted-product-item/posted-product-item.component"
 import Grid from '@material-ui/core/Grid';
 
 const SingleSupplierPage = () => {
@@ -40,7 +41,7 @@ const SingleSupplierPage = () => {
                    <Card className={classes.thirdBlock}>
      <CardContent >
      <Grid container >
-      <Grid item  sm={12} md={4}   className={classes.achievements}>
+      <Grid item   xs={12} sm={12} md={4}   className={classes.achievements}>
       <Typography
          className={classes.estimate}
           color="primary"
@@ -60,7 +61,7 @@ const SingleSupplierPage = () => {
                   All time clients
          </Typography>
       </Grid>
-      <Grid item  sm={12} md={4} className={classes.achievements} >
+      <Grid item  xs={12}  sm={12} md={4} className={classes.achievements} >
       <Typography
          
           color="primary"
@@ -79,7 +80,7 @@ const SingleSupplierPage = () => {
                   All time clients
          </Typography>
       </Grid>
-      <Grid item  sm={12} md={4}  className={classes.achievements}>
+      <Grid item xs={12} sm={12} md={4}  className={classes.achievements}>
       <Typography
           color="primary"
           gutterBottom
@@ -105,14 +106,15 @@ const SingleSupplierPage = () => {
      <div className={classes.fourthBlock}>
      <Typography
         
-        color="primary"
+        color="secondary"
         gutterBottom
-        variant="h6"
+        variant="h4"
         className={classes.title}
       >
-                Supplier name
+                Posts
        </Typography>
      </div>
+     <PostedProductItem/>
          </div>
   );
 };

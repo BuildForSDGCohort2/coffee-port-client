@@ -58,5 +58,8 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(255, 255, 255, 1)',
     boxShadow: '0 0 74px rgba(25, 25, 25, 0.1)',
   },
+  fourthBlock: {
+    marginTop: '5%',
+  },
 });
 export default useStyles;

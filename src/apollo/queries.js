@@ -3,7 +3,12 @@ import { gql } from '@apollo/client';
 const GET_CURRENT_USER = gql`
   query GetCurrentUser{
     currentuser @client {
-          token    
+          id
+          firstName
+          lastName
+          email
+          phoneNumber
+          loggedIn
       }
    }
 `;

@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     diplay: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    minHeight: '77vh',
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -24,5 +25,8 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: '0px',
     },
   },
+  link:{
+    marginTop: '6%',
+  }
 }));
 export default useStyles;

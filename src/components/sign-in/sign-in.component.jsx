@@ -1,39 +1,35 @@
 import React from 'react';
-import { Redirect } from 'react-router'
 import Grid from '@material-ui/core/Grid';
-import useForm from '../../hooks/hooks'
+import useForm from '../../hooks/hooks';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 import CustomButton from '../custom-button/custom-button.component';
-import {  useMutation } from '@apollo/client';
-import {LOGIN} from "../../apollo/mutations"
-import {currentUserVar} from "../../apollo/cache"
-
-
 import useStyles from './sign-in.styles';
 
-const SignIn = ({ handler }) => {
-  const {handleChange,fieldValues}=useForm({email: '', password: '',})
-  const [loginUser, {  data, loading,error }] = useMutation(LOGIN)
+const SignIn = ({ loginUser }) => {
+  const { handleChange, fieldValues } = useForm({
+    email: '',
+    password: '',
+  });
 
   const classes = useStyles();
- const  handlersubmit=(event)=>{
-  event.preventDefault();
-  loginUser( { variables: {email:fieldValues.email,password:fieldValues.password} });
-  console.log(error,loading,data);
-  if (data) {
-    window.localStorage.setItem('token', data.signIn.token)  
-    currentUserVar({...currentUserVar(),token:data.signIn.token})
-  }
- }
- const token = window.localStorage.getItem('token')
+  const handlersubmit = (event) => {
+    event.preventDefault();
+    loginUser({
+      variables: {
+        email: fieldValues.email,
+        password: fieldValues.password,
+      },
+    });
+  };
 
   return (
-  
-
     <div className={classes.root}>
-      <Typography variant="h5" className={classes.title} color="primary"> 
+      <Typography
+        variant="h5"
+        className={classes.title}
+        color="primary"
+      >
         Log In To Access Coffee Port
       </Typography>
 
@@ -45,7 +41,6 @@ const SignIn = ({ handler }) => {
             fullWidth
             variant="contained"
             color="primary"
-
           >
             Continue with FaceBook
           </CustomButton>
@@ -58,7 +53,7 @@ const SignIn = ({ handler }) => {
           >
             Continue with Google
           </CustomButton>
-          <Grid container item >
+          <Grid container item>
             <Grid item xs={5}>
               <hr />
             </Grid>
@@ -67,13 +62,12 @@ const SignIn = ({ handler }) => {
             </Grid>
 
             <Grid item xs={5}>
-              <hr/>
+              <hr />
             </Grid>
           </Grid>
           <Grid item xs={12}>
             <CustomInputField
               required
-              
               id="email"
               label="Email Address"
               name="email"
@@ -84,7 +78,7 @@ const SignIn = ({ handler }) => {
               onChange={handleChange}
             />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <CustomInputField
               required
               id="password"
@@ -106,14 +100,6 @@ const SignIn = ({ handler }) => {
           </CustomButton>
         </Grid>
       </form>
-
-      <Grid container justify="flex-end">
-        <Grid item>
-          <Link href="#" onClick={handler} variant="body2">
-            Don't have an account? Sign up
-          </Link>
-        </Grid>
-      </Grid>
     </div>
   );
 };
