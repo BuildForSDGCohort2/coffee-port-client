@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import {FILTER_DATA,TYPE} from '../filter/filter.data';
+import {COMBOBOX_DATA,TYPE} from '../../data/combobox.data';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
-import {POST_PRODUCT} from '../../apollo/product/product.operations';
-import {useMutation} from '@apollo/client';
 
-const PostProduct = () =>{
-  const [postProduct, { data,loading,error }] = useMutation(POST_PRODUCT);
-   const [selectedProperties,setSelectedProperties] = useState({productName:'Coffee',uniqueAttributes:{GeographicalDesignation:'',Grade:'',Group:'',productName:''}});
+const PostProduct = ({postProduct,data,loading}) =>{
+   const [selectedProperties,setSelectedProperties] = useState({productName:'Coffee',uniqueAttributes:{geographicalDesignation:'',grade:'',group:''}});
    const classes = useStyles();
    console.log(selectedProperties);
    const {productName,uniqueAttributes}=selectedProperties;
-    const handlePostChange = (event,newValue,label) => {
-      if (label==='GeographicalDesignation') newValue?newValue=newValue.specificOrigin:newValue='';
-      setSelectedProperties({...selectedProperties, uniqueAttributes:{...uniqueAttributes, [label]:newValue}})
+    const handlePostChange = (event,newValue,attributeName) => {
+      if (attributeName==='geographicalDesignation'&& productName==='Coffee') newValue?newValue=newValue.specificOrigin:newValue='';
+      setSelectedProperties({...selectedProperties, uniqueAttributes:{...uniqueAttributes, [attributeName]:newValue}})
 
+    }
+    let emptyAttributes = (uniqueAttributes)=>{
+      const newUniqueAttributes={...uniqueAttributes}
+      Object.getOwnPropertyNames(newUniqueAttributes).forEach((key)=>{newUniqueAttributes[key] =''});
+      return newUniqueAttributes;
     }
 
     const handleSubmit= async event=>{
       event.preventDefault();
       console.log('selectedproducts',selectedProperties);
-      postProduct({variables: {productName:'coffee', geographicalDesignation:'dd',grade:'ll', companyName:'aa',companyEmail:'bb',websiteUrl:'dd',country:'ff',city:'dd',
-      street:'hh',postalCode:'kky',productPrice:45,
+      postProduct({variables: {productName:productName,...uniqueAttributes, companyName:'Abcd',companyEmail:'abcd@gmail.com',websiteUrl:'https://abcd.com',country:'Ethiopia',city:'Addis Ababa',
+      street:'Addis Ababa,Ethiopia',postalCode:'12345',productPrice:45,
       productQuantity:6,
       productMeasurementUnit:"kg"}});
-      console.log('trypost',data,loading,error);
+      if (!loading && data!=null) {
+        console.log('clearing');
+        setSelectedProperties({productName:'',uniqueAttributes:emptyAttributes(uniqueAttributes)})
+        console.log('trypost',data);
+      }
       
-  
   }
 
     return(
@@ -52,12 +57,12 @@ const PostProduct = () =>{
                  </Grid>
                 {
                   productName?
-                  FILTER_DATA[productName].map(
-                    ({id , handleFilterChange ,label , ...allProps})=>( 
+                  COMBOBOX_DATA[productName].map(
+                    ({id , handleFilterChange ,attributeName , ...allProps})=>( 
                        <Grid key={id} item xs={12}>
                       <CustomComboBox
-                      label={label}
-                      onChange={(e,newValue)=>{handlePostChange(e,newValue,label)}}
+                      value={(attributeName==='geographicalDesignation'&&productName==='Coffee')?uniqueAttributes[attributeName].specificOrigin:uniqueAttributes[attributeName]}
+                      onChange={(e,newValue)=>{handlePostChange(e,newValue,attributeName)}}
                       {...allProps}/>
                       </Grid>)
                   ):null

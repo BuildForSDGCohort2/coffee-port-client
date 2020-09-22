@@ -11,9 +11,10 @@ const ProductPreview = () =>{
     const classes = useStyles();
     const { data } = useQuery(GET_ALL_FILTERS);
     console.log('data',data);
-    const {data:productData,loading: productLoading} = useQuery(GET_ALL_PRODUCTS);
+    const {data:productData,loading: productLoading,error} = useQuery(GET_ALL_PRODUCTS);
+
     if (productLoading) return <Grid container alignItems='center' justify='center'><CircularProgress/></Grid> ;
-    //console.log(productData,productLoading);
+    console.log(productData,productLoading,error);
     const {products}=productData
     const {filters}=data;
     const filteredByType = products.products.filter((product)=>{

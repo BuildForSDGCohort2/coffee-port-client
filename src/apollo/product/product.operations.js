@@ -33,6 +33,9 @@ mutation postProduct($productName: String! ,$productPrice: Float! ,$productQuant
     }
     ... on Product {
       productName
+      productPrice
+      productQuantity
+      productMeasurementUnit
       user {
         email
         role
@@ -104,5 +107,3 @@ query getAllProducts {
 }
 
 `;
-
-
