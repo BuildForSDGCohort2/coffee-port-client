@@ -1,18 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Details from '../details/details.component';
 import useStyles from './single-product.styles';
 import DescriptionComponent from '../description/description.component';
-import PRODUCT_DATA from '../products/products.data';
 
-const SingleProduct = () => {
+const SingleProduct = ({data,loading}) => {
   const classes = useStyles();
-  const { productId } = useParams();
-  const product = PRODUCT_DATA.find(
-    (product) => product.id === productId,
-  );
+  const {product}=data
+
 
   return (
     <div>

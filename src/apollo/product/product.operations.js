@@ -107,3 +107,49 @@ query getAllProducts {
 }
 
 `;
+
+export const GET_PRODUCT = gql`
+query Query($productId: ID!) {
+  product(id: $productId) {
+    ... on Product {
+      id
+      productName
+      productPrice
+      productMeasurementUnit
+      productQuantity
+      uniqueAttributes {
+        grade
+        group
+        uniqueName
+        geographicalDesignation
+      }
+      user {
+        firstName
+        lastName
+        email
+        role
+        phoneNumber
+        company {
+          websiteUrl
+          companyName
+          companyEmail
+          address {
+            country
+            city
+            street
+            postalCode
+          }
+        }
+        
+      }
+    
+    }
+    ... on GetProductError {
+      message
+      type
+    }
+  }
+}
+
+`;
+
