@@ -115,6 +115,8 @@ const SingleSupplierPage = () => {
        </Typography>
      </div>
      <PostedProductItem/>
+     <Divider variant="middle"/>
+     <PostedProductItem/>
          </div>
   );
 };
