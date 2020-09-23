@@ -2,19 +2,39 @@ import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import {
-   TYPE, FILTER_DATA
-} from './filter.data';
+   TYPE, COMBOBOX_DATA
+} from '../../data/combobox.data';
 import useStyles from './filter.styles';
 import {filtersVar} from '../../apollo/cache';
 import {GET_ALL_FILTERS} from '../../apollo/filter/filter.operations';
+import { useQuery } from '@apollo/react-hooks';
 
-const Filter=({search})=>{
+const Filter=()=>{
+  const { data } = useQuery(GET_ALL_FILTERS);
+  const {filters} = data;
+  const {productName}=filters;
   const classes = useStyles();
-  const [selectedFilter,setSelectedFilter]=useState({type:""});
   let emptyAttributes = (uniqueAttributes)=>{
     const newUniqueAttributes={...uniqueAttributes}
     Object.getOwnPropertyNames(newUniqueAttributes).forEach((key)=>{newUniqueAttributes[key] =''});
     return newUniqueAttributes;
+  }
+
+  const handleFilterChange2 = (event,newValue,attributeName) =>{
+    console.log(attributeName)
+    attributeName==='geographicalDesignation'?
+    filtersVar({
+      ...filtersVar(),
+      uniqueAttributes: {
+        ...filtersVar().uniqueAttributes,
+      geographicalDesignation: newValue ? newValue.specificOrigin : '',
+      },
+    }):
+    filtersVar({
+      ...filtersVar(),
+      uniqueAttributes: { ...filtersVar().uniqueAttributes, [attributeName]: newValue },
+    });
+
   }
   return(
     <div className={classes.root}>
@@ -26,11 +46,10 @@ const Filter=({search})=>{
 
         <Grid item xs={2}>
         <CustomComboBox
-        value={selectedFilter.type}
+        value={productName}
         onChange={(event, newValue) => {
-          setSelectedFilter({...selectedFilter,type:newValue});
-         newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
-         filtersVar({...filtersVar(), type:newValue})
+         newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),productName:newValue}):
+         filtersVar({...filtersVar(), productName:newValue})
 
         }}
         id="type"
@@ -40,12 +59,12 @@ const Filter=({search})=>{
         />
          </Grid>
         {
-          selectedFilter.type?
-          FILTER_DATA[selectedFilter.type].map(
-            ({id , handleFilterChange ,...allProps})=>( 
+         productName?
+          COMBOBOX_DATA[productName].map(
+            ({id , attributeName , handleFilterChange ,...allProps})=>( 
                <Grid key={id} item xs={2}>
               <CustomComboBox 
-              onChange={handleFilterChange}
+              onChange={(event,newValue)=>{handleFilterChange2(event,newValue,attributeName)}}
               {...allProps}/>
               </Grid>)
           ):null

@@ -12,7 +12,7 @@ import useStyles from './details.styles';
 
 const Details = ({product}) => {
   const classes = useStyles();
-  const {uniqueAttributes}=product
+  const {productPrice,uniqueAttributes}=product
   return (
     <Card className={classes.root} bgcolor="secondary.main">
       <Grid container>
@@ -33,7 +33,7 @@ const Details = ({product}) => {
 
         <Grid item xs={12} sm={12} md={4} >
           <Typography className={classes.title} variant="h5">
-            $23.49
+            ${productPrice}
           </Typography>
 
           <form>
@@ -57,27 +57,15 @@ const Details = ({product}) => {
               </Grid>
               <Grid item xs={12} sm={12} md={12}>
                 <List>
-                  {/* <ListComponent 
-                  avatar
-                    person
-                    primary="created by"
-                    secondary="someone"
-                  />
-                    <ListComponent 
-                    
-                    avatar
-                    sales
-                    primary="Total sales"
-                    secondary="13 items"
-                  /> */}
                   { Object.getOwnPropertyNames(uniqueAttributes).map((property)=>( 
-                    <div>
+                    property!=='__typename'?
+                    (<div>
                   <ListComponent
                     primary={property}
                     trailing={uniqueAttributes[property]}
                   />
                   <Divider />
-                    </div>
+                    </div>):null
                   ))}
                  
 
