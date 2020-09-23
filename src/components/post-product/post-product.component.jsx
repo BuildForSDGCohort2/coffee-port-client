@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import {FILTER_DATA,TYPE} from '../filter/filter.data';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';

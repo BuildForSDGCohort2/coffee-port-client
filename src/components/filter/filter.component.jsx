@@ -6,7 +6,7 @@ import {
 } from './filter.data';
 import useStyles from './filter.styles';
 import {filtersVar} from '../../apollo/cache';
-import {GET_ALL_FILTERS} from '../../apollo/filter/filter.operations';
+
 
 const Filter=({search})=>{
   const classes = useStyles();

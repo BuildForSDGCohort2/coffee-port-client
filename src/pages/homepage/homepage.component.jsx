@@ -28,9 +28,9 @@ const Home=()=>{
             <Grid   justify="center"
   alignItems="center" container>
                 <Grid>
-                <Button className={classes.buttonContainer} variant="outlined" size="large" color="primary" className={classes.margin}>Learn More</Button>
+                <Button className={classes.buttonContainer} variant="outlined" size="large" color="primary" >Learn More</Button>
                 </Grid>
-                <Grid><Button variant="outlined" size="large" color="secondary" className={classes.margin}>Products Offered</Button></Grid>
+                <Grid><Button variant="outlined" size="large" color="secondary" >Products Offered</Button></Grid>
             </Grid>
 
         </Grid>

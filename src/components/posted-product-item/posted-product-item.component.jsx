@@ -9,27 +9,27 @@ import useStyles from './posted-product-item.styles';
 const PostedProductItem = () => {
   const classes = useStyles();
   return (
- 
-      <Grid container className={classes.details}>
-        <Grid item md={4}>
-          <Typography component="h6" variant="h6">
-            coffee
-          </Typography>
-          <Rating name="read-only" value={3} readOnly   className={classes.rating}/>
-          </Grid>
-          <Grid item md={4}>
-            <Typography component="h6" variant="h6">
-              Grade 5
-            </Typography>
-         
-        </Grid>
-        <Grid item md={4}>
-          <Chip color="primary" label="$23.87" />
-        </Grid>
-      
-      
-        
+    <Grid container className={classes.details}>
+      <Grid item md={4}>
+        <Typography component="h6" variant="h6">
+          coffee
+        </Typography>
+        <Rating
+          name="read-only"
+          value={3}
+          readOnly
+          className={classes.rating}
+        />
       </Grid>
+      <Grid item md={4}>
+        <Typography component="h6" variant="h6">
+          Grade 5
+        </Typography>
+      </Grid>
+      <Grid item md={4}>
+        <Chip color="primary" label="$23.87" />
+      </Grid>
+    </Grid>
   );
 };
 export default PostedProductItem;
