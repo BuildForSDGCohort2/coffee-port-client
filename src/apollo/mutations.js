@@ -23,7 +23,7 @@ mutation login($email: String!, $password: String!){
   }
 `;
 export const SIGN_UP = gql`
-  mutation createUser($email:String!,$firstName:String!,$lastName:String!,$password:String!,$confirmPassword:String!,$phoneNumber:String!,$websiteUrl: String!,$companyName: String!,$companyEmail: String!,$country: String!,$city: String!,$street: String!,$postalCode:String!){
+  mutation createUser($email:String!,$firstName:String!,$lastName:String!,$password:String!,$confirmPassword:String!,$phoneNumber:String!,$websiteUrl: String!,$companyName: String!,$companyEmail: String!,$country: String!,$city: String!,$postalCode:String!){
     createUser(userInput: {
       email: $email
    
@@ -41,7 +41,7 @@ export const SIGN_UP = gql`
         address: {
           country: $country
           city: $city
-          street: $street
+          street: "kera"
           postalCode: $postalCode
         }
         
@@ -62,6 +62,7 @@ export const SIGN_UP = gql`
           phoneNumber 
           companyEmail 
           companyName 
+          websiteUrl
            city 
           country 
           street 

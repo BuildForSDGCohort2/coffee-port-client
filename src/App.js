@@ -13,6 +13,7 @@ import GET_CURRENT_USER from './apollo/queries';
 import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
+import ProfilePage from './pages/profile/profile.component';
 
 function App() {
   useEffect(() => {
@@ -31,7 +32,7 @@ function App() {
       });
     }
   }, []);
-  const { data, loading, error } = useQuery(GET_CURRENT_USER);
+  const { data, loading } = useQuery(GET_CURRENT_USER);
 
   if (loading) {
     return <div>...loading</div>;
@@ -45,10 +46,8 @@ function App() {
           {' '}
           <Authenticated Component={ProductPage} />
         </Route>
-        <Route
-          exact
-          path="/suppliers">
-             <Authenticated Component={Suppliers} />
+        <Route exact path="/suppliers">
+          <Authenticated Component={Suppliers} />
         </Route>
         <Route exact path="/buyer">
           {' '}
@@ -64,12 +63,11 @@ function App() {
         <Route exact path="/describe">
           <SingleSupplierPage />
         </Route>
-        <Route
-          exact
-          path="/notification"
-         >
-            <Authenticated Component={NotificationPage} />
-          
+        <Route exact path="/notification">
+          <Authenticated Component={NotificationPage} />
+        </Route>
+        <Route exact path="/profile">
+          <ProfilePage />
         </Route>
       </Switch>
     </div>

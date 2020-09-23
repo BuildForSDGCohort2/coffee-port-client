@@ -3,7 +3,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { default as SupplierSignUp } from '../supplier-sign-up/supplier-signup.container';
 
-import BuyerSignUp from '../buyer-sign-up/buyer-sign-up.component';
+import { default as BuyerSignUp } from '../buyer-sign-up/buyer-signup.container';
 
 const SignUp = () => {
   const [selectedTab, setSelectedTab] = React.useState(0);
