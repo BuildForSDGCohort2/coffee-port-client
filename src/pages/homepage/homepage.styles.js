@@ -23,11 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
   introductionGrid: {
     background: '#f7f9fa',
+    height:'450px',
+    marginBottom: theme.spacing(4),
 
   },
   description: {
-    paddingLeft: theme.spacing(8),
-    paddingRight: theme.spacing(8),
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+    marginTop: theme.spacing(4),
     color: '#546e7a',
   },
   title: {
