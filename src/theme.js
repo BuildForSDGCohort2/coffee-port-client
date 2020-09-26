@@ -2,6 +2,7 @@ const { createMuiTheme } = require('@material-ui/core');
 
 const theme = createMuiTheme({
   palette: {
+
     primary: {
       // light: will be calculated from palette.primary.main,
       main: '#3f51b5',
@@ -11,8 +12,10 @@ const theme = createMuiTheme({
     secondary: {
       main: '#F9B934',
       // dark: will be calculated from palette.secondary.main,
-      contrastText: '#ffcc00',
     },
+    text: {
+      primary: '#121037',
+    }
   },
   typography: {
     fontFamily: `'Nunito', sans-serif`,

@@ -10,40 +10,37 @@ import { CardActionArea } from '@material-ui/core';
 
 const ProductItem = ({ product,match,history}) => {
   const classes = useStyles();
+  //console.log('product',product)
   return (
-    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} xs={6}>
+    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={6}>
       <Card className={classes.card}>
         <CardActionArea>
-        {/* <CardMedia
-          className={classes.cover}
-          image="https://cdn.shopify.com/s/files/1/1003/7044/files/green_coffee_green_coffee_beans_coffee_roaster_unroasted_coffee_beans_raw_coffee_beans_large.jpg?v=1533901791"
-          title={product.type}
-        /> */}
 
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Grid container>
               <Typography className={classes.companyName} variant="subtitle2"
                 color="textSecondary">
-              by addis export PLC
+             by {product.user.company.companyName}
             </Typography>
            
             <Chip color="primary" label='$23.87'/>
             
       </Grid>
             <Typography component="h5" variant="h5">
-              {product.type}
+              {product.productName}
             </Typography>
             {
-              Object.getOwnPropertyNames(product.uniqueAttributes).map((property) => (
-                <Typography
+              Object.getOwnPropertyNames(product.uniqueAttributes).filter((property,index)=>index<4).map((property) => (
+                property ==='__typename'?null:
+               ( <Typography
                 key={property}
                 body1="true"
                 variant="subtitle1"
                 color="textSecondary"
               >
                 {property + ' ' + product.uniqueAttributes[property]}
-              </Typography>
+              </Typography>)
               ))
 
             }
