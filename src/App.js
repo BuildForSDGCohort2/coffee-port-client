@@ -13,6 +13,7 @@ import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
 import ProfilePage from './pages/profile/profile.component';
+import Footer from './components/footer/footer.component';
 
 function App() {
   useEffect(() => {
@@ -59,6 +60,7 @@ function App() {
           <ProfilePage />
         </Route>
       </Switch>
+      <Footer/>
     </div>
   );
 }

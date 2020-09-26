@@ -1,12 +1,18 @@
-import {makeStyles} from '@material-ui/lab';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles((theme) => ({
 
-    container:{
-        display: 'flex';
-        minHeight: '100vh';
-        flexDirection: 'column';
-    }
+  root: {
+    display: 'flex',
+    minHeight: '20vh',
+    flexDirection: 'column',
+    backgroundColor: theme.palette.secondary.main,
+    marginTop: theme.spacing(8),
+  },
+  text: {
+    color: '#121037',
+    fontWeight: 600,
+  },
 
 }));
 

@@ -89,7 +89,7 @@ const PostProduct = ({ postProduct, data, loading }) => {
   return (
     <div className={classes.root}>
       <Grid container  direction="column" alignItems="center" justify="center">
-        <Grid item><Typography>Post Product</Typography></Grid>
+        <Grid item><Typography variant='h3' color='primary'>Post Product</Typography></Grid>
         
         <form onSubmit={handleSubmit}>
           <Grid item xs={2}>

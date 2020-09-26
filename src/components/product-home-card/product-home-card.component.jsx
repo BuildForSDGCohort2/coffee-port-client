@@ -35,6 +35,7 @@ const ProductHomeCard = ({type}) => {
       </CardContent>
     </Card>
     </Grid>
+   
   );
 }
 
