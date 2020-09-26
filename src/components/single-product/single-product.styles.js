@@ -15,6 +15,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: 'white',
-  }
+  },
 }));
 export default useStyles;

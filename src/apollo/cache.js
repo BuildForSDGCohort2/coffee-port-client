@@ -13,6 +13,9 @@ export const currentUserVar = makeVar({
   email: '',
   phoneNumber: '',
   loggedIn: false,
+  role: '',
+  country: '',
+  city: '',
 });
 
 export const cache = new InMemoryCache({

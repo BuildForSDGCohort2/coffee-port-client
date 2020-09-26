@@ -5,12 +5,19 @@ const useStyles = makeStyles({
     padding: '0 20%',
   },
   title: {
-    margin: '4%',
+    margin: '10% 1%',
     textAlign: 'center',
   },
   divider: {
     display: 'flex',
     justifyContent: 'center',
+  },
+  progress: {
+    marginRight: '3%',
+  },
+  input: {
+    color: 'white',
+    marginTop: '3%',
   },
 });
 

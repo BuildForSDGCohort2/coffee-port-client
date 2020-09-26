@@ -12,6 +12,9 @@ export const storeUser = (token) => {
     email: decoded.email,
     phoneNumber: decoded.phoneNumber,
     loggedIn: true,
+    role: decoded.role,
+    country: decoded.company.address.country,
+    city: decoded.company.address.city,
   });
 };
 export const logout = () => {
