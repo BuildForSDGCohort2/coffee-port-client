@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import jwt_decode from 'jwt-decode';
-import { currentUserVar } from './apollo/cache';
+import {storeUser} from './utils'
 import Header from './components/header/header.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Buyers from './pages/buyers/buyers.component';
@@ -19,17 +18,7 @@ function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token');
     if (token) {
-      var decoded = jwt_decode(token);
-
-      currentUserVar({
-        ...currentUserVar(),
-        id: decoded.id,
-        firstName: decoded.firstName,
-        lastName: decoded.lastName,
-        email: decoded.email,
-        phoneNumber: decoded.phoneNumber,
-        loggedIn: true,
-      });
+      storeUser(token);
     }
   }, []);
   const { data, loading } = useQuery(GET_CURRENT_USER);
@@ -46,10 +35,10 @@ function App() {
           {' '}
           <Authenticated Component={ProductPage} />
         </Route>
-        <Route exact path="/suppliers">
+        <Route  path="/suppliers">
           <Authenticated Component={Suppliers} />
         </Route>
-        <Route exact path="/buyer">
+        <Route exact path="/buyers">
           {' '}
           <Authenticated Component={Buyers} />
         </Route>

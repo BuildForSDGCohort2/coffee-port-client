@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { countries } from 'country-data';
 import useForm from '../../hooks/hooks';
 import useStyles from './buyer-sign-up.styles';
 import PhoneInput from 'react-phone-number-input';
@@ -63,14 +64,13 @@ const BuyerSignUp = ({
         websiteUrl: websiteUrl,
         companyName: companyName,
         companyEmail: companyEmail,
-        country: country,
+        role: 'BUYER',
+        country: countries[country].name,
         city: region,
         postalCode: postalcode,
       },
     });
   };
-  console.log(message);
-
   return (
     <div>
       <Typography variant="h5" className={classes.title}>

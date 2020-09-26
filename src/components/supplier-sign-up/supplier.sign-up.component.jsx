@@ -3,12 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PhoneInput from 'react-phone-number-input';
+import { countries } from 'country-data';
 import useForm from '../../hooks/hooks';
 import useStyles from './supplier-sign-up.styles';
 import 'react-phone-number-input/style.css';
@@ -41,10 +38,6 @@ const SupplierSignUp = ({
     postalcode: '',
     password: '',
     confirmPassword: '',
-    coffee: true,
-    flower: false,
-    sesame: false,
-    other: false,
   });
 
   const {
@@ -57,10 +50,6 @@ const SupplierSignUp = ({
     postalcode,
     password,
     confirmPassword,
-    coffee,
-    flower,
-    sesame,
-    other,
   } = fieldValues;
   const handlersubmit = (event) => {
     event.preventDefault();
@@ -72,19 +61,17 @@ const SupplierSignUp = ({
         firstName: firstName,
         lastName: lastName,
         confirmPassword: confirmPassword,
+        role: 'SUPPLIER',
         phoneNumber: phoneNumber,
         websiteUrl: websiteUrl,
         companyName: companyName,
         companyEmail: companyEmail,
-        country: country,
+        country: countries[country].name,
         city: region,
         postalCode: postalcode,
       },
     });
   };
-
-  const error =
-    [coffee, sesame, flower, other].filter((v) => v).length === 0;
 
   return (
     <div>
@@ -308,60 +295,6 @@ const SupplierSignUp = ({
                 inputErrors ? inputErrors.confirmPassword : null
               }
             />
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <FormControl
-              required
-              error={error}
-              component="fieldset"
-              className={classes.formControl}
-            >
-              <FormLabel component="legend">
-                Choose products to supply
-              </FormLabel>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={coffee}
-                      onChange={handleChange}
-                      name="coffee"
-                    />
-                  }
-                  label="Coffee"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={flower}
-                      onChange={handleChange}
-                      name="flower"
-                    />
-                  }
-                  label="Flower"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={other}
-                      onChange={handleChange}
-                      name="other"
-                    />
-                  }
-                  label="Other"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={sesame}
-                      onChange={handleChange}
-                      name="sesame"
-                    />
-                  }
-                  label="Sesame"
-                />
-              </FormGroup>
-            </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
             <FormHelperText error={message ? true : false}>

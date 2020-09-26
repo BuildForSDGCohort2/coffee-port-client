@@ -18,7 +18,7 @@ const SingleSupplierPage = () => {
         <div  className={classes.block}>
       <Typography
         
-          color="secondary"
+          color="primary"
           gutterBottom
           variant="h3"
           className={classes.title}
@@ -49,7 +49,7 @@ const SingleSupplierPage = () => {
           variant="h6"
 
         >
-                  4247
+                  4
          </Typography>
          <Typography
         
@@ -58,7 +58,7 @@ const SingleSupplierPage = () => {
           variant="body1"
           className={classes.description}
         >
-                  All time clients
+                  Products
          </Typography>
       </Grid>
       <Grid item  xs={12}  sm={12} md={4} className={classes.achievements} >
@@ -69,7 +69,7 @@ const SingleSupplierPage = () => {
           variant="body1"
           className={classes.estimate}
         >
-                  4247
+                  2
          </Typography>
          <Typography
           color="primary"
@@ -77,7 +77,7 @@ const SingleSupplierPage = () => {
           variant="body1"
           className={classes.description}
         >
-                  All time clients
+                  Total Sales
          </Typography>
       </Grid>
       <Grid item xs={12} sm={12} md={4}  className={classes.achievements}>

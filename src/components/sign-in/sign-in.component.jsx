@@ -10,13 +10,12 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import useStyles from './sign-in.styles';
 
-const SignIn = ({ loginUser,loading,message,inputErrors }) => {
+const SignIn = ({ loginUser, loading, message, inputErrors }) => {
   const { handleChange, fieldValues } = useForm({
     email: '',
     password: '',
   });
-  if(loading){
-
+  if (loading) {
   }
 
   const classes = useStyles();
@@ -29,24 +28,20 @@ const SignIn = ({ loginUser,loading,message,inputErrors }) => {
       },
     });
   };
-console.log(inputErrors);
   return (
-    <div> 
-    <div className={classes.root}>
-        
-      <Typography
-      
-        variant="h4"
-        className={classes.title}
-        color="secondary"
-      >
-       
-        Log In To Access Coffee Port
-      </Typography>
+    <div>
+      <div className={classes.root}>
+        <Typography
+          variant="h4"
+          className={classes.title}
+          color="secondary"
+        >
+          Log In To Access Coffee Port
+        </Typography>
 
-      <FormControl>
-        <Grid container spacing={1}>
-          {/* <CustomButton
+        <FormControl>
+          <Grid container spacing={1}>
+            {/* <CustomButton
         
             facebookSignIn
             type="submit"
@@ -65,7 +60,7 @@ console.log(inputErrors);
           >
             Continue with Google
           </CustomButton>  */}
-          {/* <Grid container item>
+            {/* <Grid container item>
             <Grid item xs={5}>
               <hr />
             </Grid>
@@ -78,52 +73,71 @@ console.log(inputErrors);
              </Grid>
           </Grid> */}
             <hr />
-          <Grid item xs={12}>
-            <CustomInputField
-              error={inputErrors? inputErrors.email?true:false:null}
-              helperText={ inputErrors? inputErrors.email:null}
-              required
-              id="email"
-              label="Email Address"
-              name="email"
-              
-              autoComplete="email"
-              fullWidth
-              value={fieldValues.email}
-              onChange={handleChange}
+            <Grid item xs={12}>
+              <CustomInputField
+                error={
+                  inputErrors
+                    ? inputErrors.email
+                      ? true
+                      : false
+                    : null
+                }
+                helperText={inputErrors ? inputErrors.email : null}
+                required
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                fullWidth
+                value={fieldValues.email}
+                onChange={handleChange}
+                className={classes.input}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <CustomInputField
+                error={
+                  inputErrors
+                    ? inputErrors.password
+                      ? true
+                      : false
+                    : null
+                }
+                helperText={inputErrors ? inputErrors.password : null}
+                id="password"
+                label="Password"
+                name="password"
+                type="password"
+                fullWidth
+                value={fieldValues.password}
+                className={classes.input}
+                onChange={handleChange}
+              />
+            </Grid>
+            <FormHelperText error={message ? true : false}>
+              {message ? message : null}
+            </FormHelperText>
+            <CustomButton
+              type="submit"
               className={classes.input}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <CustomInputField
-            error={inputErrors? inputErrors.password?true:false:null}
-             helperText={ inputErrors? inputErrors.password:null}
-              id="password"
-              label="Password"
-              name="password"
-              type="password"
               fullWidth
-              value={fieldValues.password}
-              className={classes.input}
-              onChange={handleChange}
-            />
+              variant="contained"
+              onClick={handlersubmit}
+            >
+              {loading === true ? (
+                <CircularProgress
+                  className={classes.progress}
+                  color="white"
+                  size="1.2rem"
+                />
+              ) : null}
+              Sign In
+            </CustomButton>
           </Grid>
-          <FormHelperText  error={ message? true:false}>{ message? message:null}</FormHelperText>
-          <CustomButton
-            type="submit"
-            className={classes.input}
-            fullWidth
-            variant="contained"
-            onClick={handlersubmit}
-          >
-           { loading===true?<CircularProgress className={classes.progress} color="white" size="1.2rem"/>:null}
-            Sign In
-          </CustomButton>
-        </Grid>
-      </FormControl>
-    </div>
+        </FormControl>
+      </div>
     </div>
   );
 };
 
-export default SignIn; 
+export default SignIn;
