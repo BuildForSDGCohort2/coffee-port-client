@@ -4,6 +4,8 @@ const useStyles = makeStyles((theme) => ({
   details: {
     display: 'flex',
     textAlign: 'center',
+    margin: '2% 10%',
+    width: '80%',
   },
   content: {
     flex: '1 0 auto',

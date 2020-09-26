@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Rating from '@material-ui/lab/Rating';
 import Chip from '@material-ui/core/Chip';
 import useStyles from './product-item.styles';
 import {withRouter} from 'react-router-dom';
@@ -11,7 +10,6 @@ import { CardActionArea } from '@material-ui/core';
 
 const ProductItem = ({ product,match,history}) => {
   const classes = useStyles();
-  //console.log('product',product)
   return (
     <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={6}>
       <Card className={classes.card}>

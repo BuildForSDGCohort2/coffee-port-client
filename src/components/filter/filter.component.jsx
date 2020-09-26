@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import {

@@ -11,7 +11,7 @@ import NotificationBadge from '../notification-badge/notification-badge.componen
 
 const Header = () => {
   const { root, logo, link, linkText } = useStyles();
-  const currentUser = { TYPE: 'SUPPLIER' };
+  const currentUser = { TYPE: 'BUYER' };
   const { data } = useQuery(GET_CURRENT_USER);
   const loggedIn = data.currentuser.loggedIn;
   return (
@@ -41,14 +41,14 @@ const Header = () => {
               </Typography>{' '}
             </Link>
             {currentUser.TYPE === 'BUYER' ? (
-              <Link className={link} to="/supplier">
+              <Link className={link} to="/suppliers">
                 {' '}
                 <Typography className={linkText}>
                   Suppliers
                 </Typography>{' '}
               </Link>
             ) : currentUser.TYPE === 'SUPPLIER' ? (
-              <Link className={link} to="/buyer">
+              <Link className={link} to="/buyers">
                 {' '}
                 <Typography className={linkText}>
                   Buyers
