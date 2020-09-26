@@ -25,7 +25,7 @@ const ProductItem = ({ product,match,history}) => {
              by {product.user.company.companyName}
             </Typography>
            
-            <Chip color="primary" label='$23.87'/>
+            <Chip color="primary" label={`$ ${product.productPrice}`}/>
             
       </Grid>
             <Typography component="h5" variant="h5">

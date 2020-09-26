@@ -5,7 +5,7 @@ import {useMutation} from '@apollo/client';
 
 const PostProductContainer = () =>{
     const [postProduct, { data,loading,error }] = useMutation(POST_PRODUCT);
-    console.log('err',error)
+    console.log('data',data)
     return (<PostProduct data={data} loading={loading} postProduct={postProduct}/>)
 }
 

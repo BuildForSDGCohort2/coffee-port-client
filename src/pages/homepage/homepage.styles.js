@@ -18,12 +18,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
   },
   buttonContainer: {
-    marginRight: theme.spacing(3),
+    marginRight: theme.spacing(4),
 
+  },
+  topButtons: {
+    marginTop: theme.spacing(2),
   },
   introductionGrid: {
     background: '#f7f9fa',
-    height:'450px',
+    height: '450px',
     marginBottom: theme.spacing(4),
 
   },
@@ -43,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '22px',
     color: '#F9B934',
     fontWeight: 50,
-  }
+  },
 
 }));
 
