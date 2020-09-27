@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  filterText: {
+    fontWeight: 700,
+    color: theme.palette.text.primary,
+  },
 }));
 
 export default useStyles;

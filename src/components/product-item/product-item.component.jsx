@@ -23,23 +23,38 @@ const ProductItem = ({ product,match,history}) => {
              by {product.user.company.companyName}
             </Typography>
            
-            <Chip color="primary" label='$23.87'/>
+            <Chip color="primary" label={`$ ${product.productPrice}`}/>
             
       </Grid>
-            <Typography component="h5" variant="h5">
+            <Typography className={classes.productName} component="h5" variant="h5">
               {product.productName}
             </Typography>
             {
               Object.getOwnPropertyNames(product.uniqueAttributes).filter((property,index)=>index<4).map((property) => (
                 property ==='__typename'?null:
-               ( <Typography
+               ( <Grid container>
+                    <Grid item xs={6}>
+                    <Typography
+                    className={classes.property}
                 key={property}
                 body1="true"
                 variant="subtitle1"
                 color="textSecondary"
               >
-                {property + ' ' + product.uniqueAttributes[property]}
-              </Typography>)
+                {property.toUpperCase() + ' '}
+              </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                    <Typography
+                key={property}
+                body1="true"
+                variant="subtitle1"
+                color="textSecondary"
+              >
+                {product.uniqueAttributes[property]}
+              </Typography>
+                 </Grid>
+                  </Grid>)
               ))
 
             }

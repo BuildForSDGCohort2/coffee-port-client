@@ -1,66 +1,100 @@
 import { gql } from '@apollo/client';
  
-export const POST_PRODUCT = gql`
+
+export const POST_PRODUCT2 = gql`
 mutation postProduct($productName: String! ,$productPrice: Float! ,$productQuantity: Int! ,$productMeasurementUnit:String!, $geographicalDesignation:String, $grade:String, $group:String , $uniqueName:String, $websiteUrl:String!,$companyName:String!,$companyEmail:String!,$country:String!,$city:String!,$street:String!,$postalCode:String!) {
   postProduct(
-    product: {
+    postProductProduct: {
       productName:$productName
-      productPrice:$productPrice
-      productQuantity:$productQuantity
-      productMeasurementUnit:$productMeasurementUnit
       uniqueAttributes: {
         geographicalDesignation: $geographicalDesignation
         grade: $grade
         group: $group
         uniqueName: $uniqueName
       }
+      productPrice:$productPrice
+      productQuantity:$productQuantity
+      productMeasurementUnit:$productMeasurementUnit
     }
-    company: {
-      websiteUrl: $websiteUrl
-      companyName: $companyName
-      companyEmail: $companyEmail
-      address: {
-        country: $country
-        city: $city
-        street: $street
-        postalCode: $postalCode
-      }
-    }
-  ) {
-    ... on ProductNotAddedError {
-      message
-      type
-    }
-    ... on Product {
-      productName
-      productPrice
-      productQuantity
-      productMeasurementUnit
-      user {
-        email
-        role
-        firstName
-        lastName
-        phoneNumber
-        createdAt
-        company {
-          websiteUrl
-          address {
-            city
-            country
-            postalCode
-          }
-        }
-      }
 
-      uniqueAttributes {
-        grade
-        group
-      }
+  )  {... on Product {
+    id
+    productName
+    productMeasurementUnit
+    productQuantity
+    uniqueAttributes {
+      geographicalDesignation
+      grade
+      group
     }
-    ... on Error {
-      message
+    productPrice
+  }
+  ... on ProductNotAddedError {
+    message
+    type
+  }
+  ... on ProductInputError {
+    message
+    type
+    productErrors {
+      productName
+      productMeasurementUnit
+      productQuantity
+      productPrice
+      geographicalDesignation
+      grade
+      group
+      uniqueName
     }
+    valid
+  }
+  ... on NotAuthenticatedUserError {
+    message
+    type
+  }
+  }
+}`;
+
+
+export const POST_PRODUCT = gql`
+mutation PostProductMutation($postProductProduct: ProductInput!) {
+  postProduct(product: $postProductProduct) {
+    ... on Product {
+    id
+    productName
+    productMeasurementUnit
+    productQuantity
+    productPrice
+    uniqueAttributes {
+      geographicalDesignation
+      grade
+      group
+    }
+    
+  }
+  ... on ProductNotAddedError {
+    message
+    type
+  }
+  ... on ProductInputError {
+    message
+    type
+    productErrors {
+      productName
+      productMeasurementUnit
+      productQuantity
+      productPrice
+      geographicalDesignation
+      grade
+      group
+      uniqueName
+    }
+    valid
+  }
+  ... on NotAuthenticatedUserError {
+    message
+    type
+  }
   }
 }`;
 
@@ -69,13 +103,18 @@ query getAllProducts {
   products {
     ... on Products {
       products {
+        id
+        productName
+        productName
+        productMeasurementUnit
+        productQuantity
+        productPrice
         uniqueAttributes{
           geographicalDesignation
           grade
           group
         }
-        id
-        productName
+
         user{
           role
           email
@@ -91,7 +130,6 @@ query getAllProducts {
             address{
               country
               city
-              street
               postalCode
             }
           }
@@ -136,7 +174,6 @@ query Query($productId: ID!) {
           address {
             country
             city
-            street
             postalCode
           }
         }
