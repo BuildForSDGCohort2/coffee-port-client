@@ -6,15 +6,15 @@ import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 
+
 const PostProduct = ({ postProduct, data, loading }) => {
   const classes = useStyles();
 
   const [selectedProperties, setSelectedProperties] = useState({
     productName: 'Coffee',
-    productPrice:0,
-    productQuantity:0,
+    productPrice:'',
+    productQuantity:'',
     productMeasurementUnit:'',
-
     uniqueAttributes: {
       geographicalDesignation: '',
       grade: '',
@@ -87,13 +87,16 @@ const PostProduct = ({ postProduct, data, loading }) => {
 }
 
   return (
+    <Grid container direction='column'  alignItems="center" justify="center">
     <div className={classes.root}>
-      <Grid container  direction="column" alignItems="center" justify="center">
-        <Grid item><Typography variant='h3' color='primary'>Post Product</Typography></Grid>
+      <Grid container direction='column'  alignItems="center" justify="center">
+        <Grid item><Typography variant='h4' color='primary'>Post Product</Typography></Grid>
         
         <form onSubmit={handleSubmit}>
-          <Grid item xs={2}>
+          <Grid container>
+          <Grid className = {classes.eachCombo} item xs={5}>
             <CustomComboBox
+
               value={productName}
               onChange={(event, newValue) => {
                 setSelectedProperties({
@@ -109,14 +112,20 @@ const PostProduct = ({ postProduct, data, loading }) => {
               label="Product Name"
             />
           </Grid>
-          <Grid item xs={12}>
-            <CustomInputField  type='number' value={productQuantity} label="Quantity" name="productQuantity" 
+          <Grid className={classes.eachInput} item xs={5}>
+            <CustomInputField 
+            normalMargin={true}
+            style={{ width: 200 }} size='small' variant="filled" type='number' value={productQuantity} label="Quantity" name="productQuantity" 
             onChange={handleChange}
             
             />
           </Grid>
-          <Grid item xs={12}>
-            <CustomInputField
+          <Grid className={classes.eachInput} item xs={5}>
+            <CustomInputField 
+            normalMargin={true}
+            style={{ width: 200 }}
+             size='small'
+            variant="filled"
               label="Measurment Unit"
               name="productMeasurementUnit"
               type='text'
@@ -126,8 +135,8 @@ const PostProduct = ({ postProduct, data, loading }) => {
 
             />
           </Grid>
-          <Grid item xs={12}>
-            <CustomInputField label="Price" type='number' value={productPrice} name="productPrice"
+          <Grid className={classes.eachInput} item xs={5}>
+            <CustomInputField normalMargin={true} style={{ width: 200 }} size='small' variant="filled" label="Price" type='number' value={productPrice} name="productPrice"
                           onChange={handleChange}
             
             
@@ -142,7 +151,7 @@ const PostProduct = ({ postProduct, data, loading }) => {
                   attributeName,
                   ...allProps
                 }) => (
-                  <Grid key={id} item xs={12}>
+                  <Grid key={id} className = {classes.eachCombo} item xs={5}>
                     <CustomComboBox
                       value={
                         attributeName === 'geographicalDesignation' &&
@@ -171,10 +180,14 @@ const PostProduct = ({ postProduct, data, loading }) => {
               onChange= {handleChange}
             />
           </Grid> */}
-          <CustomButton type="submit">Post Product</CustomButton>
+          <Grid className={classes.button}  item xs={12}>
+            <CustomButton style={{ color: '#121037'}} color="secondary" variant="contained" color="secondary" type="submit">Post Product</CustomButton></Grid>
+          
+          </Grid>
         </form>
       </Grid>
     </div>
+    </Grid>
   );
 };
 

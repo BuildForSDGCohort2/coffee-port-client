@@ -40,8 +40,8 @@ const Filter=()=>{
     <div className={classes.root}>
         <Grid container spacing={2}>
 
-        <Grid item xs={2}>
-            <Typography >Filter By</Typography>
+        <Grid container justify='center' alignItem='center' item xs={1}>
+            <Typography className={classes.filterText}>Filter By</Typography>
         </Grid>
 
         <Grid item xs={2}>

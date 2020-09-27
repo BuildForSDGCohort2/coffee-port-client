@@ -33,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.grey[400],
     flexGrow: 1,
   },
+  property: {
+    fontWeight: 200,
+    fontSize: '14px',
+  },
+  productName: {
+    marginBottom: theme.spacing(1),
+  }
 }));
 
 export default useStyles;
