@@ -5,8 +5,23 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(4),
     margin: theme.spacing(4),
-    background: '#f7f7f7',
+    marginTop: theme.spacing(8),
+    background: '#f7f9fa',
+    width: '700px',
   },
+
+  eachCombo: {
+    margin: theme.spacing(2),
+  },
+  eachInput: {
+    margin: theme.spacing(2),
+  },
+  button: {
+    margin: theme.spacing(4),
+    color: '#121037',
+  },
+
+
 }));
 
 export default useStyles;

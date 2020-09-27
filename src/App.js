@@ -14,6 +14,7 @@ import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
 import ProfilePage from './pages/profile/profile.component';
 import Comments from './components/comments/comments.component'
+import Footer from './components/footer/footer.component';
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
   }
   return (
     <div>
+    <div className='allButFooter'>
       <Header />
       <Switch>
         <Route exact path="/" component={Home}></Route>
@@ -63,6 +65,9 @@ function App() {
         <Comments/>
         </Route>
       </Switch>
+     
+    </div>
+    <Footer/>
     </div>
   );
 }
