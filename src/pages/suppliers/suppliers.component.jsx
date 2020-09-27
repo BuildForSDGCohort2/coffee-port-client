@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, useRouteMatch } from 'react-router-dom';
-import CompanyPreview from '../../components/company-preview/company-preview.component';
-import SingleSupplierPage from '../single-supplier/single-supplier.component';
+import {default as CompanyPreview} from '../../components/company-preview/company-preview.container';
+import {default as SingleSupplierPage} from '../single-supplier/single-suppliler.container';
 
 const Suppliers = () => {
   let match = useRouteMatch();

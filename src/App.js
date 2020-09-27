@@ -8,11 +8,12 @@ import Suppliers from './pages/suppliers/suppliers.component';
 import Home from './pages/homepage/homepage.component';
 import SingleSupplierPage from './pages/single-supplier/single-supplier.component';
 import SignUpAndSignInPage from './pages/sign-up-and-sign-in/sign-up-and-sign-in.component';
-import GET_CURRENT_USER from './apollo/queries';
+import GET_CURRENT_USER from './apollo/client/queries';
 import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
 import ProfilePage from './pages/profile/profile.component';
+import Comments from './components/comments/comments.component'
 
 function App() {
   useEffect(() => {
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <ProfilePage />
+        </Route>
+        <Route exact path="/comments">
+        <Comments/>
         </Route>
       </Switch>
     </div>

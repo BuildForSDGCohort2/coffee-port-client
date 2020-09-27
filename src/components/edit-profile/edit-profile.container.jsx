@@ -1,10 +1,10 @@
 import React from 'react';
-import SupplierSignUp from './supplier.sign-up.component';
+import BuyEditProfileerSignUp from './edit-profile.component';
 import { useMutation } from '@apollo/client';
 import { SIGN_UP } from '../../apollo/server/mutations';
 import { storeUser } from '../../utils';
 
-const SupplierSignUpContainer = () => {
+const EditPContainer = () => {
   let message = null;
   let inputErrors = null;
   const [signupUser, { data, loading }] = useMutation(SIGN_UP);
@@ -21,14 +21,10 @@ const SupplierSignUpContainer = () => {
 
   return (
     <div>
-      <SupplierSignUp
-        signupUser={signupUser}
-        loading={loading}
-        message={message}
-        inputErrors={inputErrors}
+      <EditProfile
       />
     </div>
   );
 };
 
-export default SupplierSignUpContainer;
+export default BuyerSignUpContainer;

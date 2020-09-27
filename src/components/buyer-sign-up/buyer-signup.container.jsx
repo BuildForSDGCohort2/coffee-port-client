@@ -1,7 +1,7 @@
 import React from 'react';
 import BuyerSignUp from './buyer-sign-up.component';
 import { useMutation } from '@apollo/client';
-import { SIGN_UP } from '../../apollo/mutations';
+import { SIGN_UP } from '../../apollo/server/mutations';
 import { storeUser } from '../../utils';
 
 const BuyerSignUpContainer = () => {

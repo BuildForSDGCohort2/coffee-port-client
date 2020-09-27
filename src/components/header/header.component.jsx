@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Route, Link } from 'react-router-dom';
 import { logout } from '../../utils';
-import GET_CURRENT_USER from '../../apollo/queries';
+import GET_CURRENT_USER from '../../apollo/client/queries';
 
 import useStyles from './header.styles';
 import CustomToggleMenu from '../custom-toggle-menu/custom-toggle-menu.component';
