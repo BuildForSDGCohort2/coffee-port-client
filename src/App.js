@@ -29,6 +29,7 @@ function App() {
   }
   return (
     <div>
+    <div className='allButFooter'>
       <Header />
       <Switch>
         <Route exact path="/" component={Home}></Route>
@@ -60,7 +61,9 @@ function App() {
           <ProfilePage />
         </Route>
       </Switch>
-      <Footer/>
+     
+    </div>
+    <Footer/>
     </div>
   );
 }
