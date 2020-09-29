@@ -37,6 +37,7 @@ export const COMBOBOX_DATA = {
   Flower: [
     {
       id: 'flower-type',
+      attributeName: 'flowerType',
       options: FLOWER_DATA.FlowerType,
       getOptionLabel: (option) => (option),
       filterSelectedOptions: true,

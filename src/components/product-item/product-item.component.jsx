@@ -11,7 +11,7 @@ import { CardActionArea } from '@material-ui/core';
 const ProductItem = ({ product,match,history}) => {
   const classes = useStyles();
   return (
-    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={6}>
+    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={4}>
       <Card className={classes.card}>
         <CardActionArea>
 
@@ -33,7 +33,7 @@ const ProductItem = ({ product,match,history}) => {
               Object.getOwnPropertyNames(product.uniqueAttributes).filter((property,index)=>index<4).map((property) => (
                 property ==='__typename'?null:
                ( <Grid container>
-                    <Grid item xs={6}>
+                    <Grid item xs={7}>
                     <Typography
                     className={classes.property}
                 key={property}
@@ -44,7 +44,7 @@ const ProductItem = ({ product,match,history}) => {
                 {property.toUpperCase() + ' '}
               </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={5}>
                     <Typography
                 key={property}
                 body1="true"
