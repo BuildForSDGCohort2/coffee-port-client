@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Details from '../details/details.component';
+import DetailsContainer from '../details/details.container';
 import useStyles from './single-product.styles';
 import DescriptionComponent from '../description/description.component';
 
@@ -18,7 +18,7 @@ const SingleProduct = ({data,loading}) => {
           {product.productName}
         </Typography>
       </Box>
-      <Details product={product} />
+      <DetailsContainer product={product} />
       <DescriptionComponent />
     </div>
   );
