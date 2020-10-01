@@ -68,7 +68,6 @@ const PostProduct = ({ postProduct, data, loading }) => {
         productPrice:'',
         productQuantity:'',
         productMeasurementUnit:'',
-        additionalDescription:'',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
       console.log('trypost', data);

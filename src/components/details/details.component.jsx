@@ -22,6 +22,7 @@ const Details = ({product,createProductRequest,alert}) => {
 
 
   return (
+    <Grid container justify = 'center' alignItem = 'center'>
     <Card className={classes.root} bgcolor="secondary.main">
       <Grid container>
         <Grid item xs={12} sm={12} md={6} className={classes.contain}>
@@ -86,6 +87,7 @@ const Details = ({product,createProductRequest,alert}) => {
         </Grid>
       </Grid>
     </Card>
+    </Grid>
   );
 };
 export default Details;

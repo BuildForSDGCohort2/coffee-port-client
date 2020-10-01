@@ -32,41 +32,40 @@ mutation CreateProductRequestMutation($createProductRequestProductId: ID!) {
       }
 `;
 
-const GET_ALL_REQUESTS= gql`
-
-query getAllRequests {
-    requests {
-      ... on Requests {
-        requests {
+export const GET_REQUESTS_BY_USERID = gql`
+query getAllRequests ($byBuyerId:ID,$bySellerId:ID){
+  requests(byBuyerId:$byBuyerId,bySellerId:$bySellerId) {
+    ... on Requests {
+      requests {
+        id
+        createdAt
+        requestedBy {
           id
-          createdAt
-          requestedBy {
-            firstName
-            email
-            phoneNumber
-          }
-          requestedProduct {
-            productName
-            productQuantity
-          }
-          requestStatus
-          acceptedByOrDeclinedBy
+          firstName
+          email
+          phoneNumber
+          role
         }
-      }
-      
-      ... on NotAuthenticatedUserError {
-        message
-        type
-      }
-      
-      ... on Error {
-        type
-        message
+        requestedProduct {
+          productName
+          productQuantity
+        }
+        requestStatus
+        acceptedByOrDeclinedBy
       }
     }
     
+    ... on NotAuthenticatedUserError {
+      message
+      type
+    }
+    
+    ... on Error {
+      type
+      message
+    }
   }
-
-
+  
+}
 
 `;

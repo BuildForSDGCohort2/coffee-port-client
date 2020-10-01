@@ -12,12 +12,12 @@ const SingleProduct = ({data,loading}) => {
 
   return (
     <div>
-      <Box className={classes.root} bgcolor="primary.main">
+      {/* <Box className={classes.root} bgcolor="primary.main">
         {' '}
         <Typography className={classes.title} variant="h5">
           {product.productName}
         </Typography>
-      </Box>
+      </Box> */}
       <DetailsContainer product={product} />
       <DescriptionComponent />
     </div>
