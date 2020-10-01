@@ -69,3 +69,22 @@ query getOneUser($supplierId: ID!) {
       }
     }
   }`;
+export const GET_POSTED_PRODUCT = gql`
+  query getPostedProduct($supplierId: ID!){
+    user(id: $supplierId){
+      ... on User{
+        id
+        firstName
+        products{
+          id 
+          productName
+          productPrice
+        }
+      }
+      ... on UserDoesNotExist{
+        message
+      }
+    }
+  }
+  `;
+

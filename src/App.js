@@ -13,12 +13,15 @@ import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
 import ProfilePage from './pages/profile/profile.component';
-import Comments from './components/comments/comments.component'
+import {default as Comments} from './components/comments/comments.container'
+import ConfirmPage from './pages/confirm-page/confirm.component'
 import Footer from './components/footer/footer.component';
+import WaitingPage from './pages/waitingpage/waitingpage.component'
 
 function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token');
+    console.log(token)
     if (token) {
       storeUser(token);
     }
@@ -63,6 +66,15 @@ function App() {
         </Route>
         <Route exact path="/comments">
         <Comments/>
+        </Route>
+
+        <Route exact path="/confirm/:token">
+        <ConfirmPage/>
+        </Route>
+       
+        <Route exact path="/waiting">
+        <WaitingPage/>
+       
         </Route>
       </Switch>
      

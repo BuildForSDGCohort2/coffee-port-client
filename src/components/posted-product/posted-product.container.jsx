@@ -1,23 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { GET_USER } from '../../apollo/server/queries';
+import { GET_POSTED_PRODUCT } from '../../apollo/server/queries';
 import { useQuery } from '@apollo/client';
 import { CircularProgress, Grid } from '@material-ui/core';
 
-import SingleSupplierPage from './single-supplier.component';
+import PostedProduct from './posted-product.component';
 
-const SingleSupplierContainer = () => {
+const PostedProductContainer = () => {
   const { supplierId } = useParams();
-  const { loading, data } = useQuery(GET_USER, {
+  const { loading, data } = useQuery(GET_POSTED_PRODUCT, {
     variables: { supplierId },
   });
- // const {data} =useQuery(GET_POSTED_PRODUCT);
+
   console.log(data, loading);
   if (loading) return (<Grid container alignItems="center" justify="center">
   <CircularProgress />
 </Grid>);
 
-  return <SingleSupplierPage data={data.user} loading={loading} />;
+  return <PostedProduct data={data.user} loading={loading} />;
 };
 
-export default SingleSupplierContainer;
+export default PostedProductContainer;

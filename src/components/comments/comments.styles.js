@@ -3,10 +3,10 @@ import { deepPurple, blue, pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '50%',
+    width: '80%',
     borderRadius: '8px',
     borderWidth: '2px',
-    margin: '2%',
+    margin: '2% 4%',
     fontFamily: 'ui-monospace',
     '&:focus': {
       backgroundColor: '#f5f5f5',
@@ -14,12 +14,21 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
+  review: {
+    marginLeft: '4%',
+  },
+  formfields: {
+    width: '90%',
+    borderRadius: '8px',
+    borderWidth: '2px',
+    margin: '2% 4%',
+  },
   post: {
     alignItems: 'center',
-    marginTop: '-11%',
+    margin: '1% 4%',
   },
   list: {
-    maxHeight: '300px',
+    maxHeight: '100%',
     overflow: 'auto',
     width: '100%',
     backgroundColor: theme.palette.background.paper,

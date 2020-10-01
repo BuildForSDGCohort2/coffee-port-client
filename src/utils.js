@@ -4,6 +4,7 @@ import { currentUserVar } from './apollo/cache';
 export const storeUser = (token) => {
   const decoded = jwt_decode(token);
   window.localStorage.setItem('token', token);
+  console.log(decoded);
   currentUserVar({
     ...currentUserVar(),
     id: decoded.id,

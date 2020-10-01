@@ -3,11 +3,10 @@ import useStyles from './single-supplier.styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import PostedProductItem from '../../components/posted-product-item/posted-product-item.component';
 import Grid from '@material-ui/core/Grid';
-
+import {default as PostedProduct} from '../../components/posted-product/posted-product.container'
 const SingleSupplierPage = ({ data }) => {
   const classes = useStyles();
 
@@ -17,7 +16,7 @@ const SingleSupplierPage = ({ data }) => {
         <Typography
           color="primary"
           gutterBottom
-          variant="h3"
+          variant="h3" 
           className={classes.title}
         >
           {data.company.companyName}
@@ -119,22 +118,13 @@ const SingleSupplierPage = ({ data }) => {
             </Grid>
           </CardContent>
         </Card>
-      </div>
-      <div className={classes.fourthBlock}>
-        <Typography
-          color="secondary"
-          gutterBottom
-          variant="h4"
-          className={classes.title}
-        >
-          Posts
-        </Typography>
-      </div>
-      <PostedProductItem />
-      <Divider variant="middle" />
-      <PostedProductItem />
-    </div>
+        
+        </div>
+        <PostedProduct/>
+        </div>
   );
+    
+      
 };
 
 export default SingleSupplierPage;
