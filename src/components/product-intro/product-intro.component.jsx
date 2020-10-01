@@ -11,7 +11,7 @@ const ProductIntro = () =>{
     return(
     <div>
         <Grid className={classes.container} container>
-
+        <Grid xs={6} item></Grid>
             <Grid xs={6} item>
                 <Typography variant='h3' className={classes.title}>
                 Want to know more about Ethiopian Coffee?

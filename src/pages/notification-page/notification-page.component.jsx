@@ -1,8 +1,8 @@
 import React from 'react';
-import NotificationPreview from '../../components/notification-preview/notification-preview.component';
+import NotificationPreviewContainer from '../../components/notification-preview/notification-preview.container';
 
 const NotificationPage = () =>(
-    <NotificationPreview/>
+    <NotificationPreviewContainer/>
 );
 
 export default NotificationPage;

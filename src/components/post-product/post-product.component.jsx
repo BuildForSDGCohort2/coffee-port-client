@@ -19,6 +19,7 @@ const PostProduct = ({ postProduct, data, loading }) => {
       geographicalDesignation: '',
       grade: '',
       group: '',
+      flowerType: '',
     },
   });
 
@@ -67,7 +68,6 @@ const PostProduct = ({ postProduct, data, loading }) => {
         productPrice:'',
         productQuantity:'',
         productMeasurementUnit:'',
-        additionalDescription:'',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
       console.log('trypost', data);
@@ -88,15 +88,20 @@ const PostProduct = ({ postProduct, data, loading }) => {
 
   return (
     <Grid container direction='column'  alignItems="center" justify="center">
-    <div className={classes.root}>
+    
       <Grid container direction='column'  alignItems="center" justify="center">
-        <Grid item><Typography variant='h4' color='primary'>Post Product</Typography></Grid>
+        <Grid className={classes.title}  item><Typography variant='h5' color='primary'>Please Fill In This Form</Typography></Grid>
+        
         
         <form onSubmit={handleSubmit}>
+        <div className={classes.root}>
           <Grid container>
-          <Grid className = {classes.eachCombo} item xs={5}>
+          
+          <Grid className = {classes.eachCombo} item xs={12}>
+          <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Product Name</Typography>
             <CustomComboBox
-
+              wide={true}
               value={productName}
               onChange={(event, newValue) => {
                 setSelectedProperties({
@@ -109,24 +114,30 @@ const PostProduct = ({ postProduct, data, loading }) => {
               id="productName"
               options={TYPE}
               getOptionLabel={(option) => option}
-              label="Product Name"
             />
           </Grid>
-          <Grid className={classes.eachInput} item xs={5}>
+          <Grid className={classes.eachInput} item xs={4}>
+          <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Quantity</Typography>
             <CustomInputField 
-            normalMargin={true}
-            style={{ width: 200 }} size='small' variant="filled" type='number' value={productQuantity} label="Quantity" name="productQuantity" 
+             
+            placeholder="400"
+            forPostForm={true}
+          size='small'  variant="outlined" type='number' value={productQuantity} name="productQuantity" 
             onChange={handleChange}
             
             />
           </Grid>
-          <Grid className={classes.eachInput} item xs={5}>
+          <Grid className={classes.eachInput} item xs={3}>
+          <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Measurement Unit</Typography>
             <CustomInputField 
-            normalMargin={true}
-            style={{ width: 200 }}
+             
+            forPostForm={true}
+            placeholder="Kg"
              size='small'
-            variant="filled"
-              label="Measurment Unit"
+             variant="outlined"
+              
               name="productMeasurementUnit"
               type='text'
               value={productMeasurementUnit}
@@ -135,13 +146,23 @@ const PostProduct = ({ postProduct, data, loading }) => {
 
             />
           </Grid>
-          <Grid className={classes.eachInput} item xs={5}>
-            <CustomInputField normalMargin={true} style={{ width: 200 }} size='small' variant="filled" label="Price" type='number' value={productPrice} name="productPrice"
+          <Grid className={classes.eachInput} item xs={4}>
+          <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Price in USD</Typography>
+            <CustomInputField forPostForm={true} size='small'
+             
+            placeholder="327.5"
+              variant="outlined" type='number' value={productPrice} name="productPrice"
                           onChange={handleChange}
             
             
             />
           </Grid>
+          </Grid>
+          </div>
+
+          <div className={classes.root}>
+          <Grid container>
 
           {productName
             ? COMBOBOX_DATA[productName].map(
@@ -149,9 +170,12 @@ const PostProduct = ({ postProduct, data, loading }) => {
                   id,
                   handleFilterChange,
                   attributeName,
+                  label,
                   ...allProps
                 }) => (
-                  <Grid key={id} className = {classes.eachCombo} item xs={5}>
+                  <Grid key={id} className = {classes.eachCombo} item xs={12}>
+                    <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">{label}</Typography>
                     <CustomComboBox
                       value={
                         attributeName === 'geographicalDesignation' &&
@@ -169,24 +193,37 @@ const PostProduct = ({ postProduct, data, loading }) => {
                 ),
               )
             : null}
-          {/* <Grid item xs={12}>
-            <CustomInputField
-              label="additionalDescription"
-              value={additionalDescription}
+            </Grid>
+            </div>
+
+            <div className={classes.root}>
+          <Grid container>
+           <Grid className={classes.eachInput} item xs={12}>
+           <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Additional Info</Typography>
+            <CustomInputField 
+            forPostForm={true} 
+            size='small'
+              // value={additionalDescription}
               rows={4}
               multiline
-              variant="filled"
+              variant='outlined'
               name="Additional Description"
               onChange= {handleChange}
             />
-          </Grid> */}
-          <Grid className={classes.button}  item xs={12}>
-            <CustomButton style={{ color: '#121037'}} color="secondary" variant="contained" color="secondary" type="submit">Post Product</CustomButton></Grid>
+          </Grid> 
+           </Grid>
+           <Grid className={classes.buttonContainer}  item xs={12}>
+            <CustomButton className={classes.button} color="secondary" variant="contained" color="secondary" type="submit">Post Product</CustomButton></Grid>
           
-          </Grid>
+    
+            </div>
+         
+        
         </form>
+     
       </Grid>
-    </div>
+ 
     </Grid>
   );
 };
