@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import GET_CURRENT_USER from '../../apollo/queries';
+import GET_CURRENT_USER from '../../apollo/client/queries';
 
 const Authenticated = ({ Component }) => {
   const { data } = useQuery(GET_CURRENT_USER);

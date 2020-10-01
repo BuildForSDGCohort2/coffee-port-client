@@ -9,7 +9,7 @@ const SingleProduct = ({data,loading}) => {
   const classes = useStyles();
   const {product}=data
 
-
+console.log(data);
   return (
     <div>
       <Box className={classes.root} bgcolor="primary.main">
@@ -19,7 +19,7 @@ const SingleProduct = ({data,loading}) => {
         </Typography>
       </Box>
       <Details product={product} />
-      <DescriptionComponent />
+      <DescriptionComponent product={product}/>
     </div>
   );
 };

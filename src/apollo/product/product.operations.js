@@ -181,6 +181,14 @@ query Query($productId: ID!) {
       }
     
     }
+    ... on Product {
+      id 
+      reviews {
+        reviewerEmail
+        comment
+        stars
+      }
+    }
     ... on GetProductError {
       message
       type

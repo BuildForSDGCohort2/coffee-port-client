@@ -1,7 +1,7 @@
 import React from 'react';
 import SignIn from './sign-in.component';
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../apollo/mutations';
+import { LOGIN } from '../../apollo/server/mutations';
 
 import { storeUser } from '../../utils';
 

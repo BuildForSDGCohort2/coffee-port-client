@@ -23,6 +23,8 @@
     "react": "^16.13.1",
     "react-country-region-selector": "^3.0.0",
     "react-dom": "^16.13.1",
+    "react-easy-edit": "^1.11.0",
+    "react-inline-editing": "^1.0.10",
     "react-phone-number-input": "^3.0.25",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
