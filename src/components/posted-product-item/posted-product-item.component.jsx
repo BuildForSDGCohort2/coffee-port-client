@@ -10,7 +10,7 @@ const PostedProductItem = () => {
   const classes = useStyles();
   return (
     <Grid container className={classes.details}>
-      <Grid item md={4}>
+      <Grid item sm={12} md={4}>
         <Typography component="h6" variant="h6">
           coffee
         </Typography>
@@ -21,12 +21,12 @@ const PostedProductItem = () => {
           className={classes.rating}
         />
       </Grid>
-      <Grid item md={4}>
+      <Grid item sm={12} md={4} >
         <Typography component="h6" variant="h6">
           Grade 5
         </Typography>
       </Grid>
-      <Grid item md={4}>
+      <Grid item sm={12} md={4}>
         <Chip color="primary" label="$23.87" />
       </Grid>
     </Grid>

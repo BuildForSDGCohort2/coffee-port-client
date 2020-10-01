@@ -14,6 +14,9 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
+  subtitle: {
+    paddingLeft: '15%',
+  },
   rating: {
     paddingLeft: '15%',
   },
