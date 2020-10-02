@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import {  Redirect } from 'react-router-dom';
 
 import SingleProduct from './single-product.component';
+import { useMutation } from '@apollo/react-hooks';
 
 
 const SingleProductContainer = () => {
@@ -13,6 +14,8 @@ const SingleProductContainer = () => {
   const { loading, data } = useQuery(GET_PRODUCT, {
     variables: { productId },
   });
+
+
   console.log(data, loading);
   if(!data && !loading){
     return <Redirect to="/error" />

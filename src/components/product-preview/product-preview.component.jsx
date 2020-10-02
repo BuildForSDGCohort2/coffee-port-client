@@ -4,6 +4,7 @@ import { GET_ALL_FILTERS } from '../../apollo/filter/filter.operations';
 import { useQuery } from '@apollo/client';
 import { CircularProgress, Grid } from '@material-ui/core';
 import useStyles from './product-preview.styles';
+import {  Redirect } from 'react-router-dom';
 import { GET_ALL_PRODUCTS } from '../../apollo/product/product.operations';
 
 const ProductPreview = () => {
@@ -15,6 +16,10 @@ const ProductPreview = () => {
     loading: productLoading,
     error,
   } = useQuery(GET_ALL_PRODUCTS);
+ 
+  if(!productData && !productLoading){
+    return <Redirect to="/error" />
+  }
 
   if (productLoading)
     return (

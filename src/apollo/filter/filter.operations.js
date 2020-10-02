@@ -8,6 +8,7 @@ export const GET_ALL_FILTERS = gql`
             geographicalDesignation
             grade
             group
+            flowerType
             uniqueName
           }
       }

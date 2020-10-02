@@ -3,9 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '70%',
-    margin: 'auto',
-    marginTop: '-6%',
-    zIndex: '10',
+    margin: theme.spacing(3),
     left: '15%',
   },
   title: {

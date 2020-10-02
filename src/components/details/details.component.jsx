@@ -9,11 +9,20 @@ import CustomButton from '../custom-button/custom-button.component';
 import ListComponent from '../list-item/list-item.component';
 import ProductImage from "../product-image/product-image.component"
 import useStyles from './details.styles';
+import CustomAlert from '../custom-alert/custom-alert.component';
 
-const Details = ({product}) => {
+const Details = ({product,createProductRequest,alert}) => {
   const classes = useStyles();
-  const {productPrice,uniqueAttributes}=product
+  const {productPrice,uniqueAttributes}=product;
+
+  const handleSubmit = (e) =>{
+      e.preventDefault();
+      createProductRequest({variables:{createProductRequestProductId:product.id}});
+  }
+
+
   return (
+    <Grid container justify = 'center' alignItem = 'center'>
     <Card className={classes.root} bgcolor="secondary.main">
       <Grid container>
         <Grid item xs={12} sm={12} md={6} className={classes.contain}>
@@ -36,7 +45,7 @@ const Details = ({product}) => {
             ${productPrice}
           </Typography>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={12} sm={12} md={12}>
                 <CustomInputField
@@ -50,10 +59,12 @@ const Details = ({product}) => {
               </Grid>
               <Grid justify="flex-end" alignItems = "center" container  item xs={12} sm={12} md={12}>
                 <CustomButton
-                  variant="contained" size="small" color="primary" mr={2}
+                  variant="contained" size="small" color="primary" type="submit" mr={2}
                 >
                   Send Request
                 </CustomButton>
+                {alert.severity?<CustomAlert severity={alert.severity}  message={alert.message}/>:null}
+                
               </Grid>
               <Grid item xs={12} sm={12} md={12}>
                 <List>
@@ -76,6 +87,7 @@ const Details = ({product}) => {
         </Grid>
       </Grid>
     </Card>
+    </Grid>
   );
 };
 export default Details;

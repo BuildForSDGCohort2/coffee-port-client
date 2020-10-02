@@ -3,7 +3,7 @@ import { InMemoryCache, makeVar } from '@apollo/client';
 export const filtersVar = makeVar({
   productName: '',
   uniqueAttributes: {
-    geographicalDesignation: '', grade: '', group: '', uniqueName: '',
+    geographicalDesignation: '', grade: '', group: '', uniqueName: '', flowerType: '',
   },
 });
 

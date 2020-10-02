@@ -20,7 +20,7 @@ const Filter=()=>{
     return newUniqueAttributes;
   }
 
-  const handleFilterChange2 = (event,newValue,attributeName) =>{
+  const handleFilterChange = (event,newValue,attributeName) =>{
     console.log(attributeName)
     attributeName==='geographicalDesignation'?
     filtersVar({
@@ -61,10 +61,10 @@ const Filter=()=>{
         {
          productName?
           COMBOBOX_DATA[productName].map(
-            ({id , attributeName , handleFilterChange ,...allProps})=>( 
+            ({id , attributeName ,...allProps})=>( 
                <Grid key={id} item xs={2}>
               <CustomComboBox 
-              onChange={(event,newValue)=>{handleFilterChange2(event,newValue,attributeName)}}
+              onChange={(event,newValue)=>{handleFilterChange(event,newValue,attributeName)}}
               {...allProps}/>
               </Grid>)
           ):null
