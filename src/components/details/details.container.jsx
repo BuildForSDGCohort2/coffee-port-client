@@ -1,7 +1,8 @@
 import React from 'react';
 import { CREATE_PRODUCT_REQUEST } from '../../apollo/request/request.operations';
 import Details from './details.component';
-import {useMutation} from '@apollo/client'
+import {useMutation} from '@apollo/client';
+import {currentUserVar} from '../../apollo/cache';
 
 const DetailsContainer = ({product}) =>{
     const alert = {severity:'',
@@ -34,7 +35,7 @@ const DetailsContainer = ({product}) =>{
 
 
     console.log(requestData,requestLoading);
-    return (<Details alert = {alert}  product = {product}
+    return (<Details currentUserVar={currentUserVar()} alert = {alert}  product = {product}
           createProductRequest = {createProductRequest}/>);
 }
 

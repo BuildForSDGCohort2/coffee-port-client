@@ -7,7 +7,9 @@ const PostProductContainer = () => {
   const [postProduct, { data, loading, error }] = useMutation(
     POST_PRODUCT,
   );
-  console.log('err', error);
+    if (!loading){
+      console.log(data);
+    }
   return (
     <PostProduct
       data={data}

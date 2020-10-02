@@ -14,11 +14,11 @@ import NotificationBadge from '../notification-badge/notification-badge.componen
 const Header = () => {
   const { root, logo, link, linkText } = useStyles();
   
-  const [deleteUser, {  loading, error }] = useMutation(
-    DELETE_USER,
-  );
-  deleteUser();
-  console.log( loading, error);
+  // const [deleteUser, {  loading, error }] = useMutation(
+  //   DELETE_USER,
+  // );
+  // deleteUser();
+  // console.log( loading, error);
   
   const currentUser = { TYPE: 'BUYER' };
   const { data } = useQuery(GET_CURRENT_USER);

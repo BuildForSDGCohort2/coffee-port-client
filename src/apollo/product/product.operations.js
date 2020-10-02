@@ -13,6 +13,7 @@ mutation PostProductMutation($postProductProduct: ProductInput!) {
       geographicalDesignation
       grade
       group
+      flowerType
     }
     
   }
@@ -57,6 +58,7 @@ query getAllProducts {
           geographicalDesignation
           grade
           group
+          flowerType
         }
 
         user{
@@ -104,6 +106,7 @@ query Query($productId: ID!) {
         group
         uniqueName
         geographicalDesignation
+        flowerType
       }
       user {
         firstName

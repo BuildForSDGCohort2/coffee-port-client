@@ -16,7 +16,8 @@ import ProfilePage from './pages/profile/profile.component';
 import {default as Comments} from './components/comments/comments.container'
 import ConfirmPage from './pages/confirm-page/confirm.component'
 import Footer from './components/footer/footer.component';
-import WaitingPage from './pages/waitingpage/waitingpage.component'
+import WaitingPage from './pages/waitingpage/waitingpage.component';
+import Information from './pages/information/information.component';
 
 function App() {
   useEffect(() => {
@@ -74,6 +75,11 @@ function App() {
        
         <Route exact path="/waiting">
         <WaitingPage/>
+       
+        </Route>
+
+        <Route exact path="/information">
+        <Information/>
        
         </Route>
       </Switch>

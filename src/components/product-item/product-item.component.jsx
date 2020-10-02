@@ -30,8 +30,10 @@ const ProductItem = ({ product,match,history}) => {
               {product.productName}
             </Typography>
             {
-              Object.getOwnPropertyNames(product.uniqueAttributes).filter((property,index)=>index<4).map((property) => (
-                property ==='__typename'?null:
+              Object.getOwnPropertyNames(product.uniqueAttributes).filter((property,index)=>index<5).map((property) => (
+                
+               
+                property ==='__typename' || product.uniqueAttributes[property]===null || product.uniqueAttributes[property]===''?null:
                ( <Grid container>
                     <Grid item xs={7}>
                     <Typography
