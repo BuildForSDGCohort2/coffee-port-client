@@ -1,7 +1,5 @@
 import React from 'react';
 import useStyles from './posted-product.styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import PostedProductItem from '../../components/posted-product-item/posted-product-item.component';

@@ -5,7 +5,7 @@ import GET_CURRENT_USER from '../../apollo/client/queries';
 
 const Authenticated = ({ Component }) => {
   const { data } = useQuery(GET_CURRENT_USER);
-  if (!data.currentuser.loggedIn) return <Redirect to="signup" />;
+  if (!data.currentuser.loggedIn) return <Redirect to="/signup" />;
   return <Component />;
 };
 export default Authenticated;

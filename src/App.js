@@ -12,16 +12,17 @@ import GET_CURRENT_USER from './apollo/client/queries';
 import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
-import ProfilePage from './pages/profile/profile.component';
+import {default as ProfilePage} from './pages/profile/profile.container';
 import {default as Comments} from './components/comments/comments.container'
 import ConfirmPage from './pages/confirm-page/confirm.component'
 import Footer from './components/footer/footer.component';
 import WaitingPage from './pages/waitingpage/waitingpage.component'
+import ErrorPage from './pages/errorpage/errorpage.component'
 
 function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token');
-    console.log(token)
+
     if (token) {
       storeUser(token);
     }
@@ -30,6 +31,11 @@ function App() {
 
   if (loading) {
     return <div>...loading</div>;
+  }
+  else{
+    if(!data && !loading){
+      return <Redirect to="/error" />
+    }
   }
   return (
     <div>
@@ -62,7 +68,7 @@ function App() {
           <Authenticated Component={NotificationPage} />
         </Route>
         <Route exact path="/profile">
-          <ProfilePage />
+          <Authenticated Component={ProfilePage} />
         </Route>
         <Route exact path="/comments">
         <Comments/>
@@ -74,6 +80,10 @@ function App() {
        
         <Route exact path="/waiting">
         <WaitingPage/>
+       
+        </Route>
+        <Route exact path="/error">
+        <ErrorPage/>
        
         </Route>
       </Switch>

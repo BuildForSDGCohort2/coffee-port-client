@@ -16,6 +16,8 @@ const BuyerSignUpContainer = () => {
       inputErrors = data.createUser.userErrors;
       message = data.createUser.message;
     }
+  }else if(!loading && !signupUser){
+    return <Redirect to="/error" />
   }
 
   return (

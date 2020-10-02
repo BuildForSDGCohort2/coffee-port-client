@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { currentUserVar } from './apollo/cache';
+import { currentUserVar, commentsVar } from './apollo/cache';
 
 export const storeUser = (token) => {
   const decoded = jwt_decode(token);
@@ -23,4 +23,11 @@ export const logout = () => {
   currentUserVar({
     ...currentUserVar(), id: '', loggedIn: false, firstName: '', lastName: '', email: '', phoneNumber: ''
   });
+};
+export const storeComments = (comments) => {
+  commentsVar({
+    ...commentsVar(),
+    comments,
+  });
+   console.log(commentsVar());
 };

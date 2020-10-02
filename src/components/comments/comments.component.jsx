@@ -7,32 +7,32 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
-import CommentItem from '../comment-item/comment-item.component';
+import {default as CommentItem} from '../comment-item/comment.item.container';
 import useForm from '../../hooks/hooks';
 import useStyles from './comments.styles';
 
-const Comments = ({ post,comments }) => {
-  console.log(comments)
+const Comments = ({ post, comments }) => {
+  console.log(comments);
   const { productId } = useParams();
 
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  
+
   const { handleChange, fieldValues } = useForm({
     comment: '',
   });
 
-  const {comment
-  } = fieldValues;
+  const { comment } = fieldValues;
   const handleSubmit = () => {
-   console.log(productId);
-   console.log(value);
-   console.log(comment);
+    console.log(productId);
+    console.log(value);
+    console.log(comment);
+    
     post({
       variables: {
-        productId:productId,
+        productId: productId,
         comment: comment,
-        stars: value
+        stars: value,
       },
     });
   };
@@ -58,17 +58,17 @@ const Comments = ({ post,comments }) => {
           />
         </Grid>
         <Grid item xs={12} sm={6} md={8}>
-        <CustomInputField
-                  id="filled-multiline-static"
-                  rows={4}
-                  label="write your comment here"
-                  multiline
-                  variant="filled"
-                  name='comment'
-                  className={classes.formfields}
-                  value={comment}
-                  onChange={handleChange}
-                />
+          <CustomInputField
+            id="filled-multiline-static"
+            rows={4}
+            label="write your comment here"
+            multiline
+            variant="filled"
+            name="comment"
+            className={classes.formfields}
+            value={comment}
+            onChange={handleChange}
+          />
           {/* <Rating
             name="simple-controlled"
             value={value}
@@ -76,7 +76,7 @@ const Comments = ({ post,comments }) => {
               setValue(newValue);
             }}
           /> */}
-          
+
           <Button
             className={classes.post}
             variant="contained"
@@ -87,9 +87,20 @@ const Comments = ({ post,comments }) => {
             Post
           </Button>
           <List className={classes.list}>
-           {comments.map((comment)=><CommentItem key={comment.id} comment={comment}/>)}
-            
-           
+            {comments.length === 0 ? (
+              <Typography
+                color="secondary"
+                gutterBottom
+                variant="h4"
+                className={classes.review}
+              >
+                No comments yet
+              </Typography>
+            ) : (
+              comments.map((comment) => (
+                <CommentItem key={comment.id} comment={comment} />
+              ))
+            )}
           </List>
         </Grid>
       </Grid>

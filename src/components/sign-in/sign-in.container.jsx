@@ -2,7 +2,7 @@ import React from 'react';
 import SignIn from './sign-in.component';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../apollo/server/mutations';
-
+import {  Redirect } from 'react-router-dom';
 import { storeUser } from '../../utils';
 
 const SignInContainer = () => {
@@ -19,6 +19,8 @@ const SignInContainer = () => {
       message = data.signIn.message;
       inputErrors = data.signIn.userErrors;
     }
+  }else if(!loading && !loginUser){
+      return <Redirect to="/error" />
   }
 
   return (

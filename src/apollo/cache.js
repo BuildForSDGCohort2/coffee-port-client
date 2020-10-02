@@ -6,6 +6,7 @@ export const filtersVar = makeVar({
     geographicalDesignation: '', grade: '', group: '', uniqueName: '',
   },
 });
+
 export const currentUserVar = makeVar({
   id: '',
   firstName: '',
@@ -16,6 +17,9 @@ export const currentUserVar = makeVar({
   role: '',
   country: '',
   city: '',
+});
+export const commentsVar = makeVar({
+  comments: [],
 });
 
 export const cache = new InMemoryCache({
@@ -30,6 +34,11 @@ export const cache = new InMemoryCache({
         currentuser: {
           read() {
             return currentUserVar();
+          },
+        },
+        comments: {
+          read() {
+            return commentsVar();
           },
         },
       },

@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
- 
 
 export const POST_PRODUCT2 = gql`
 mutation postProduct($productName: String! ,$productPrice: Float! ,$productQuantity: Int! ,$productMeasurementUnit:String!, $geographicalDesignation:String, $grade:String, $group:String , $uniqueName:String, $websiteUrl:String!,$companyName:String!,$companyEmail:String!,$country:String!,$city:String!,$street:String!,$postalCode:String!) {
@@ -54,8 +53,6 @@ mutation postProduct($productName: String! ,$productPrice: Float! ,$productQuant
   }
   }
 }`;
-
-
 export const POST_PRODUCT = gql`
 mutation PostProductMutation($postProductProduct: ProductInput!) {
   postProduct(product: $postProductProduct) {
@@ -184,6 +181,7 @@ query Query($productId: ID!) {
     ... on Product {
       id 
       reviews {
+        id
         reviewerEmail
         comment
         stars
@@ -195,6 +193,5 @@ query Query($productId: ID!) {
     }
   }
 }
-
 `;
 
