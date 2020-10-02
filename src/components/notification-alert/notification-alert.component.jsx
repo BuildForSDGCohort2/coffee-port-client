@@ -9,8 +9,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CustomAlert from '../custom-alert/custom-alert.component';
 import Button from '@material-ui/core/Button';
+import {useHistory} from 'react-router-dom';
 
 const NotificationAlert = ({request}) =>{
+    const history =useHistory();
     const classes = useStyles();
     return (
         <Grid xs={8}>
@@ -38,7 +40,7 @@ const NotificationAlert = ({request}) =>{
           </CardContent>
         </CardActionArea>
         <CardActions>
-        <Button onClick={()=><Redirect to="/" />} size="small" color="primary">
+        <Button onClick={()=>history.push( `/suppliers/${request.productOwner.id}` )} size="small" color="primary">
           Click here to learn more about {request.productOwner.company.companyName}
         </Button>
         </CardActions>

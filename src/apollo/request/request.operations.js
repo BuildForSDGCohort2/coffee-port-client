@@ -64,6 +64,7 @@ query Query($requestsBySellerId: ID, $requestsByBuyerId: ID) {
         }
         requestStatus
         productOwner {
+          id
           firstName
           lastName
           company {

@@ -4,15 +4,31 @@ import PostProduct from './post-product.component';
 import { useMutation } from '@apollo/client';
 
 const PostProductContainer = () => {
+  let alert={
+    severity:'',
+    message:'',
+  }
   const [postProduct, { data, loading, error }] = useMutation(
     POST_PRODUCT,
   );
-    if (!loading){
-      console.log(data);
+  console.log('heeeeeeeeeeeeee',data);
+
+  if (data && !loading){
+    if (data.postProduct.__typename==='Product'){
+      alert.severity='success';
+      alert.message='You have successfully posted this product'
     }
+    else{
+      alert.severity='error';
+      alert.message='There seems to be some problem'
+
+    }
+  }
+
   return (
     <PostProduct
       data={data}
+      alert={alert}
       loading={loading}
       postProduct={postProduct}
     />

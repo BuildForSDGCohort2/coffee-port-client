@@ -7,9 +7,10 @@ import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
 import currentUserVar from '../../apollo/cache';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CustomAlert from '../custom-alert/custom-alert.component';
 
 
-const PostProduct = ({ postProduct, data, loading }) => {
+const PostProduct = ({ alert,postProduct, data, loading }) => {
   const classes = useStyles();
 
   const [selectedProperties, setSelectedProperties] = useState({
@@ -229,6 +230,8 @@ const PostProduct = ({ postProduct, data, loading }) => {
             
             
             </CustomButton></Grid>
+            {!loading&&data? <CustomAlert severity={alert.severity} message={alert.message}/>:null}
+           
           
     
             </div>
