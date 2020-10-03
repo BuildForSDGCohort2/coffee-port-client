@@ -24,10 +24,23 @@ const DetailsContainer = ({product}) =>{
             alert.severity='info';
           alert.message=requestData.createProductRequest.message;
 
-        } else if ( requestData.createProductRequest.__typename === 'Error') {
+        } 
+        else if ( requestData.createProductRequest.__typename === 'NotAuthenticatedUserError') {
+          alert.severity='error';
+          alert.message=`${requestData.createProductRequest.message} please login`;
+  
+        
+        }
+        else if ( requestData.createProductRequest.__typename === 'Error') {
           alert.severity='error';
           alert.message=requestData.createProductRequest.message;
+
         
+        }
+        else{
+          alert.severity='error';
+          alert.message="Your request can not be processed at the moment";
+
         }
       }
     

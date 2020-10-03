@@ -50,7 +50,6 @@ query getAllProducts {
       products {
         id
         productName
-        productName
         productMeasurementUnit
         productQuantity
         productPrice

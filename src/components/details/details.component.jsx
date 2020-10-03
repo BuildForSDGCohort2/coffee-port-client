@@ -20,7 +20,7 @@ const Details = ({
   requestLoading,
 }) => {
   const classes = useStyles();
-  const { productPrice, uniqueAttributes } = product;
+  const { productPrice, uniqueAttributes,productMeasurementUnit,productQuantity } = product;
   const [enteredInquiry, selectEnteredInquiry] = useState('');
 
   const handleSubmit = (e) => {
@@ -94,7 +94,9 @@ const Details = ({
                       type="submit"
                       mr={2}
                     >
-                     {requestLoading? <CircularProgress/>:null}
+                     {requestLoading? <CircularProgress
+                     color="white"
+                     size="1.2rem"/>:null}
                       Send Request
                     </CustomButton>
                     {alert.severity ? (
@@ -104,6 +106,9 @@ const Details = ({
                       />
                     ) : null}
                   </Grid>
+                  </Grid>
+                  </form>) : null}
+                   <Grid container justify="center" alignItems="center">
                   <Grid item xs={12} sm={12} md={12}>
                     <List>
                       {Object.getOwnPropertyNames(
@@ -121,11 +126,16 @@ const Details = ({
                           </div>
                         ) : null,
                       )}
+                           <ListComponent
+                              primary={'Quantity'}
+                              trailing={`${productQuantity} ${productMeasurementUnit}`}
+                            />
+                            <Divider />
                     </List>
                   </Grid>
                 </Grid>
-              </form>
-            ) : null}
+           
+  
           </Grid>
         </Grid>
       </Card>

@@ -40,7 +40,7 @@ mutation CreateProductRequestMutation($createProductRequestProductId: ID!, $crea
 
 export const GET_REQUESTS_BY_USERID = gql`
 query Query($requestsBySellerId: ID, $requestsByBuyerId: ID) {
-  requests(bySellerId: $requestsBySellerId, byBuyerId: $requestsByBuyerId){
+  requests(bySellerId: $requestsBySellerId, byBuyerId: $requestsByBuyerId) {
     ... on Requests {
       requests {
         id

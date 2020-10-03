@@ -9,13 +9,9 @@ import {notificationFilter,getProperty} from '../notification-preview/notificati
 
 const NotificationBadge = ()=> {
   const classes = useStyles();
-  let property={};
-  console.log()
   const {role,id}=currentUserVar();
-
  const {data,loading} = useQuery(GET_REQUESTS_BY_USERID,{variables:{...getProperty(role,id)}});
- console.log(property);
- console.log('aaaaaaaaaaaaaaaaaaaaaaaaa',data);
+
 
 
  if (loading) return ( <div className={classes.root}>
@@ -23,7 +19,6 @@ const NotificationBadge = ()=> {
     <NotificationsIcon style={{color:'#546e7a'}}/>
   </Badge>
 </div>)
-
 
 if ( id && data && data.requests.__typename === 'Requests') {
   return (
