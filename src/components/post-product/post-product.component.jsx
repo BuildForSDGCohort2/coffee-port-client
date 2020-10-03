@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { COMBOBOX_DATA, TYPE } from '../../data/combobox.data';
+import { COMBOBOX_DATA, TYPE,MEASUREMENT_UNITS } from '../../data/combobox.data';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
@@ -166,15 +166,13 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
                 >
                   Measurement Unit
                 </Typography>
-                <CustomInputField
-                  forPostForm={true}
-                  placeholder="Kg"
-                  size="small"
-                  variant="outlined"
-                  name="productMeasurementUnit"
-                  type="text"
-                  value={productMeasurementUnit}
-                  onChange={handleChange}
+                <CustomComboBox
+                 wide={true}
+                 value={productMeasurementUnit}
+                 id="productMeasurementUnit"
+                 options={MEASUREMENT_UNITS}
+                  getOptionLabel={(option) => option}
+                  onChange={(event,newValue)=>{setSelectedProperties({...selectedProperties,productMeasurementUnit:newValue})}}
                 />
               </Grid>
               <Grid className={classes.eachInput} item xs={4}>

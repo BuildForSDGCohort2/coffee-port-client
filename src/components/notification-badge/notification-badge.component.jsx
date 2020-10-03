@@ -13,7 +13,6 @@ const NotificationBadge = ()=> {
  const {data,loading} = useQuery(GET_REQUESTS_BY_USERID,{variables:{...getProperty(role,id)}});
 
 
-
  if (loading) return ( <div className={classes.root}>
   <Badge color="secondary" badgeContent={0}>
     <NotificationsIcon style={{color:'#546e7a'}}/>

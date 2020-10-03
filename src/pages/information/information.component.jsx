@@ -1,10 +1,17 @@
 import React from 'react';
 import COFFEE_DATA from '../../data/coffee.data';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const Information= ()=>{
     return (
         COFFEE_DATA.Description.map((coffee)=>(
-            <h1>{coffee.title}</h1>
+            <Grid>
+            <Typography>{coffee.title}</Typography>
+            <Typography>{coffee.coffeeCharacteristics}</Typography>
+            <Typography>{coffee.coffeeDesignations}</Typography>
+        
+            </Grid>
         ))
     );
 

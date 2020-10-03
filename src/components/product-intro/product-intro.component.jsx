@@ -14,17 +14,18 @@ const ProductIntro = () =>{
 
     return(
     <div>
-        <Grid className={classes.container} container>
-        <Grid xs={6} item></Grid>
-            <Grid xs={6} item>
+        <Grid className={classes.container}  container>
+            <Grid xs={12} sm={12} md={6} item>
                 <Typography variant='h3' className={classes.title}>
                 Want to know more about Ethiopian Coffee?
                 </Typography>
                 <Typography className={classes.description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor 
+                From modern roasteries and coffee houses in the capital of Addis Ababa,
+                 to the simplest pan-roasted coffee ceremony in a small rural hamlet,
+                  Ethiopians of all classes and ethnicities enjoy coffee.
+                It is difficult to make generalizations about the flavor of Ethiopian coffee.
+                 Each coffee-growing region is home to unique flavors. So if you want to know more
+                 about how Ethiopian coffee is categorised click on the link below.
                 </Typography>
                 <CustomButton className={classes.link} endIcon={<ArrowRightAlt />} onClick={() => history.push(`${match.url}information`)}>
                         Read More

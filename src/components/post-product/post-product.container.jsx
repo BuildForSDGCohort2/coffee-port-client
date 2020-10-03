@@ -5,29 +5,37 @@ import { useMutation } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
 
 const PostProductContainer = () => {
-  let alert={
+  const alert={
     severity:'',
     message:'',
   }
   const [postProduct, { data, loading }] = useMutation(POST_PRODUCT);
-  console.log(data);
+  console.log('pooooooooooooooooooooooooooooooooo',data);
+ 
   if (data) {
-    if (data.postProduct__typename === 'Product') {
+    console.log('tireedeeeeeeeeeeeed')
+    if (data.postProduct.__typename === 'Product') {
       alert.severity='success';
       alert.message='You have successfully posted this product'
-    } else if (
-      data.postProduct__typename === ' ProductNotAddedError'
+    } 
+    else if (
+      data.postProduct.__typename === ' ProductNotAddedError'
     ) {
+
       alert.severity='error';
       alert.message='There seems to be some problem'
     } else if (
-      data.postProduct__typename === ' on ProductInputError'
+      data.postProduct.__typename === ' on ProductInputError'
     ) {
+
       alert.severity='error';
       alert.message='There seems to be some problem'
     } else if (
-      data.postProduct__typename === ' on NotAuthenticatedUserError'
+      data.postProduct.__typename === ' on NotAuthenticatedUserError'
     ) {
+
+      alert.severity='error';
+      alert.message='You are not Authenticated. Please log in'
       return <Redirect to="/waiting" />;
     }
   }
