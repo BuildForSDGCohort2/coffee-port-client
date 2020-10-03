@@ -18,6 +18,7 @@ import ConfirmPage from './pages/confirm-page/confirm.component'
 import Footer from './components/footer/footer.component';
 import WaitingPage from './pages/waitingpage/waitingpage.component';
 import Information from './pages/information/information.component';
+import ErrorPage from './pages/errorpage/errorpage.component';
 
 
 function App() {
@@ -86,6 +87,11 @@ function App() {
 
         <Route exact path="/information">
         <Information/>
+       
+        </Route>
+
+        <Route exact path="/error">
+        <ErrorPage/>
        
         </Route>
       </Switch>
