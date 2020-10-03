@@ -87,4 +87,20 @@ export const GET_POSTED_PRODUCT = gql`
     }
   }
   `;
-
+export const GET_REVIEWS = gql`
+query ProductReview($productId: ID!){
+ ProductReview(productId:"5f76e58c7ebd020017a4f180"){
+    ... on Reviews{
+      reviews{
+        id
+        reviewerEmail
+        comment
+      }
+    }
+    ... on GetProductError{
+      message
+      type
+    }
+  }
+}
+`;

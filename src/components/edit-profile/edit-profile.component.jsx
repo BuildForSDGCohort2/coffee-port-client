@@ -1,36 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import PhoneInput from 'react-phone-number-input';
+import {
+  CountryDropdown,
+  RegionDropdown,
+} from 'react-country-region-selector';
+
+import { countries } from 'country-data';
 import EasyEdit from 'react-easy-edit';
 import useForm from '../../hooks/hooks';
 import CustomInputField from '../../components/custom-input-field/custom-input-field.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import useStyles from './edit-profile.styles';
+import { logout } from '../../utils';
 
-const EditProfile = () => {
+const EditProfile = ({
+  currentUser,
+  update,
+  deleteuser,
+  deleteloading,
+  updateloading,
+}) => {
   const classes = useStyles();
-  const save = (value) => {
-    alert(value);
-  };
-  const cancel = () => {
-    alert('Cancelled');
-  };
+  // const save = (value) => {
+  //   alert(value);
+  // };
+  // const cancel = () => {
+  //   alert('Cancelled');
+  // };
+  const [country, setCountry] = useState('ET');
+  const [region, setRegion] = useState(
+    currentUser.company.address.city,
+  );
+  const [phoneNumber, setphoneNumber] = useState(
+    currentUser.phoneNumber,
+  );
   const { handleChange, fieldValues } = useForm({
-    firstName: '',
-    lastName: '',
-    email: '',
-    companyName: '',
-    companyEmail: '',
-    websiteUrl: '',
-    country: '',
-    city: '',
-    street: '',
-    postalcode: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    companyName: currentUser.company.companyName,
+    companyEmail: currentUser.company.companyEmail,
+    websiteUrl: currentUser.company.websiteUrl,
+
+    postalcode: currentUser.company.address.postalCode,
   });
 
   const {
@@ -40,14 +57,39 @@ const EditProfile = () => {
     companyName,
     companyEmail,
     websiteUrl,
-    country,
-    city,
+
     postalcode,
-    phoneNumber,
-    password,
-    confirmPassword,
   } = fieldValues;
-  const handlersubmit = (event) => {
+
+  const deleteHandler = () => {
+    deleteuser({
+      variables: {
+        deleteUserId: currentUser.id,
+      },
+    });
+    logout();
+  };
+  const updateHandler = () => {
+    update({
+      variables: {
+        updateUserId: currentUser.id,
+        email: email,
+        password: 'test',
+        firstName: firstName,
+        lastName: lastName,
+        confirmPassword: 'test',
+        role: 'SUPPLIER',
+        phoneNumber: phoneNumber,
+        websiteUrl: websiteUrl,
+        companyName: companyName,
+        companyEmail: companyEmail,
+        country: countries[country].name,
+        city: region,
+        postalCode: postalcode,
+      },
+    });
+  };
+  const handleSubmit = (event) => {
     event.preventDefault();
   };
   return (
@@ -59,10 +101,10 @@ const EditProfile = () => {
             color="primary"
             className={classes.title}
           >
-            Edit profile
+            EDIT PROFILE
           </Typography>
 
-          <form onSubmit={handlersubmit}>
+          <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid container item xs={12}>
                 <Grid item xs={12} sm={6} md={6}>
@@ -73,10 +115,11 @@ const EditProfile = () => {
                     First Name
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} md={6}>
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={firstName}
                     editComponent={
                       <CustomInputField
                         name="firstName"
@@ -103,6 +146,7 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={lastName}
                     editComponent={
                       <CustomInputField
                         name="lastName"
@@ -129,6 +173,7 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={email}
                     editComponent={
                       <CustomInputField
                         edit
@@ -157,6 +202,7 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={companyName}
                     editComponent={
                       <CustomInputField
                         required
@@ -184,11 +230,12 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={companyEmail}
                     editComponent={
                       <CustomInputField
                         required
                         fullWidth
-                        id="companyEail"
+                        id="companyEmail"
                         edit
                         name="companyEmail"
                         autoComplete="email"
@@ -212,6 +259,7 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={websiteUrl}
                     editComponent={
                       <CustomInputField
                         required
@@ -239,15 +287,14 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={country}
                     editComponent={
-                      <CustomInputField
-                        required
-                        fullWidth
-                        id="country"
-                        edit
-                        name="country"
+                      <CountryDropdown
+                        className={classes.country}
                         value={country}
-                        onChange={handleChange}
+                        valueType="short"
+                        disabled={true}
+                        onChange={(val) => setCountry(val)}
                       />
                     }
                   />
@@ -266,15 +313,16 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={region}
                     editComponent={
-                      <CustomInputField
+                      <RegionDropdown
                         required
-                        fullWidth
-                        id="city"
-                        edit
-                        name="city"
-                        value={city}
-                        onChange={handleChange}
+                        disableWhenEmpty={false}
+                        className={classes.country}
+                        country={country}
+                        value={region}
+                        countryValueType="short"
+                        onChange={(val) => setRegion(val)}
                       />
                     }
                   />
@@ -293,6 +341,7 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={postalcode}
                     editComponent={
                       <CustomInputField
                         required
@@ -320,57 +369,81 @@ const EditProfile = () => {
                   <EasyEdit
                     type="text"
                     onSave={() => {}}
+                    placeholder={phoneNumber}
                     editComponent={
-                      <CustomInputField
-                        required
-                        fullWidth
-                        id="phone"
-                        edit
+                      <PhoneInput
+                        placeholder="Enter phone number"
+                        defaultCountry={country}
+                        country={country}
+                        international
                         name="phoneNumber"
-                        autoComplete="phone"
+                        className={classes.phone}
+                        id="phone"
                         value={phoneNumber}
-                        onChange={handleChange}
+                        onChange={setphoneNumber}
                       />
                     }
                   />
                 </Grid>
               </Grid>
-              <Grid container item xs={12}>
-
-                  <Grid item xs={12} sm={6} md={6}>
-                    <Typography
-                      variant="body1"
-                      className={classes.label}
-                    >
-                      Password
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                  <EasyEdit
-                    type="text"
-                    onSave={() => {}}
-                    editComponent={
-                      <CustomInputField
-                        edit
-                        required
-                        fullWidth
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                      />
-                    }
-                  />
-                </Grid>
-              </Grid>
-              <CustomButton
-                type="submit"
-                variant="contained"
-                color="primary"
+              <Grid
+                container
+                item
+                xs={12}
+                alignItems="center"
+                justify="center"
               >
-                save
-              </CustomButton>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  className={classes.buttons}
+                >
+                  <CustomButton
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    id="save"
+                    name="save"
+                    onClick={updateHandler}
+                  >
+                    {updateloading === true ? (
+                      <CircularProgress
+                        className={classes.progress}
+                        color="white"
+                        size="1.2rem"
+                      />
+                    ) : null}
+                    save
+                  </CustomButton>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  className={classes.buttons}
+                >
+                  <CustomButton
+                    type="submit"
+                    name="delete"
+                    id="delete"
+                    variant="contained"
+                    onClick={deleteHandler}
+                    color="primary"
+                  >
+                    {deleteloading === true ? (
+                      <CircularProgress
+                        className={classes.progress}
+                        color="white"
+                        size="1.2rem"
+                      />
+                    ) : null}
+                    Delete Account
+                  </CustomButton>
+                </Grid>
+              </Grid>
             </Grid>
           </form>
         </div>

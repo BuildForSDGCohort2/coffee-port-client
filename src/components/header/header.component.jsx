@@ -4,22 +4,13 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Route, Link } from 'react-router-dom';
 import { logout } from '../../utils';
 import GET_CURRENT_USER from '../../apollo/client/queries';
-import { DELETE_USER } from '../../apollo/server/mutations';
-import { useMutation } from '@apollo/client';
-
 import useStyles from './header.styles';
 import CustomToggleMenu from '../custom-toggle-menu/custom-toggle-menu.component';
 import NotificationBadge from '../notification-badge/notification-badge.component';
 
 const Header = () => {
   const { root, logo, link, linkText } = useStyles();
-  
-  const [deleteUser, {  loading, error }] = useMutation(
-    DELETE_USER,
-  );
-  deleteUser();
-  console.log( loading, error);
-  
+
   const currentUser = { TYPE: 'BUYER' };
   const { data } = useQuery(GET_CURRENT_USER);
   const loggedIn = data.currentuser.loggedIn;

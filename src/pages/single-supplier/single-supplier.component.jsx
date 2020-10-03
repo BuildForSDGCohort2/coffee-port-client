@@ -3,10 +3,8 @@ import useStyles from './single-supplier.styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import PostedProductItem from '../../components/posted-product-item/posted-product-item.component';
 import Grid from '@material-ui/core/Grid';
-import {default as PostedProduct} from '../../components/posted-product/posted-product.container'
+import { default as PostedProduct } from '../../components/posted-product/posted-product.container';
 const SingleSupplierPage = ({ data }) => {
   const classes = useStyles();
 
@@ -16,7 +14,7 @@ const SingleSupplierPage = ({ data }) => {
         <Typography
           color="primary"
           gutterBottom
-          variant="h3" 
+          variant="h3"
           className={classes.title}
         >
           {data.company.companyName}
@@ -24,10 +22,23 @@ const SingleSupplierPage = ({ data }) => {
         <Typography
           gutterBottom
           variant="subtitle1"
-            color="primary"
           className={classes.subtitle}
         >
           {`posted by ${data.firstName} ${data.lastName}`}
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="subtitle1"
+          className={classes.subtitle}
+        >
+          {data.company.companyEmail}
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="subtitle2"
+          className={classes.subtitle}
+        >
+          {`posted by ${data.company.address.country}, ${data.company.address.city}`}
         </Typography>
       </div>
 
@@ -118,13 +129,10 @@ const SingleSupplierPage = ({ data }) => {
             </Grid>
           </CardContent>
         </Card>
-        
-        </div>
-        <PostedProduct/>
-        </div>
+      </div>
+      <PostedProduct />
+    </div>
   );
-    
-      
 };
 
 export default SingleSupplierPage;

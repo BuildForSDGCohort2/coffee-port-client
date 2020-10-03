@@ -15,4 +15,11 @@ const GET_CURRENT_USER = gql`
       }
    }
 `;
+export const GET_COMMENTS = gql`
+query GetComments{
+  comments @client {
+    comments
+    }
+ }
+`;
 export default GET_CURRENT_USER;
