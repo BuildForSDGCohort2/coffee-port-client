@@ -20,7 +20,7 @@ const Details = ({
   requestLoading,
 }) => {
   const classes = useStyles();
-  const { productPrice, uniqueAttributes,productMeasurementUnit,productQuantity } = product;
+  const { productName,productPrice, uniqueAttributes,productMeasurementUnit,productQuantity } = product;
   const [enteredInquiry, selectEnteredInquiry] = useState('');
 
   const handleSubmit = (e) => {
@@ -39,15 +39,51 @@ const Details = ({
     <Grid container justify="center" alignItem="center">
       <Card className={classes.root} bgcolor="secondary.main">
         <Grid container>
+
+
           <Grid
             item
             xs={12}
             sm={12}
-            md={6}
+            md={currentUserVar.role === 'BUYER' ? 6 : 12}
             className={classes.contain}
           >
-            <ProductImage />
+
+<Grid container justify="center" alignItems="center">
+  <Typography className={classes.productName} variant='h3'>{productName}</Typography>
+  <Typography className={classes.title} variant="h5">
+              ${productPrice}
+            </Typography>
+                  <Grid item xs={12} sm={12} md={12}>
+                    <List>
+                      {Object.getOwnPropertyNames(
+                        uniqueAttributes,
+                      ).map((property) =>
+                        property !== '__typename' &&
+                        uniqueAttributes[property] !== '' &&
+                        uniqueAttributes[property] !== null ? (
+                          <div>
+                            <ListComponent
+                              primary={property}
+                              trailing={uniqueAttributes[property]}
+                            />
+                            <Divider />
+                          </div>
+                        ) : null,
+                      )}
+                           <ListComponent
+                              primary={'Quantity'}
+                              trailing={`${productQuantity} ${productMeasurementUnit}`}
+                            />
+                            <Divider />
+                    </List>
+                  </Grid>
+                </Grid>
           </Grid>
+
+
+          {currentUserVar.role === 'BUYER' ? (
+           <Grid item xs={12} sm={12} md={6}>
           <Grid
             container
             item
@@ -58,20 +94,18 @@ const Details = ({
           >
             <Divider orientation="vertical" />
           </Grid>
+        
+          <Grid item xs={12} sm={12} md={12}>
 
-          <Grid item xs={12} sm={12} md={5}>
-            <Typography className={classes.title} variant="h5">
-              ${productPrice}
-            </Typography>
-            {currentUserVar.role === 'BUYER' ? (
+           
               <form onSubmit={handleSubmit}>
-                <Grid container justify="center" alignItems="center">
+                <Grid container  justify="center" alignItems="center">
                   <Grid item xs={12} sm={12} md={12}>
                     <CustomInputField
                       value={enteredInquiry}
                       onChange={handleChange}
                       id="filled-multiline-static"
-                      rows={4}
+                      rows={5}
                       label="Inquiry"
                       multiline
                       variant="filled"
@@ -107,36 +141,10 @@ const Details = ({
                     ) : null}
                   </Grid>
                   </Grid>
-                  </form>) : null}
-                   <Grid container justify="center" alignItems="center">
-                  <Grid item xs={12} sm={12} md={12}>
-                    <List>
-                      {Object.getOwnPropertyNames(
-                        uniqueAttributes,
-                      ).map((property) =>
-                        property !== '__typename' &&
-                        uniqueAttributes[property] !== '' &&
-                        uniqueAttributes[property] !== null ? (
-                          <div>
-                            <ListComponent
-                              primary={property}
-                              trailing={uniqueAttributes[property]}
-                            />
-                            <Divider />
-                          </div>
-                        ) : null,
-                      )}
-                           <ListComponent
-                              primary={'Quantity'}
-                              trailing={`${productQuantity} ${productMeasurementUnit}`}
-                            />
-                            <Divider />
-                    </List>
-                  </Grid>
-                </Grid>
+                  </form>
            
   
-          </Grid>
+          </Grid></Grid>) : null}
         </Grid>
       </Card>
     </Grid>
