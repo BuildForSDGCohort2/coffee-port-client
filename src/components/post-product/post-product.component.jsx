@@ -5,8 +5,12 @@ import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
+import currentUserVar from '../../apollo/cache';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import CustomAlert from '../custom-alert/custom-alert.component';
 
-const PostProduct = ({ postProduct, data, loading }) => {
+
+const PostProduct = ({ alert,postProduct, data, loading }) => {
   const classes = useStyles();
 
   const [selectedProperties, setSelectedProperties] = useState({
@@ -65,16 +69,16 @@ const PostProduct = ({ postProduct, data, loading }) => {
         },
       },
     });
-    if (!loading && data !== null) {
+    if (!loading ) {
       console.log('clearing');
       setSelectedProperties({
-        productName: '',
-        productPrice: '',
-        productQuantity: '',
-        productMeasurementUnit: '',
+        productName: 'Coffee',
+        productPrice:'',
+        productQuantity:'',
+        productMeasurementUnit:'',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
-      console.log('trypost', data);
+  
     }
   };
 
@@ -244,39 +248,45 @@ const PostProduct = ({ postProduct, data, loading }) => {
             </Grid>
           </div>
 
-          <div className={classes.root}>
-            <Grid container>
-              <Grid className={classes.eachInput} item xs={12}>
-                <Typography
-                  className={classes.label}
-                  variant="subtitle2"
-                  color="textSecondary"
-                >
-                  Additional Info
-                </Typography>
-                <CustomInputField
-                  forPostForm={true}
-                  size="small"
-                  // value={additionalDescription}
-                  rows={4}
-                  multiline
-                  variant="outlined"
-                  name="Additional Description"
-                  onChange={handleChange}
+            <div className={classes.root}>
+          <Grid container>
+           <Grid className={classes.eachInput} item xs={12}>
+           <Typography className={classes.label} variant="subtitle2"
+                color="textSecondary">Additional Info</Typography>
+            <CustomInputField 
+            forPostForm={true} 
+            size='small'
+              // value={additionalDescription}
+              rows={4}
+              multiline
+              variant='outlined'
+              name="Additional Description"
+              onChange= {handleChange}
+            />
+          </Grid> 
+           </Grid>
+           <Grid className={classes.buttonContainer}  item xs={12}>
+            <CustomButton className={classes.button} color="secondary" variant="contained" color="secondary" type="submit">
+            {loading === true ? (
+                <CircularProgress
+                  // className={classes.progress}
+                  color="white"
+                  size="1.2rem"
                 />
-              </Grid>
-            </Grid>
-            <Grid className={classes.buttonContainer} item xs={12}>
-              <CustomButton
-                className={classes.button}
-                color="secondary"
-                variant="contained"
-                type="submit"
-              >
-                Post Product
-              </CustomButton>
-            </Grid>
-          </div>
+              ) : null}
+              
+              
+              Post Product
+            
+            
+            </CustomButton></Grid>
+            {!loading&&data? <CustomAlert severity={alert.severity} message={alert.message}/>:null}
+           
+          
+    
+            </div>
+         
+        
         </form>
       </Grid>
     </Grid>

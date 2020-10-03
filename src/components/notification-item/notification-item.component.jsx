@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './notification-item.styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,21 +8,22 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme)=>({
-  root: {
-   margin:theme.spacing(4),
-  },
-  media: {
-    height: 140,
-  },
-  requestorInfo:{
-      background:theme.palette.secondary.main,
-      color:theme.palette.text.primary,
-  }
-}));
 
-const NotificationItem =()=> {
+const NotificationItem =({request,updateRequest})=> {
+  const handleAccept = (e) =>{
+    updateRequest({variables: {updateProductRequestRequestId: request.id,updateProductRequestRequestStatus: "ACCEPTED"}})
+
+
+  }
+  const handleReject = (e) =>{
+    updateRequest({variables: {updateProductRequestRequestId: request.id,updateProductRequestRequestStatus: "REJECTED"}})
+
+
+  }
+
+
   const classes = useStyles();
+  console.log(request);
   return (
       <Grid xs={8}>
         <Card  className={classes.root}>
@@ -31,29 +32,37 @@ const NotificationItem =()=> {
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          Company Name Sent an inquiry to buy...
+             {request.requestedBy.company.companyName} Sent an inquiry to buy...
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
+              Inquiry: {request.inquiryText}
           </Typography>
+          <Grid container>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">Product Name:</Typography></Grid>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">{request.requestedProduct.productName}</Typography></Grid>
+            </Grid>
+            <Grid container>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">Quantity:</Typography></Grid>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">{`${request.requestedProduct.productQuantity} ${request.requestedProduct.productMeasurementUnit}`}</Typography></Grid>
+            </Grid>
+            <Grid container>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">Price:</Typography></Grid>
+            <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">{`$ ${request.requestedProduct.productPrice}`}</Typography></Grid>
+            </Grid>
+       
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button onClick={handleAccept} name='accept' size="small" color="primary">
           Accept
         </Button>
-        <Button size="small" color="secondary">
+        <Button onClick={handleReject} name='reject' size="small" color="secondary">
           Reject
         </Button>
       </CardActions>
       </Grid>
       <Grid className={classes.requestorInfo} xs={4}>
-          dfghkjlkfchgjbkl
+          
 
       </Grid>
       </Grid>

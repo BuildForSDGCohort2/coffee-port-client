@@ -2,7 +2,6 @@ const { createMuiTheme } = require('@material-ui/core');
 
 const theme = createMuiTheme({
   palette: {
-
     primary: {
       // light: will be calculated from palette.primary.main,
       main: '#3f51b5',

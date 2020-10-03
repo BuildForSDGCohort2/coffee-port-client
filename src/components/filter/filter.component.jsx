@@ -22,7 +22,7 @@ const Filter=()=>{
 
   const handleFilterChange = (event,newValue,attributeName) =>{
     console.log(attributeName)
-    attributeName==='geographicalDesignation'?
+    attributeName==='geographicalDesignation'&& productName==='Coffee'?
     filtersVar({
       ...filtersVar(),
       uniqueAttributes: {

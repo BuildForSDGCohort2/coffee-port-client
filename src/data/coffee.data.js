@@ -6,6 +6,15 @@ const COFFEE_DATA = {
     { origin: 'SIDAMA', specificOrigin: 'SIDAMA B' },
     { origin: 'SIDAMA', specificOrigin: 'SIDAMA C' },
     { origin: 'SIDAMA', specificOrigin: 'SIDAMA D' },
+    { origin: 'LIMMU', specificOrigin: 'LIMMU A' },
+    { origin: 'LIMMU', specificOrigin: 'LIMMU B' },
+    { origin: 'HARAR', specificOrigin: 'HARAR A' },
+    { origin: 'HARAR', specificOrigin: 'HARAR B' },
+    { origin: 'HARAR', specificOrigin: 'HARAR C' },
+    { origin: 'HARAR', specificOrigin: 'HARAR D' },
+    { origin: 'JIMMA', specificOrigin: 'JIMMA A' },
+    { origin: 'JIMMA', specificOrigin: 'JIMMA B' },
+    { origin: 'JIMMA', specificOrigin: 'JIMMA C' },
   ],
   Group: [
     'Commercial Washed',
@@ -24,6 +33,24 @@ const COFFEE_DATA = {
     '7',
     '8',
     '9',
+  ],
+
+  Description: [
+    {
+      title: 'Harar',
+      coffeeCharacteristics: 'hi',
+      coffeeDesignations: 'hello',
+    },
+    {
+      title: 'Harar',
+      coffeeCharacteristics: 'hi',
+      coffeeDesignations: 'hello',
+    },
+    {
+      title: 'Harar',
+      coffeeCharacteristics: 'hi',
+      coffeeDesignations: 'hello',
+    },
   ],
 };
 export default COFFEE_DATA;

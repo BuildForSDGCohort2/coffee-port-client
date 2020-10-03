@@ -1,16 +1,19 @@
 import React from 'react';
-import NotificationItem from '../notification-item/notification-item.component';
+import NotificationItemContainer from '../notification-item/notification-item.container';
 import Grid from '@material-ui/core/Grid';
+import CustomAlert from '../custom-alert/custom-alert.component';
+import NotificationAlert from '../notification-alert/notification-alert.component';
 
-const NotificationPreview = () => (
-    <div>
+const NotificationPreview = ({role,requests}) => (
+   <div>
         <Grid container alignItem='center' justify='center'>
-        <NotificationItem/>
-        <NotificationItem/>
-        <NotificationItem/>
+            {requests.map((request)=>  role==='SUPPLIER'? <NotificationItemContainer key={request.id} request={request}/>:role==='BUYER'?
+            
+            <NotificationAlert  key={request.id} request={request}/>:null  )}
         </Grid>
         
     </div>
+
 
 );
 

@@ -3,9 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import useStyles from './product-intro.styles';
+import { useRouteMatch, useHistory } from 'react-router-dom';
+import CustomButton from '../custom-button/custom-button.component';
 
 const ProductIntro = () =>{
     const classes=useStyles();
+    const match=useRouteMatch();
+    const history=useHistory();
 
 
     return(
@@ -22,9 +26,9 @@ const ProductIntro = () =>{
         dolor enim optio reprehenderit magnam earum dicta mollitia
         suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor 
                 </Typography>
-                <Typography className={classes.link}>
-                    Read More <ArrowRightAlt className={classes.icon}/>
-                </Typography>
+                <CustomButton className={classes.link} endIcon={<ArrowRightAlt />} onClick={() => history.push(`${match.url}information`)}>
+                        Read More
+                    </CustomButton>
                 
             </Grid>
             <Grid xs={6} item>

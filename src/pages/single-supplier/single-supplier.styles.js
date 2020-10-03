@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
   block: {
     height: '30vh',
-    background: 'linear-gradient(to bottom, #fff, #F9B934)',
+    background: 'linear-gradient(to top, #fff, #F9B934)',
   },
   estimate: {
 

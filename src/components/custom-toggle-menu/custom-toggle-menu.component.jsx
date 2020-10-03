@@ -54,7 +54,7 @@ const CustomToggleMenu = ({currentUser})=> {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-            <Avatar mr={4} alt="Uravis Howard" src="/static/images/avatar/2.jpg" />
+            <Avatar mr={4} alt={currentUser.firstName} src="/static/images/avatar/2.jpg" />
             <Typography style={{color:'#546e7a', fontSize:'13px'}}>
             {currentUser.firstName}
             </Typography>
