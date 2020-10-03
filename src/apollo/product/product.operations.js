@@ -130,6 +130,7 @@ query Query($productId: ID!) {
     ... on Product {
       id 
       reviews {
+        id
         reviewerEmail
         comment
         stars
@@ -141,6 +142,5 @@ query Query($productId: ID!) {
     }
   }
 }
-
 `;
 

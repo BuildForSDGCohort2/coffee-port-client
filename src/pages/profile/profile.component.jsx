@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import EditProfile from "../../components/edit-profile/edit-profile.component"
+import { default as EditProfile } from '../../components/edit-profile/edit-profile.container';
 
 import useStyles from './profile.styles';
 
-const ProfilePage = () => {
+const ProfilePage = ({ currentUser }) => {
   const classes = useStyles();
-  
+
   return (
     <div>
       <div className={classes.root}>
@@ -16,11 +16,11 @@ const ProfilePage = () => {
           variant="h3"
           className={classes.title}
         >
-          Adona Tesfaye
+          {`${currentUser.firstName} ${currentUser.lastName}`}
         </Typography>
       </div>
 
-      <EditProfile/>
+      <EditProfile />
     </div>
   );
 };

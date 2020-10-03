@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '4%',
     display: 'flex',
     alignItems: 'center',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('xm')]: {
       paddingTop: '20%',
     },
   },

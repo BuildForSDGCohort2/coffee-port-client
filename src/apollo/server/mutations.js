@@ -134,53 +134,6 @@ mutation postreview($productId: ID!,$comment: String!,$stars: Float!) {
 }
   `;
 
-// export const POST_REVIEW = gql`
-// mutation Mutation($postProductReviewProductId: ID!, $postProductReviewReview: ReviewInput!) {
-//   postProductReview(productId: $postProductReviewProductId, review: $postProductReviewReview) {
-//     ... on Review {
-//       id
-//       reviewerEmail
-//       comment
-//       stars
-//       createdAt
-//     }
-//     ... on ReviewNotAddedError {
-//       message
-//       type
-//     }
-//     ... on NotAuthenticatedUserError {
-//       message
-//       type
-//     }
-//     ... on ReviewInputErrors {
-//       message
-//       type
-//       valid
-//       reviewErrors {
-//         comment
-//       }
-//     }
-//     ... on GetProductError {
-//       message
-//       type
-//     }
-//   }
-// }`;
-
-export const DELETE_USER = gql`
-mutation deleteUser{
-  deleteUser(id:"5f73a5b93215630017709b70"){
-    ... on Error{
-      message
-      type
-    }
-    ... on DeletedUserMessage{
-      message
-      userId
-    }
-  }
-}
-`;
 export const RESEND_CONFIRMATION = gql`
 mutation{
   resendConfirmation{
@@ -197,5 +150,114 @@ mutation{
     
   }
   
+}
+`;
+export const DELETE_REVIEW = gql`
+mutation deleteReview($productId: ID!, $reviewId: ID!) {
+  deleteProductReview (productId: $productId,reviewId: $reviewId ) {
+    ... on DeleteProductReview {
+      message
+    }
+    ... on GetProductError{
+      message
+      type
+    }
+    ... on ReviewOwnerError {
+      message
+      type
+    }
+    ... on ReviewDeletionError {
+      message
+      type
+    }
+    ... on Error {
+      message
+      type
+    }
+  }
+}
+`;
+export const UPDATE_USER = gql`
+mutation UpdatedUserMutation($updateUserId: ID!,$email:String!,$firstName:String!,$lastName:String!,$password:String!,$confirmPassword:String!,$role:String!,$phoneNumber:String!,$websiteUrl: String!,$companyName: String!,$companyEmail: String!,$country: String!,$city: String!,$postalCode:String!) {
+  updateUser(id: $updateUserId, updateUserInput:{
+    email: $email
+ 
+    firstName:$firstName
+    lastName:$lastName
+    password:$password
+    confirmPassword: $confirmPassword
+    role: $role
+    phoneNumber: $phoneNumber   
+    company:{
+      websiteUrl:$websiteUrl
+      companyName: $companyName
+      companyEmail: $companyEmail
+      address: {
+        country: $country
+        city: $city
+        postalCode: $postalCode
+      }
+      
+    }
+  }) {
+    ... on UpdatedUser {
+      token
+    }
+    ... on UserInputError {
+      message
+      valid
+      type
+      userErrors {
+        email
+        password
+        firstName
+        lastName
+        confirmPassword
+        role
+        phoneNumber
+        websiteUrl
+        companyName
+        companyEmail
+        country
+        city
+        street
+        postalCode
+      }
+    }
+    ... on TokenError {
+      message
+      type
+    }
+    ... on UpdateUserError {
+      message
+      type
+    }
+    ... on NotAuthenticatedUserError {
+      message
+      type
+    }
+    ... on AuthorizationError {
+      message
+      type
+    }
+  }
+}
+`;
+export const DELETE_USER = gql`
+mutation DeletedUserMessageMutation($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    ... on DeletedUserMessage {
+      message
+      userId
+    }
+    ... on DeleteUserError {
+      message
+      type
+    }
+    ... on NotAuthenticatedUserError {
+      message
+      type
+    }
+  }
 }
 `;

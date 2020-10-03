@@ -74,7 +74,7 @@ const BuyerSignUp = ({
   return (
     <div>
       <Typography variant="h5" className={classes.title}>
-        CREATE AN ACCOUNT FOR SUPPLIER
+        CREATE AN ACCOUNT FOR BUYER
       </Typography>
 
       <FormControl>

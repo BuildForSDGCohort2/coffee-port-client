@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { GET_USER } from '../../apollo/server/queries';
 import { useQuery } from '@apollo/client';
 import { CircularProgress, Grid } from '@material-ui/core';
-
+import { Redirect } from 'react-router-dom';
 import SingleSupplierPage from './single-supplier.component';
 
 const SingleSupplierContainer = () => {
@@ -11,12 +11,16 @@ const SingleSupplierContainer = () => {
   const { loading, data } = useQuery(GET_USER, {
     variables: { supplierId },
   });
- // const {data} =useQuery(GET_POSTED_PRODUCT);
-  console.log(data, loading);
-  if (loading) return (<Grid container alignItems="center" justify="center">
-  <CircularProgress />
-</Grid>);
 
+  if (loading)
+    return (
+      <Grid container alignItems="center" justify="center">
+        <CircularProgress />
+      </Grid>
+    );
+  if (!data && !loading) {
+    return <Redirect to="/error" />;
+  }
   return <SingleSupplierPage data={data.user} loading={loading} />;
 };
 

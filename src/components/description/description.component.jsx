@@ -1,7 +1,7 @@
 import React from 'react';
 import TabPanel from '../tab-panel/tab-panel.component';
 import Tabs from '@material-ui/core/Tabs';
-import {default as Comments} from '../comments/comments.container'
+import { default as Comments } from '../comments/comments.container';
 import Tab from '@material-ui/core/Tab';
 import useStyles from './description.styles';
 
@@ -46,81 +46,94 @@ const DescriptionComponent = ({
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
         dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.
+        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Consequatur, molestiae.
+        Quidem nemo libero odit? Modi esse sed dolor enim optio
+        reprehenderit magnam earum dicta mollitia suscipit, aperiam
+        numquam recusandae nulla.Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, molestiae. Quidem
+        nemo libero odit? Modi esse sed dolor enim optio reprehenderit
+        magnam earum dicta mollitia suscipit, aperiam numquam
+        recusandae nulla.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur, molestiae. Quidem nemo libero
+        odit? Modi esse sed dolor enim optio reprehenderit magnam
+        earum dicta mollitia suscipit, aperiam numquam recusandae
+        nulla.
       </TabPanel>
       <TabPanel value={value} index={1}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
         dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.
+        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Consequatur, molestiae.
+        Quidem nemo libero odit? Modi esse sed dolor enim optio
+        reprehenderit magnam earum dicta mollitia suscipit, aperiam
+        numquam recusandae nulla.Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, molestiae. Quidem
+        nemo libero odit? Modi esse sed dolor enim optio reprehenderit
+        magnam earum dicta mollitia suscipit, aperiam numquam
+        recusandae nulla.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur, molestiae. Quidem nemo libero
+        odit? Modi esse sed dolor enim optio reprehenderit magnam
+        earum dicta mollitia suscipit, aperiam numquam recusandae
+        nulla.
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <Comments comments={product.reviews}/>
-      {console.log(product)}
-      {console.log(product.reviews)}
+        <Comments comments={product.reviews} />
       </TabPanel>
       <TabPanel value={value} index={3}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
         dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.
+        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Consequatur, molestiae.
+        Quidem nemo libero odit? Modi esse sed dolor enim optio
+        reprehenderit magnam earum dicta mollitia suscipit, aperiam
+        numquam recusandae nulla.Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, molestiae. Quidem
+        nemo libero odit? Modi esse sed dolor enim optio reprehenderit
+        magnam earum dicta mollitia suscipit, aperiam numquam
+        recusandae nulla.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur, molestiae. Quidem nemo libero
+        odit? Modi esse sed dolor enim optio reprehenderit magnam
+        earum dicta mollitia suscipit, aperiam numquam recusandae
+        nulla.
       </TabPanel>
       <TabPanel value={value} index={4}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
         dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.
+        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Consequatur, molestiae.
+        Quidem nemo libero odit? Modi esse sed dolor enim optio
+        reprehenderit magnam earum dicta mollitia suscipit, aperiam
+        numquam recusandae nulla.Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, molestiae. Quidem
+        nemo libero odit? Modi esse sed dolor enim optio reprehenderit
+        magnam earum dicta mollitia suscipit, aperiam numquam
+        recusandae nulla.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur, molestiae. Quidem nemo libero
+        odit? Modi esse sed dolor enim optio reprehenderit magnam
+        earum dicta mollitia suscipit, aperiam numquam recusandae
+        nulla.
       </TabPanel>
       <TabPanel value={value} index={5}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
         dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur, molestiae. Quidem nemo libero odit? Modi esse sed
-        dolor enim optio reprehenderit magnam earum dicta mollitia
-        suscipit, aperiam numquam recusandae nulla.
+        suscipit, aperiam numquam recusandae nulla. Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Consequatur, molestiae.
+        Quidem nemo libero odit? Modi esse sed dolor enim optio
+        reprehenderit magnam earum dicta mollitia suscipit, aperiam
+        numquam recusandae nulla.Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, molestiae. Quidem
+        nemo libero odit? Modi esse sed dolor enim optio reprehenderit
+        magnam earum dicta mollitia suscipit, aperiam numquam
+        recusandae nulla.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur, molestiae. Quidem nemo libero
+        odit? Modi esse sed dolor enim optio reprehenderit magnam
+        earum dicta mollitia suscipit, aperiam numquam recusandae
+        nulla.
       </TabPanel>
     </div>
   );

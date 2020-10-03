@@ -19,6 +19,7 @@ import Footer from './components/footer/footer.component';
 import WaitingPage from './pages/waitingpage/waitingpage.component';
 import Information from './pages/information/information.component';
 
+
 function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token');
@@ -27,7 +28,12 @@ function App() {
       storeUser(token);
     }
   }, []);
+
   const { data, loading } = useQuery(GET_CURRENT_USER);
+
+
+
+
 
   if (loading) {
     return <div>...loading</div>;
