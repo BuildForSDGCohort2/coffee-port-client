@@ -10,12 +10,14 @@ import ListComponent from '../list-item/list-item.component';
 import ProductImage from '../product-image/product-image.component';
 import useStyles from './details.styles';
 import CustomAlert from '../custom-alert/custom-alert.component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Details = ({
   product,
   createProductRequest,
   alert,
   currentUserVar,
+  requestLoading,
 }) => {
   const classes = useStyles();
   const { productPrice, uniqueAttributes } = product;
@@ -92,6 +94,7 @@ const Details = ({
                       type="submit"
                       mr={2}
                     >
+                     {requestLoading? <CircularProgress/>:null}
                       Send Request
                     </CustomButton>
                     {alert.severity ? (

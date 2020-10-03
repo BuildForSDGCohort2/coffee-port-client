@@ -14,14 +14,22 @@ import {useHistory} from 'react-router-dom';
 const NotificationAlert = ({request}) =>{
     const history =useHistory();
     const classes = useStyles();
+
     return (
         <Grid xs={8}>
           <Card  className={classes.root}>
           <Grid  item container>
-          <Grid xs={8}>
+          <Grid xs={12}>
         <CardActionArea>
           <CardContent>
-              <CustomAlert severity='success' message={`${request.productOwner.company.companyName} has accepted your buy request`} />
+            {request.requestStatus==='ACCEPTED'?
+              <CustomAlert severity='success' message={`${request.productOwner.company.companyName} has accepted your buy request`} />:
+              request.requestStatus==='REJECTED'?
+              <CustomAlert severity='error' message={`${request.productOwner.company.companyName} has rejected your buy request`} />:
+              null
+
+            }
+              
 
             <Grid container>
             <Grid item xs={4}> <Typography variant="body2" color="textSecondary" component="p">Product Name:</Typography></Grid>

@@ -10,9 +10,14 @@ import Typography from '@material-ui/core/Typography';
 
 
 const NotificationItem =({request,updateRequest})=> {
-  const handleClick = (e) =>{
-    console.log('ddddddddddddddd',request.id);
+  const handleAccept = (e) =>{
     updateRequest({variables: {updateProductRequestRequestId: request.id,updateProductRequestRequestStatus: "ACCEPTED"}})
+
+
+  }
+  const handleReject = (e) =>{
+    updateRequest({variables: {updateProductRequestRequestId: request.id,updateProductRequestRequestStatus: "REJECTED"}})
+
 
   }
 
@@ -48,10 +53,10 @@ const NotificationItem =({request,updateRequest})=> {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={handleClick} size="small" color="primary">
+        <Button onClick={handleAccept} name='accept' size="small" color="primary">
           Accept
         </Button>
-        <Button size="small" color="secondary">
+        <Button onClick={handleReject} name='reject' size="small" color="secondary">
           Reject
         </Button>
       </CardActions>

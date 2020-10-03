@@ -7,7 +7,7 @@ import NotificationAlert from '../notification-alert/notification-alert.componen
 const NotificationPreview = ({role,requests}) => (
    <div>
         <Grid container alignItem='center' justify='center'>
-            {requests.map((request)=>  role==='SUPPLIER'? <NotificationItemContainer key={request.id} request={request}/>:role==='BUYER'&&request.requestStatus==='REQUESTED'?
+            {requests.map((request)=>  role==='SUPPLIER'? <NotificationItemContainer key={request.id} request={request}/>:role==='BUYER'?
             
             <NotificationAlert  key={request.id} request={request}/>:null  )}
         </Grid>

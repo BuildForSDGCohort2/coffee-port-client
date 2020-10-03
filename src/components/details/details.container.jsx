@@ -36,7 +36,7 @@ const DetailsContainer = ({product}) =>{
 
     console.log(requestData,requestLoading);
     return (<Details currentUserVar={currentUserVar()} alert = {alert}  product = {product}
-          createProductRequest = {createProductRequest}/>);
+          createProductRequest = {createProductRequest} requestLoading={requestLoading}/>);
 }
 
 export default DetailsContainer;
