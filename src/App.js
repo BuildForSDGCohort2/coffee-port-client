@@ -21,11 +21,14 @@ import ErrorPage from './pages/errorpage/errorpage.component'
 
 function App() {
   useEffect(() => {
+   
     const token = window.localStorage.getItem('token');
-
+    console.log(token)
     if (token) {
+
       storeUser(token);
     }
+
   }, []);
   const { data, loading } = useQuery(GET_CURRENT_USER);
 

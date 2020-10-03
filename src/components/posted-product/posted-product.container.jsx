@@ -15,7 +15,6 @@ const PostedProductContainer = () => {
     return <Redirect to="/error" />;
   }
 
-  console.log(data, loading);
   if (loading)
     return (
       <Grid container alignItems="center" justify="center">

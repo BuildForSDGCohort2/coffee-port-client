@@ -4,7 +4,7 @@ import { default as EditProfile } from '../../components/edit-profile/edit-profi
 
 import useStyles from './profile.styles';
 
-const ProfilePage = ({currentUser}) => {
+const ProfilePage = ({ currentUser }) => {
   const classes = useStyles();
 
   return (
@@ -16,7 +16,7 @@ const ProfilePage = ({currentUser}) => {
           variant="h3"
           className={classes.title}
         >
-         {`${currentUser.firstName} ${currentUser.lastName}`}
+          {`${currentUser.firstName} ${currentUser.lastName}`}
         </Typography>
       </div>
 

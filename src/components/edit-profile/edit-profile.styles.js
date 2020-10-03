@@ -20,5 +20,8 @@ const useStyles = makeStyles({
   buttons: {
     textAlign: 'center',
   },
+  progress: {
+    marginRight: '3%',
+  },
 });
 export default useStyles;

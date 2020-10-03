@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
-import {default as CommentItem} from '../comment-item/comment.item.container';
+import { default as CommentItem } from '../comment-item/comment.item.container';
 import useForm from '../../hooks/hooks';
 import useStyles from './comments.styles';
 
@@ -27,7 +27,7 @@ const Comments = ({ post, comments }) => {
     console.log(productId);
     console.log(value);
     console.log(comment);
-    
+
     post({
       variables: {
         productId: productId,
@@ -69,13 +69,6 @@ const Comments = ({ post, comments }) => {
             value={comment}
             onChange={handleChange}
           />
-          {/* <Rating
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-          /> */}
 
           <Button
             className={classes.post}
@@ -91,7 +84,7 @@ const Comments = ({ post, comments }) => {
               <Typography
                 color="secondary"
                 gutterBottom
-                variant="h4"
+                variant="body1"
                 className={classes.review}
               >
                 No comments yet

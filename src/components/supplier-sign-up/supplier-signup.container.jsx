@@ -20,7 +20,7 @@ const SupplierSignUpContainer = () => {
       message = data.createUser.message;
     }
   }
-  else if(!loading && !signupUser){
+  else if(!loading && !signupUser && !signupUser){
 
       return <Redirect to="/error" />
   }

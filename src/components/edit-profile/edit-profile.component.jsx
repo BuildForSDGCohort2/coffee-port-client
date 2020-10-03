@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import PhoneInput from 'react-phone-number-input';
 import {
   CountryDropdown,
@@ -17,7 +18,13 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import useStyles from './edit-profile.styles';
 import { logout } from '../../utils';
 
-const EditProfile = ({ currentUser, update, deleteuser }) => {
+const EditProfile = ({
+  currentUser,
+  update,
+  deleteuser,
+  deleteloading,
+  updateloading,
+}) => {
   const classes = useStyles();
   // const save = (value) => {
   //   alert(value);
@@ -53,7 +60,7 @@ const EditProfile = ({ currentUser, update, deleteuser }) => {
 
     postalcode,
   } = fieldValues;
-  console.log(fieldValues);
+
   const deleteHandler = () => {
     deleteuser({
       variables: {
@@ -401,6 +408,13 @@ const EditProfile = ({ currentUser, update, deleteuser }) => {
                     name="save"
                     onClick={updateHandler}
                   >
+                    {updateloading === true ? (
+                      <CircularProgress
+                        className={classes.progress}
+                        color="white"
+                        size="1.2rem"
+                      />
+                    ) : null}
                     save
                   </CustomButton>
                 </Grid>
@@ -419,6 +433,13 @@ const EditProfile = ({ currentUser, update, deleteuser }) => {
                     onClick={deleteHandler}
                     color="primary"
                   >
+                    {deleteloading === true ? (
+                      <CircularProgress
+                        className={classes.progress}
+                        color="white"
+                        size="1.2rem"
+                      />
+                    ) : null}
                     Delete Account
                   </CustomButton>
                 </Grid>

@@ -15,11 +15,15 @@ const PostProductContainer = () => {
     } else if (
       data.postProduct__typename === ' on ProductInputError'
     ) {
+    } else if (
+      data.postProduct__typename === ' on NotAuthenticatedUserError'
+    ) {
+      return <Redirect to="/waiting" />;
     }
   }
 
   if (!data && !loading && !postProduct) {
-    return <Redirect to="/error" />;
+     return <Redirect to="/error" />;
   }
 
   return (

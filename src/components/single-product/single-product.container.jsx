@@ -3,28 +3,28 @@ import { useParams } from 'react-router-dom';
 import { GET_PRODUCT } from '../../apollo/product/product.operations';
 import { CircularProgress, Grid } from '@material-ui/core';
 import { useQuery } from '@apollo/client';
-import {  Redirect } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 import SingleProduct from './single-product.component';
-import { useMutation } from '@apollo/react-hooks';
-
-
 const SingleProductContainer = () => {
   const { productId } = useParams();
   const { loading, data } = useQuery(GET_PRODUCT, {
     variables: { productId },
   });
 
-
   console.log(data, loading);
-  if(!data && !loading){
-    return <Redirect to="/error" />
+  if (!data && !loading) {
+    return <Redirect to="/error" />;
   }
 
-  if (loading) return (<Grid container alignItems="center" justify="center">
-  <CircularProgress />
-</Grid>);
-
+  if (loading)
+    return (
+      <Grid container alignItems="center" justify="center">
+        <CircularProgress />
+      </Grid>
+    );
+  if (!data && !loading) {
+    return <Redirect to="/error" />;
+  }
   return <SingleProduct data={data} loading={loading} />;
 };
 

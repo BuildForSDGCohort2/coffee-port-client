@@ -69,9 +69,9 @@ const PostProduct = ({ postProduct, data, loading }) => {
       console.log('clearing');
       setSelectedProperties({
         productName: '',
-        productPrice:'',
-        productQuantity:'',
-        productMeasurementUnit:'',
+        productPrice: '',
+        productQuantity: '',
+        productMeasurementUnit: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
       console.log('trypost', data);
@@ -90,143 +90,195 @@ const PostProduct = ({ postProduct, data, loading }) => {
   };
 
   return (
-    <Grid container direction='column'  alignItems="center" justify="center">
-    
-      <Grid container direction='column'  alignItems="center" justify="center">
-        <Grid className={classes.title}  item><Typography variant='h5' color='primary'>Please Fill In This Form</Typography></Grid>
-        
-        
-        <form onSubmit={handleSubmit}>
-        <div className={classes.root}>
-          <Grid container>
-          
-          <Grid className = {classes.eachCombo} item xs={12}>
-          <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Product Name</Typography>
-            <CustomComboBox
-              wide={true}
-              value={productName}
-              onChange={(event, newValue) => {
-                setSelectedProperties({
-                  ...selectedProperties,
-                  productName: newValue,
-                });
-                //  newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
-                //  filtersVar({...filtersVar(), type:newValue})
-              }}
-              id="productName"
-              options={TYPE}
-              getOptionLabel={(option) => option}
-            />
-          </Grid>
-          <Grid className={classes.eachInput} item xs={4}>
-          <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Quantity</Typography>
-            <CustomInputField 
-             
-            placeholder="400"
-            forPostForm={true}
-          size='small'  variant="outlined" type='number' value={productQuantity} name="productQuantity" 
-            onChange={handleChange}
-            
-            />
-          </Grid>
-          <Grid className={classes.eachInput} item xs={3}>
-          <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Measurement Unit</Typography>
-            <CustomInputField 
-             
-            forPostForm={true}
-            placeholder="Kg"
-             size='small'
-             variant="outlined"
-              
-              name="productMeasurementUnit"
-              type='text'
-              value={productMeasurementUnit}
-              onChange={handleChange}
-          
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+    >
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Grid className={classes.title} item>
+          <Typography variant="h5" color="primary">
+            Please Fill In This Form
+          </Typography>
+        </Grid>
 
-            />
-          </Grid>
-          <Grid className={classes.eachInput} item xs={4}>
-          <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Price in USD</Typography>
-            <CustomInputField forPostForm={true} size='small'
-             
-            placeholder="327.5"
-              variant="outlined" type='number' value={productPrice} name="productPrice"
-                          onChange={handleChange}
-            
-            
-            />
-          </Grid>
-          </Grid>
+        <form onSubmit={handleSubmit}>
+          <div className={classes.root}>
+            <Grid container>
+              <Grid className={classes.eachCombo} item xs={12}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Product Name
+                </Typography>
+                <CustomComboBox
+                  wide={true}
+                  value={productName}
+                  onChange={(event, newValue) => {
+                    setSelectedProperties({
+                      ...selectedProperties,
+                      productName: newValue,
+                    });
+                    //  newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
+                    //  filtersVar({...filtersVar(), type:newValue})
+                  }}
+                  id="productName"
+                  options={TYPE}
+                  getOptionLabel={(option) => option}
+                />
+              </Grid>
+              <Grid className={classes.eachInput} item xs={4}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Quantity
+                </Typography>
+                <CustomInputField
+                  placeholder="400"
+                  forPostForm={true}
+                  size="small"
+                  variant="outlined"
+                  type="number"
+                  value={productQuantity}
+                  name="productQuantity"
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid className={classes.eachInput} item xs={3}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Measurement Unit
+                </Typography>
+                <CustomInputField
+                  forPostForm={true}
+                  placeholder="Kg"
+                  size="small"
+                  variant="outlined"
+                  name="productMeasurementUnit"
+                  type="text"
+                  value={productMeasurementUnit}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid className={classes.eachInput} item xs={4}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Price in USD
+                </Typography>
+                <CustomInputField
+                  forPostForm={true}
+                  size="small"
+                  placeholder="327.5"
+                  variant="outlined"
+                  type="number"
+                  value={productPrice}
+                  name="productPrice"
+                  onChange={handleChange}
+                />
+              </Grid>
+            </Grid>
           </div>
 
           <div className={classes.root}>
-          <Grid container>
-
-          {productName
-            ? COMBOBOX_DATA[productName].map(
-                ({
-                  id,
-                  handleFilterChange,
-                  attributeName,
-                  label,
-                  ...allProps
-                }) => (
-                  <Grid key={id} className = {classes.eachCombo} item xs={12}>
-                    <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">{label}</Typography>
-                    <CustomComboBox
-                      value={
-                        attributeName === 'geographicalDesignation' &&
-                        productName === 'Coffee'
-                          ? uniqueAttributes[attributeName]
-                              .specificOrigin
-                          : uniqueAttributes[attributeName]
-                      }
-                      onChange={(e, newValue) => {
-                        handlePostChange(e, newValue, attributeName);
-                      }}
-                      {...allProps}
-                    />
-                  </Grid>
-                ),
-              )
-            : null}
+            <Grid container>
+              {productName
+                ? COMBOBOX_DATA[productName].map(
+                    ({
+                      id,
+                      handleFilterChange,
+                      attributeName,
+                      label,
+                      ...allProps
+                    }) => (
+                      <Grid
+                        key={id}
+                        className={classes.eachCombo}
+                        item
+                        xs={12}
+                      >
+                        <Typography
+                          className={classes.label}
+                          variant="subtitle2"
+                          color="textSecondary"
+                        >
+                          {label}
+                        </Typography>
+                        <CustomComboBox
+                          value={
+                            attributeName ===
+                              'geographicalDesignation' &&
+                            productName === 'Coffee'
+                              ? uniqueAttributes[attributeName]
+                                  .specificOrigin
+                              : uniqueAttributes[attributeName]
+                          }
+                          onChange={(e, newValue) => {
+                            handlePostChange(
+                              e,
+                              newValue,
+                              attributeName,
+                            );
+                          }}
+                          {...allProps}
+                        />
+                      </Grid>
+                    ),
+                  )
+                : null}
             </Grid>
-            </div>
+          </div>
 
-            <div className={classes.root}>
-          <Grid container>
-           <Grid className={classes.eachInput} item xs={12}>
-           <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Additional Info</Typography>
-            <CustomInputField 
-            forPostForm={true} 
-            size='small'
-              // value={additionalDescription}
-              rows={4}
-              multiline
-              variant='outlined'
-              name="Additional Description"
-              onChange= {handleChange}
-            />
-          </Grid> 
-           </Grid>
-           <Grid className={classes.buttonContainer}  item xs={12}>
-            <CustomButton className={classes.button} color="secondary" variant="contained" color="secondary" type="submit">Post Product</CustomButton></Grid>
-          
-    
-            </div>
-         
-        
+          <div className={classes.root}>
+            <Grid container>
+              <Grid className={classes.eachInput} item xs={12}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Additional Info
+                </Typography>
+                <CustomInputField
+                  forPostForm={true}
+                  size="small"
+                  // value={additionalDescription}
+                  rows={4}
+                  multiline
+                  variant="outlined"
+                  name="Additional Description"
+                  onChange={handleChange}
+                />
+              </Grid>
+            </Grid>
+            <Grid className={classes.buttonContainer} item xs={12}>
+              <CustomButton
+                className={classes.button}
+                color="secondary"
+                variant="contained"
+                type="submit"
+              >
+                Post Product
+              </CustomButton>
+            </Grid>
+          </div>
         </form>
-     
       </Grid>
- 
     </Grid>
   );
 };
