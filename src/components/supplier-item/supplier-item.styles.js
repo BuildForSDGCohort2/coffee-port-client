@@ -9,7 +9,10 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     maxWidth: '99%',
   },
-
+  title: {
+    color: '#121037',
+    fontWeight: 600,
+  },
 }));
 
 export default useStyles;

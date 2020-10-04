@@ -22,12 +22,12 @@ const CompanyItem = ({user}) => {
         <CardActionArea >
           <Grid container spacing={2} className={classes.paper}>
             <Grid item xs>
-              <Typography component="h1">{user.company.companyName}</Typography>
+              <Typography className={classes.title} component="h1">{user.company.companyName}</Typography>
               <Rating name="read-only" value={3} readOnly />
 
               <Grid>
-                <Chip color="primary" label="Coffee" />
-                <Chip color="primary" label="Flower" />
+                <Chip color="secondary" label="Coffee" />
+                <Chip color="secondary" label="Flower" />
               </Grid>
 
               <ListComponent

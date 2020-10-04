@@ -11,24 +11,27 @@ const CommentsContainer = ({ comments }) => {
   const { productId } = useParams();
   const { data: commentsData } = useQuery(GET_COMMENTS);
   const { data: reviewData, loading: reviewLoading } = useQuery(
-    GET_REVIEWS,
-  );
+    GET_REVIEWS, {
+      variables: { productId },
+    });
+  
   const [postReview, { data, loading, error }] = useMutation(
     POST_REVIEW,
     {
-      update(cache, { data: { postProductReview } }) {
-        const data = cache.readQuery({ query: GET_COMMENTS });
-        cache.writeQuery({
-          query: GET_COMMENTS,
-          data: {
-            comments: [postProductReview, ...data.comments.comments],
-          },
-        });
-      },
-    },
-  );
+      update:(cache, data)=>{
+        const cachId =cache.identify(data.Review)
+        cache.modify({
+          fields: {
+            comments:(existingFieldData,{toReference})=>{
+              return [...existingFieldData, toReference(cachId)];
+            }
 
-  console.log(data, reviewData, reviewLoading);
+    }
+  });
+}
+});
+
+  console.log(data, reviewData, loading,);
   if (!data && !loading && !POST_REVIEW) {
     return <Redirect to="/error" />;
   }
@@ -38,11 +41,14 @@ const CommentsContainer = ({ comments }) => {
     }
   }
   console.log(data, commentsData, loading, error);
+  if(!reviewLoading){
   return (
     <Comments
       post={postReview}
-      comments={commentsData.comments.comments}
+      comments={reviewData.product.reviews}
     />
+
   );
+  }
 };
 export default CommentsContainer;

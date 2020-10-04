@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import {storeUser} from './utils'
+import {storeUser,logout} from './utils'
 import Header from './components/header/header.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Buyers from './pages/buyers/buyers.component';
@@ -21,15 +21,22 @@ import ErrorPage from './pages/errorpage/errorpage.component'
 
 function App() {
   useEffect(() => {
-   
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+  
     const token = window.localStorage.getItem('token');
-    console.log(token)
+    const expire = window.localStorage.getItem('expire')
+    console.log(token,expire)
+    if (now.getTime() > expire) {
+      logout();
+        }
     if (token) {
 
       storeUser(token);
     }
 
   }, []);
+
   const { data, loading } = useQuery(GET_CURRENT_USER);
 
   if (loading) {
