@@ -5,10 +5,12 @@ import Divider from '@material-ui/core/Divider';
 import useStyles from './landing.styles';
 import Button from '@material-ui/core/Button';
 import Grow from '@material-ui/core/Grow';
+import {useHistory} from 'react-router-dom';
 
 
 const Landing = () =>{
     const classes = useStyles();
+    const history=useHistory();
     return (
         
         <Grid className={classes.topGrid}   direction="column"
@@ -38,9 +40,9 @@ const Landing = () =>{
                   <Grid  className={classes.topButtons} justify="center"
         alignItems="center" container>
                       <Grid className={classes.buttonContainer}>
-                      <Button  variant="outlined" size="large" color="primary" >Learn More</Button>
+                      <Button onClick={(e)=>history.push('suppliers')} variant="outlined" size="large" color="primary" >Suppliers</Button>
                       </Grid>
-                      <Grid ><Button variant="outlined" size="large" color="secondary">Products Offered</Button></Grid>
+                      <Grid ><Button onClick={(e)=>history.push('products')}variant="outlined" size="large" color="secondary">Products Offered</Button></Grid>
                   </Grid>
       
               </Grid>
