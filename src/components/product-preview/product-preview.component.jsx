@@ -57,7 +57,7 @@ const ProductPreview = () => {
   );
   return (
     <Grid className={classes.root} container>
-      {filteredByUniqueAttributes.map((product) => (
+      {filteredByUniqueAttributes.reverse().map((product) => (
         <ProductItem product={product} key={product.id} />
       ))}
     </Grid>

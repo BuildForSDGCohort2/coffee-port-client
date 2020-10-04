@@ -6,9 +6,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
   },
   container: {
-    paddingLeft: theme.spacing(24),
-    paddingRight: theme.spacing(24),
-    marginTop: theme.spacing(10),
+
+
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    marginTop: '5%',
   },
   description: {
     color: '#546e7a',

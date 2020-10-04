@@ -5,9 +5,18 @@ import NotificationItem from './notification-item.component';
 
 const NotificationItemContainer = ({request}) =>{
     const [updateRequest,{data,loading,error}]=useMutation(UPDATE_REQUEST);
-    console.log('sdaffffff',data,loading,error);
+    const alert={
+        severity: '',
+        message: '',
+    };
+    console.log('daaaaaaaaaaaa',data);
 
-    return <NotificationItem updateRequest={updateRequest} request={request}/>
+    // if (data){
+    //     if(data.)
+    // }
+   
+
+    return <NotificationItem alert={alert} loading={loading} updateRequest={updateRequest} request={request}/>
 }
 
 export default NotificationItemContainer;

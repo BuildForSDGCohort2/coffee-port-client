@@ -11,7 +11,7 @@ import { CardActionArea } from '@material-ui/core';
 const ProductItem = ({ product,match,history}) => {
   const classes = useStyles();
   return (
-    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={4}>
+    <Grid onClick={()=>history.push(`${match.url}/${product.id}`)} className={classes.root} item xs={12} sm={12} md={6} lg={4}>
       <Card className={classes.card}>
         <CardActionArea>
 

@@ -40,11 +40,11 @@ const Filter=()=>{
     <div className={classes.root}>
         <Grid container spacing={2}>
 
-        <Grid container justify='center' alignItem='center' item xs={1}>
+        <Grid container justify='center' alignItem='center' item xs={12} lg={1}>
             <Typography className={classes.filterText}>Filter By</Typography>
         </Grid>
 
-        <Grid item xs={2}>
+        <Grid item xs={12} md={6} lg={2} >
         <CustomComboBox
         value={productName}
         onChange={(event, newValue) => {
@@ -62,7 +62,7 @@ const Filter=()=>{
          productName?
           COMBOBOX_DATA[productName].map(
             ({id , attributeName ,...allProps})=>( 
-               <Grid key={id} item xs={2}>
+               <Grid key={id} item md={6} xs={12} lg={2}>
               <CustomComboBox 
               onChange={(event,newValue)=>{handleFilterChange(event,newValue,attributeName)}}
               {...allProps}/>

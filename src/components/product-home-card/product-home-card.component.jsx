@@ -11,7 +11,7 @@ const ProductHomeCard = ({type,index}) => {
   const classes = useStyles();
 
   return (
-    <Grid className={classes.root} item xs={12} sm={3}>
+    <Grid className={classes.root} item xs={12} sm={12} md={3}>
     <Card className={classes.wide} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
