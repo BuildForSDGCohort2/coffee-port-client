@@ -10,6 +10,7 @@ const useStyles = makeStyles({
   },
   title: {
     paddingLeft: '15%',
+    color: '#121037',
     paddingTop: '4%',
     display: 'flex',
     alignItems: 'center',
@@ -21,8 +22,8 @@ const useStyles = makeStyles({
     paddingLeft: '15%',
   },
   block: {
-    height: '30vh',
-    background: 'linear-gradient(to bottom, #fff, #F9B934)',
+    height: '35vh',
+    background: 'radial-gradient(circle, rgba(249,185,52,1) 25%, rgba(217,163,50,1) 79%)',
   },
   estimate: {
 

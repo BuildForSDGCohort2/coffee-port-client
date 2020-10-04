@@ -1,57 +1,38 @@
 import React from 'react';
-import useStyles from './notification-item.styles';
+import useStyles from './notification-alert.styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CustomAlert from '../custom-alert/custom-alert.component';
+import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
-const NotificationItem = ({
-  request,
-  updateRequest,
-  loading,
-  alert,
-}) => {
-  const handleAccept = (e) => {
-    updateRequest({
-      variables: {
-        updateProductRequestRequestId: request.id,
-        updateProductRequestRequestStatus: 'ACCEPTED',
-      },
-    });
-  };
-  const handleReject = (e) => {
-    updateRequest({
-      variables: {
-        updateProductRequestRequestId: request.id,
-        updateProductRequestRequestStatus: 'REJECTED',
-      },
-    });
-  };
-
+const NotificationAlert = ({ request }) => {
+  const history = useHistory();
   const classes = useStyles();
 
   return (
     <Grid xs={8}>
       <Card className={classes.root}>
         <Grid item container>
-          <Grid xs={8}>
+          <Grid xs={12}>
             <CardActionArea>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {request.requestedBy.company.companyName} Sent an
-                  inquiry to buy...
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                >
-                  Inquiry: {request.inquiryText}
-                </Typography>
+                {request.requestStatus === 'ACCEPTED' ? (
+                  <CustomAlert
+                    severity="success"
+                    message={`${request.productOwner.company.companyName} has accepted your buy request`}
+                  />
+                ) : request.requestStatus === 'REJECTED' ? (
+                  <CustomAlert
+                    severity="error"
+                    message={`${request.productOwner.company.companyName} has rejected your buy request`}
+                  />
+                ) : null}
+
                 <Grid container>
                   <Grid item xs={4}>
                     {' '}
@@ -118,29 +99,23 @@ const NotificationItem = ({
             </CardActionArea>
             <CardActions>
               <Button
-                onClick={handleAccept}
-                name="accept"
+                onClick={() =>
+                  history.push(
+                    `/suppliers/${request.productOwner.id}`,
+                  )
+                }
                 size="small"
                 color="primary"
               >
-                Accept
+                Click here to learn more about{' '}
+                {request.productOwner.company.companyName}
               </Button>
-              <Button
-                onClick={handleReject}
-                name="reject"
-                size="small"
-                color="secondary"
-              >
-                Reject
-              </Button>
-              {loading ? <CircularProgress /> : null}
             </CardActions>
           </Grid>
-          <Grid className={classes.requestorInfo} xs={4}></Grid>
         </Grid>
       </Card>
     </Grid>
   );
 };
 
-export default NotificationItem;
+export default NotificationAlert;

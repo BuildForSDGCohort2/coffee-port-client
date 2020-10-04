@@ -9,7 +9,7 @@ import { CardActionArea } from '@material-ui/core';
 import ListComponent from '../list-item/list-item.component';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
-const CompanyItem = ({user}) => {
+const CompanyItem = ({ user }) => {
   const classes = useStyles();
   let history = useHistory();
   let match = useRouteMatch();
@@ -18,11 +18,13 @@ const CompanyItem = ({user}) => {
       className={classes.root}
       onClick={() => history.push(`${match.url}/${user.id}`)}
     >
-      <Card >
-        <CardActionArea >
+      <Card>
+        <CardActionArea>
           <Grid container spacing={2} className={classes.paper}>
             <Grid item xs>
-              <Typography className={classes.title} component="h1">{user.company.companyName}</Typography>
+              <Typography className={classes.title} component="h1">
+                {user.company.companyName}
+              </Typography>
               <Rating name="read-only" value={3} readOnly />
 
               <Grid>

@@ -3,32 +3,46 @@ import { POST_PRODUCT } from '../../apollo/product/product.operations';
 import PostProduct from './post-product.component';
 import { useMutation } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
+import { logout } from '../../utils';
 
 const PostProductContainer = () => {
+  const alert = {
+    severity: '',
+    message: '',
+  };
   const [postProduct, { data, loading }] = useMutation(POST_PRODUCT);
-  console.log(data);
+
   if (data) {
-    if (data.postProduct__typename === 'Product') {
+    if (data.postProduct.__typename === 'Product') {
+      alert.severity = 'success';
+      alert.message = 'You have successfully posted this product';
     } else if (
-      data.postProduct__typename === ' ProductNotAddedError'
+      data.postProduct.__typename === ' ProductNotAddedError'
     ) {
+      alert.severity = 'error';
+      alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct__typename === ' on ProductInputError'
+      data.postProduct.__typename === ' on ProductInputError'
     ) {
+      alert.severity = 'error';
+      alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct__typename === ' on NotAuthenticatedUserError'
+      data.postProduct.__typename === ' on NotAuthenticatedUserError'
     ) {
-      return <Redirect to="/waiting" />;
+      alert.severity = 'error';
+      alert.message = 'You are not Authenticated. Please log in';
+      logout();
     }
   }
 
   if (!data && !loading && !postProduct) {
-     return <Redirect to="/error" />;
+    return <Redirect to="/error" />;
   }
 
   return (
     <PostProduct
       data={data}
+      alert={alert}
       loading={loading}
       postProduct={postProduct}
     />

@@ -21,7 +21,7 @@ const PostedProductItem = () => {
           className={classes.rating}
         />
       </Grid>
-      <Grid item sm={12} md={4} >
+      <Grid item sm={12} md={4}>
         <Typography component="h6" variant="h6">
           Grade 5
         </Typography>

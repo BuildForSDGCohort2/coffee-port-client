@@ -13,6 +13,7 @@ mutation PostProductMutation($postProductProduct: ProductInput!) {
       geographicalDesignation
       grade
       group
+      flowerType
     }
     
   }
@@ -49,14 +50,15 @@ query getAllProducts {
       products {
         id
         productName
-        productName
         productMeasurementUnit
+        productDescription
         productQuantity
         productPrice
         uniqueAttributes{
           geographicalDesignation
           grade
           group
+          flowerType
         }
 
         user{
@@ -98,12 +100,14 @@ query Query($productId: ID!) {
       productName
       productPrice
       productMeasurementUnit
+      productDescription
       productQuantity
       uniqueAttributes {
         grade
         group
         uniqueName
         geographicalDesignation
+        flowerType
       }
       user {
         firstName

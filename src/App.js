@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import {storeUser,logout} from './utils'
+import { storeUser } from './utils';
 import Header from './components/header/header.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Buyers from './pages/buyers/buyers.component';
@@ -12,29 +12,20 @@ import GET_CURRENT_USER from './apollo/client/queries';
 import Authenticated from './components/authenticated/authenticated.component';
 import ProductPage from './pages/product-page/product-page.component';
 import NotificationPage from './pages/notification-page/notification-page.component';
-import {default as ProfilePage} from './pages/profile/profile.container';
-import {default as Comments} from './components/comments/comments.container'
-import ConfirmPage from './pages/confirm-page/confirm.component'
+import { default as ProfilePage } from './pages/profile/profile.container';
+import { default as Comments } from './components/comments/comments.container';
+import ConfirmPage from './pages/confirm-page/confirm.component';
 import Footer from './components/footer/footer.component';
-import WaitingPage from './pages/waitingpage/waitingpage.component'
-import ErrorPage from './pages/errorpage/errorpage.component'
+import WaitingPage from './pages/waitingpage/waitingpage.component';
+import Information from './pages/information/information.component';
+import ErrorPage from './pages/errorpage/errorpage.component';
 
 function App() {
   useEffect(() => {
-    const now = new Date()
-    // compare the expiry time of the item with the current time
-  
     const token = window.localStorage.getItem('token');
-    const expire = window.localStorage.getItem('expire')
-    console.log(token,expire)
-    if (now.getTime() > expire) {
-      logout();
-        }
     if (token) {
-
       storeUser(token);
     }
-
   }, []);
 
   const { data, loading } = useQuery(GET_CURRENT_USER);
@@ -42,64 +33,61 @@ function App() {
   if (loading) {
     return <div>...loading</div>;
   }
-  else{
-    if(!data && !loading){
-      return <Redirect to="/error" />
-    }
-  }
   return (
     <div>
-    <div className='allButFooter'>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home}></Route>
-        <Route path="/products">
-          {' '}
-          <Authenticated Component={ProductPage} />
-        </Route>
-        <Route  path="/suppliers">
-          <Authenticated Component={Suppliers} />
-        </Route>
-        <Route exact path="/buyers">
-          {' '}
-          <Authenticated Component={Buyers} />
-        </Route>
-        <Route exact path="/signup">
-          {data.currentuser.loggedIn ? (
-            <Redirect to="/" />
-          ) : (
-            <SignUpAndSignInPage />
-          )}
-        </Route>
-        <Route exact path="/describe">
-          <SingleSupplierPage />
-        </Route>
-        <Route exact path="/notification">
-          <Authenticated Component={NotificationPage} />
-        </Route>
-        <Route exact path="/profile">
-          <Authenticated Component={ProfilePage} />
-        </Route>
-        <Route exact path="/comments">
-        <Comments/>
-        </Route>
+      <div className="allButFooter">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/products">
+            {' '}
+            <Authenticated Component={ProductPage} />
+          </Route>
+          <Route path="/suppliers">
+            <Authenticated Component={Suppliers} />
+          </Route>
+          <Route exact path="/buyers">
+            {' '}
+            <Authenticated Component={Buyers} />
+          </Route>
+          <Route exact path="/signup">
+            {data.currentuser.loggedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <SignUpAndSignInPage />
+            )}
+          </Route>
+          <Route exact path="/describe">
+            <SingleSupplierPage />
+          </Route>
+          <Route exact path="/notification">
+            <Authenticated Component={NotificationPage} />
+          </Route>
+          <Route exact path="/profile">
+            <Authenticated Component={ProfilePage} />
+          </Route>
+          <Route exact path="/comments">
+            <Comments />
+          </Route>
 
-        <Route exact path="/confirm/:token">
-        <ConfirmPage/>
-        </Route>
-       
-        <Route exact path="/waiting">
-        <WaitingPage/>
-       
-        </Route>
-        <Route exact path="/error">
-        <ErrorPage/>
-       
-        </Route>
-      </Switch>
-     
-    </div>
-    <Footer/>
+          <Route exact path="/confirm/:token">
+            <ConfirmPage />
+          </Route>
+
+          <Route exact path="/waiting">
+            <WaitingPage />
+          </Route>
+
+          <Route exact path="/information">
+            <Information />
+          </Route>
+
+          <Route exact path="/error">
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </div>
+      <Footer />
     </div>
   );
 }

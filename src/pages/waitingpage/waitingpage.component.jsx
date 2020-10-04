@@ -8,10 +8,7 @@ import { useMutation } from '@apollo/client';
 import { RESEND_CONFIRMATION } from '../../apollo/server/mutations';
 
 const WaitingPage = () => {
-  const [resend, { data, loading }] = useMutation(
-    RESEND_CONFIRMATION,
-  );
-  console.log(data, loading);
+  const [resend] = useMutation(RESEND_CONFIRMATION);
   return (
     <div>
       <Typography variant="h4" color="secondary">

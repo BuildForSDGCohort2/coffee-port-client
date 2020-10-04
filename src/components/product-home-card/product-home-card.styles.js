@@ -2,13 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 275,
     margin: theme.spacing(4),
+    display: 'flex',
+    minHeight: '250px',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  wide: {
+    flexGrow: 1,
   },
   title: {
     fontSize: 14,

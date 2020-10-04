@@ -3,6 +3,13 @@ import FLOWER_DATA from './flower.data';
 import SESAME_DATA from './sesame.data';
 
 export const TYPE = ['Coffee', 'Sesame', 'Flower'];
+
+export const MEASUREMENT_UNITS = ['Kilogram(kg)', 'tonne(t)', 'Cut'];
+export const TYPE_WITH_INTRO = [
+  { name: 'Coffee', description: 'Ethiopia is the Motherland of all arabica coffee.', attributes: 'Geographical Designation | Grade | Group' },
+  { name: 'Sesame', description: 'Ethiopian sesame is among the highest quality in the world.', attributes: 'Geographical Designation | Grade' },
+  { name: 'Flower', description: 'Ethiopia has become the second largest flower exporter in Africa.', attributes: 'Flower Type' }];
+
 export const COMBOBOX_DATA = {
   Coffee: [
     {
