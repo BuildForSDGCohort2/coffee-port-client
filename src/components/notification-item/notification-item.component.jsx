@@ -7,9 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-const NotificationItem =({request,updateRequest})=> {
+const NotificationItem =({request,updateRequest,loading,alert})=> {
   const handleAccept = (e) =>{
     updateRequest({variables: {updateProductRequestRequestId: request.id,updateProductRequestRequestStatus: "ACCEPTED"}})
 
@@ -59,6 +60,7 @@ const NotificationItem =({request,updateRequest})=> {
         <Button onClick={handleReject} name='reject' size="small" color="secondary">
           Reject
         </Button>
+        {loading? <CircularProgress/>:null}
       </CardActions>
       </Grid>
       <Grid className={classes.requestorInfo} xs={4}>

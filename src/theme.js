@@ -14,7 +14,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#121037',
-    }
+    },
   },
   typography: {
     fontFamily: `'Nunito', sans-serif`,

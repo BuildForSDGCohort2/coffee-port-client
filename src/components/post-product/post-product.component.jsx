@@ -17,6 +17,7 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
     productName: 'Coffee',
     productPrice: '',
     productQuantity: '',
+    productDescription: '',
     productMeasurementUnit: '',
     uniqueAttributes: {
       geographicalDesignation: '',
@@ -34,6 +35,7 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
     productPrice,
     productQuantity,
     productMeasurementUnit,
+    productDescription,
   } = selectedProperties;
   const handlePostChange = (event, newValue, attributeName) => {
     if (
@@ -254,11 +256,11 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
             <CustomInputField 
             forPostForm={true} 
             size='small'
-              // value={additionalDescription}
+             value={productDescription}
               rows={4}
               multiline
               variant='outlined'
-              name="Additional Description"
+              name="productDescription"
               onChange= {handleChange}
             />
           </Grid> 

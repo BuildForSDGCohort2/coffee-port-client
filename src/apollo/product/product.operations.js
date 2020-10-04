@@ -51,6 +51,7 @@ query getAllProducts {
         id
         productName
         productMeasurementUnit
+        productDescription
         productQuantity
         productPrice
         uniqueAttributes{
@@ -99,6 +100,7 @@ query Query($productId: ID!) {
       productName
       productPrice
       productMeasurementUnit
+      productDescription
       productQuantity
       uniqueAttributes {
         grade

@@ -12,7 +12,6 @@ const SingleSupplierPage = ({ data }) => {
     <div>
       <div className={classes.block}>
         <Typography
-          color="primary"
           gutterBottom
           variant="h3"
           className={classes.title}
@@ -24,7 +23,7 @@ const SingleSupplierPage = ({ data }) => {
           variant="subtitle1"
           className={classes.subtitle}
         >
-          {`posted by ${data.firstName} ${data.lastName}`}
+          {`Posted by ${data.firstName} ${data.lastName}`}
         </Typography>
         <Typography
           gutterBottom
@@ -38,7 +37,7 @@ const SingleSupplierPage = ({ data }) => {
           variant="subtitle2"
           className={classes.subtitle}
         >
-          {`posted by ${data.company.address.country}, ${data.company.address.city}`}
+          {`Posted by ${data.company.address.country}, ${data.company.address.city}`}
         </Typography>
       </div>
 
