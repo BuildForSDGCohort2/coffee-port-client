@@ -2,6 +2,7 @@ import React from 'react';
 import EditProfile from './edit-profile.component';
 import { useMutation } from '@apollo/client';
 import jwt_decode from 'jwt-decode';
+import { logout } from '../../utils';
 import {
   UPDATE_USER,
   DELETE_USER,
@@ -10,8 +11,7 @@ import { storeUser } from '../../utils';
 import { Redirect } from 'react-router-dom';
 
 const EditContainer = () => {
-  //let message = null;
-  // let inputErrors = null;
+  let message = null;
   const [
     updateUser,
     { data: updateData, loading: updateloading },
@@ -20,7 +20,6 @@ const EditContainer = () => {
     deleteUser,
     { data: deleteData, loading: deleteloading },
   ] = useMutation(DELETE_USER);
-  console.log(updateData, deleteData);
   if (updateData) {
     if (
       updateData &&
@@ -28,14 +27,16 @@ const EditContainer = () => {
     ) {
       storeUser(updateData.updateUser.token);
     } else if (
-      updateData.updateUser.__typename === '"UpdateUserError"'
+      updateData.updateUser.__typename === 'UpdateUserError'
     ) {
-      //message =  updateData.updateUser.message;
+      message = updateData.updateUser.message;
+    } else if (
+      updateData.updateUser.__typename ===
+        'NotAuthenticatedUserError' ||
+      deleteData.deleteUser.__typename === 'NotAuthenticatedUserError'
+    ) {
+      logout();
     }
-    // } else if (data.createUser.__typename === 'UserInputError') {
-    //   inputErrors = data.createUser.userErrors;
-    //   message = data.createUser.message;
-    // }
   }
   if (
     (!updateData && !updateloading && !updateUser) ||
@@ -57,6 +58,7 @@ const EditContainer = () => {
         deleteuser={deleteUser}
         deleteloading={deleteloading}
         updateloading={updateloading}
+        message={message}
       />
     </div>
   );

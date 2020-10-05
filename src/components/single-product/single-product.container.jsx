@@ -11,7 +11,6 @@ const SingleProductContainer = () => {
     variables: { productId },
   });
 
-  console.log(data, loading);
   if (!data && !loading) {
     return <Redirect to="/error" />;
   }

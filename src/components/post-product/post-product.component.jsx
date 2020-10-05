@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { COMBOBOX_DATA, TYPE,MEASUREMENT_UNITS } from '../../data/combobox.data';
+import {
+  COMBOBOX_DATA,
+  TYPE,
+  MEASUREMENT_UNITS,
+} from '../../data/combobox.data';
 import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
-import currentUserVar from '../../apollo/cache';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CustomAlert from '../custom-alert/custom-alert.component';
 
-
-const PostProduct = ({ alert,postProduct, data, loading }) => {
+const PostProduct = ({ alert, postProduct, data, loading }) => {
   const classes = useStyles();
 
   const [selectedProperties, setSelectedProperties] = useState({
@@ -27,8 +30,6 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
     },
   });
 
-  console.log(selectedProperties);
-  //const { productName, uniqueAttributes,productPrice,productQuantity,productMeasurementUnit,additionalDescription } = selectedProperties;
   const {
     productName,
     uniqueAttributes,
@@ -63,7 +64,7 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('selectedproducts', selectedProperties);
+
     postProduct({
       variables: {
         postProductProduct: {
@@ -71,16 +72,14 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
         },
       },
     });
-    if (!loading ) {
-      console.log('clearing');
+    if (!loading) {
       setSelectedProperties({
         productName: 'Coffee',
-        productPrice:'',
-        productQuantity:'',
-        productMeasurementUnit:'',
+        productPrice: '',
+        productQuantity: '',
+        productMeasurementUnit: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
-  
     }
   };
 
@@ -169,12 +168,17 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
                   Measurement Unit
                 </Typography>
                 <CustomComboBox
-                 wide={true}
-                 value={productMeasurementUnit}
-                 id="productMeasurementUnit"
-                 options={MEASUREMENT_UNITS}
+                  wide={true}
+                  value={productMeasurementUnit}
+                  id="productMeasurementUnit"
+                  options={MEASUREMENT_UNITS}
                   getOptionLabel={(option) => option}
-                  onChange={(event,newValue)=>{setSelectedProperties({...selectedProperties,productMeasurementUnit:newValue})}}
+                  onChange={(event, newValue) => {
+                    setSelectedProperties({
+                      ...selectedProperties,
+                      productMeasurementUnit: newValue,
+                    });
+                  }}
                 />
               </Grid>
               <Grid className={classes.eachInput} item xs={4}>
@@ -248,45 +252,52 @@ const PostProduct = ({ alert,postProduct, data, loading }) => {
             </Grid>
           </div>
 
-            <div className={classes.root}>
-          <Grid container>
-           <Grid className={classes.eachInput} item xs={12}>
-           <Typography className={classes.label} variant="subtitle2"
-                color="textSecondary">Additional Info</Typography>
-            <CustomInputField 
-            forPostForm={true} 
-            size='small'
-             value={productDescription}
-              rows={4}
-              multiline
-              variant='outlined'
-              name="productDescription"
-              onChange= {handleChange}
-            />
-          </Grid> 
-           </Grid>
-           <Grid className={classes.buttonContainer}  item xs={12}>
-            <CustomButton className={classes.button} color="secondary" variant="contained" color="secondary" type="submit">
-            {loading === true ? (
-                <CircularProgress
-                  // className={classes.progress}
-                  color="white"
-                  size="1.2rem"
+          <div className={classes.root}>
+            <Grid container>
+              <Grid className={classes.eachInput} item xs={12}>
+                <Typography
+                  className={classes.label}
+                  variant="subtitle2"
+                  color="textSecondary"
+                >
+                  Additional Info
+                </Typography>
+                <CustomInputField
+                  forPostForm={true}
+                  size="small"
+                  value={productDescription}
+                  rows={4}
+                  multiline
+                  variant="outlined"
+                  name="productDescription"
+                  onChange={handleChange}
                 />
-              ) : null}
-              
-              
-              Post Product
-            
-            
-            </CustomButton></Grid>
-            {!loading&&data? <CustomAlert severity={alert.severity} message={alert.message}/>:null}
-           
-          
-    
-            </div>
-         
-        
+              </Grid>
+            </Grid>
+            <Grid className={classes.buttonContainer} item xs={12}>
+              <CustomButton
+                className={classes.button}
+                color="secondary"
+                variant="contained"
+                type="submit"
+              >
+                {loading === true ? (
+                  <CircularProgress
+                    // className={classes.progress}
+                    color="white"
+                    size="1.2rem"
+                  />
+                ) : null}
+                Post Product
+              </CustomButton>
+            </Grid>
+            {!loading && data ? (
+              <CustomAlert
+                severity={alert.severity}
+                message={alert.message}
+              />
+            ) : null}
+          </div>
         </form>
       </Grid>
     </Grid>

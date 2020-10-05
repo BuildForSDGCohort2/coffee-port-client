@@ -59,7 +59,7 @@ const Header = () => {
               <NotificationBadge />{' '}
             </Link>
             {loggedIn ? (
-              <div className={link} to="/signup">
+              <div className={link} to="/profile">
                 {' '}
                 <CustomToggleMenu
                   currentUser={data.currentuser}

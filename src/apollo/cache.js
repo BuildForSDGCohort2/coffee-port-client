@@ -18,9 +18,7 @@ export const currentUserVar = makeVar({
   country: '',
   city: '',
 });
-export const commentsVar = makeVar({
-  comments: [],
-});
+
 
 export const cache = new InMemoryCache({
   typePolicies: {
@@ -34,11 +32,6 @@ export const cache = new InMemoryCache({
         currentuser: {
           read() {
             return currentUserVar();
-          },
-        },
-        comments: {
-          read() {
-            return commentsVar();
           },
         },
       },

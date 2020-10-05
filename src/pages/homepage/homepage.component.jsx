@@ -4,16 +4,14 @@ import ProductIntro from '../../components/product-intro/product-intro.component
 import Landing from '../../components/landing/landing.component';
 import Introduction from '../../components/introduction/Introduction.component';
 
-const Home=()=>{
-
-    return(
+const Home = () => {
+  return (
     <div>
-        <Landing/>
-        <Introduction/>
-        <ProductHomeCardList/>
-        <ProductIntro/>
-
+      <Landing />
+      <Introduction />
+      <ProductHomeCardList />
+      <ProductIntro />
     </div>
-);
-}
-export default Home
+  );
+};
+export default Home;

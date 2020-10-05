@@ -12,7 +12,6 @@ import useForm from '../../hooks/hooks';
 import useStyles from './comments.styles';
 
 const Comments = ({ post, comments }) => {
-  console.log(comments);
   const { productId } = useParams();
 
   const classes = useStyles();
@@ -24,10 +23,6 @@ const Comments = ({ post, comments }) => {
 
   const { comment } = fieldValues;
   const handleSubmit = () => {
-    console.log(productId);
-    console.log(value);
-    console.log(comment);
-
     post({
       variables: {
         productId: productId,

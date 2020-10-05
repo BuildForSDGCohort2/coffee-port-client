@@ -10,13 +10,10 @@ import { GET_ALL_PRODUCTS } from '../../apollo/product/product.operations';
 const ProductPreview = () => {
   const classes = useStyles();
   const { data } = useQuery(GET_ALL_FILTERS);
-  console.log('data', data);
-  const {
-    data: productData,
-    loading: productLoading,
-    error,
-  } = useQuery(GET_ALL_PRODUCTS);
-
+  const { data: productData, loading: productLoading } = useQuery(
+    GET_ALL_PRODUCTS,
+  );
+ console.log(productData,productLoading);
   if (!productData && !productLoading) {
     return <Redirect to="/error" />;
   }
@@ -27,7 +24,6 @@ const ProductPreview = () => {
         <CircularProgress />
       </Grid>
     );
-  console.log(productData, productLoading, error);
   const { products } = productData;
   const { filters } = data;
   const filteredByType = products.products.filter((product) => {

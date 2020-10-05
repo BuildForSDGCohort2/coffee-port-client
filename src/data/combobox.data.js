@@ -1,4 +1,3 @@
-import { Description } from '@material-ui/icons';
 import COFFEE_DATA from './coffee.data';
 import FLOWER_DATA from './flower.data';
 import SESAME_DATA from './sesame.data';

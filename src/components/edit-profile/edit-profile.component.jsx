@@ -4,7 +4,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import PhoneInput from 'react-phone-number-input';
+import FormControl from '@material-ui/core/FormControl';
 import {
   CountryDropdown,
   RegionDropdown,
@@ -24,14 +26,10 @@ const EditProfile = ({
   deleteuser,
   deleteloading,
   updateloading,
+  message,
 }) => {
   const classes = useStyles();
-  // const save = (value) => {
-  //   alert(value);
-  // };
-  // const cancel = () => {
-  //   alert('Cancelled');
-  // };
+
   const [country, setCountry] = useState('ET');
   const [region, setRegion] = useState(
     currentUser.company.address.city,
@@ -89,9 +87,7 @@ const EditProfile = ({
       },
     });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -104,7 +100,7 @@ const EditProfile = ({
             EDIT PROFILE
           </Typography>
 
-          <form onSubmit={handleSubmit}>
+          <FormControl>
             <Grid container spacing={3}>
               <Grid container item xs={12}>
                 <Grid item xs={12} sm={6} md={6}>
@@ -385,6 +381,12 @@ const EditProfile = ({
                     }
                   />
                 </Grid>
+                <FormHelperText
+                  className={classes.helper}
+                  error={message !== null ? true : false}
+                >
+                  {message !== null ? message : null}
+                </FormHelperText>
               </Grid>
               <Grid
                 container
@@ -445,7 +447,7 @@ const EditProfile = ({
                 </Grid>
               </Grid>
             </Grid>
-          </form>
+          </FormControl>
         </div>
       </CardContent>
     </Card>
