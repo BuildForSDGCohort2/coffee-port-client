@@ -91,24 +91,20 @@ query Query($requestsBySellerId: ID, $requestsByBuyerId: ID) {
 export const UPDATE_REQUEST = gql`
 mutation UpdateProductRequestMutation($updateProductRequestRequestId: ID!, $updateProductRequestRequestStatus: String!) {
   updateProductRequest(requestId: $updateProductRequestRequestId, requestStatus: $updateProductRequestRequestStatus){
-
+    ... on UpdateRequestSuccess {
+      message
+    }
     ... on GetRequestError {
-      type
       message
+      type
     }
-
     ... on NotAuthenticatedUserError {
-      type
       message
+      type
     }
-
     ... on UpdateProductRequestError {
-      type
       message
-    }
-    ... on Error {
       type
-      message
     }
   }
 }

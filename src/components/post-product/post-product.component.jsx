@@ -78,6 +78,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
         productPrice: '',
         productQuantity: '',
         productMeasurementUnit: '',
+        productDescription: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
     }

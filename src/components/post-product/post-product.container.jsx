@@ -22,12 +22,12 @@ const PostProductContainer = () => {
       alert.severity = 'error';
       alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct.__typename === ' on ProductInputError'
+      data.postProduct.__typename === 'ProductInputError'
     ) {
       alert.severity = 'error';
       alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct.__typename === ' on NotAuthenticatedUserError'
+      data.postProduct.__typename === 'NotAuthenticatedUserError'
     ) {
       alert.severity = 'error';
       alert.message = 'You are not Authenticated. Please log in';
