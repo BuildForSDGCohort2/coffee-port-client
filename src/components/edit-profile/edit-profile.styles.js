@@ -23,5 +23,8 @@ const useStyles = makeStyles({
   progress: {
     marginRight: '3%',
   },
+  helper:{
+    marginLeft: '20%',
+  }
 });
 export default useStyles;

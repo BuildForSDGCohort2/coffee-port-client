@@ -9,10 +9,10 @@ const ProductHomeCardList = () => {
   const classes = useStyle();
   return (
     <div className={classes.root}>
-         <Grid container justify="center" alignItems="center">
-      <Typography variant="h4" className={classes.title}>
-        Did you know?
-      </Typography>
+      <Grid container justify="center" alignItems="center">
+        <Typography variant="h4" className={classes.title}>
+          Did you know?
+        </Typography>
       </Grid>
 
       <Grid container justify="center" alignItems="center">

@@ -15,9 +15,7 @@ const ConfirmPage = () => {
       verifyUser({
         variables: { token: token },
       });
-    } catch (e) {
-      console.log('e.message', e.message);
-    }
+    } catch (e) {}
   }, [token, verifyUser]);
   if (loading) {
     return (
@@ -27,7 +25,6 @@ const ConfirmPage = () => {
     );
   } else {
     if (data) {
-      console.log(data);
       if (data.verifyUser.__typename === 'VerifiedMessage') {
         storeUser(data.verifyUser.token);
         return <Redirect to="/" />;
@@ -36,7 +33,6 @@ const ConfirmPage = () => {
       }
     }
   }
-  console.log('token', data);
   return <div>Some text</div>;
 };
 

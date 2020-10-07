@@ -10,29 +10,47 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import useStyles from './list-item.styles';
 
 const ListComponent = (props) => {
-    const classes = useStyles();
-  const { primary, person,sales,secondary, avatar, trailing } = props;
-  const modifiedPrimary=primary.charAt(0).toUpperCase() + primary.slice(1);
- 
+  const classes = useStyles();
+  const {
+    primary,
+    person,
+    sales,
+    secondary,
+    avatar,
+    trailing,
+  } = props;
+  const modifiedPrimary =
+    primary.charAt(0).toUpperCase() + primary.slice(1);
+
   return (
-    <div >
-      <ListItem className={avatar?classes.listAvatar:null}>
-      
+    <div>
+      <ListItem className={avatar ? classes.listAvatar : null}>
         {avatar ? (
           <ListItemAvatar>
             <Avatar>
               {person ? (
-                <PersonIcon color='primary'/>
+                <PersonIcon color="primary" />
               ) : sales ? (
-                <TrendingUpIcon color='primary' />
+                <TrendingUpIcon color="primary" />
               ) : null}
             </Avatar>
           </ListItemAvatar>
         ) : null}
-        <Grid item xs={7}><ListItemText className={classes.primary} primary={modifiedPrimary} secondary={secondary} /></Grid>
-        <Grid item xs={5}>{trailing ? <ListItemText  className={classes.trailing} primary={trailing} /> : null}</Grid>
-        
-        
+        <Grid item xs={7}>
+          <ListItemText
+            className={classes.primary}
+            primary={modifiedPrimary}
+            secondary={secondary}
+          />
+        </Grid>
+        <Grid item xs={5}>
+          {trailing ? (
+            <ListItemText
+              className={classes.trailing}
+              primary={trailing}
+            />
+          ) : null}
+        </Grid>
       </ListItem>
     </div>
   );

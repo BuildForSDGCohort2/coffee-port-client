@@ -4,31 +4,20 @@ import { POST_REVIEW } from '../../apollo/server/mutations';
 import { useParams } from 'react-router-dom';
 import Comments from './comments.component';
 import { Redirect } from 'react-router-dom';
-import { GET_COMMENTS } from '../../apollo/client/queries';
 import { GET_REVIEWS } from '../../apollo/server/queries';
+import { logout } from '../../utils';
 
-const CommentsContainer = ({ comments }) => {
+const CommentsContainer = () => {
   const { productId } = useParams();
-  const { data: commentsData } = useQuery(GET_COMMENTS);
   const { data: reviewData, loading: reviewLoading } = useQuery(
     GET_REVIEWS,
-  );
-  const [postReview, { data, loading, error }] = useMutation(
-    POST_REVIEW,
     {
-      update(cache, { data: { postProductReview } }) {
-        const data = cache.readQuery({ query: GET_COMMENTS });
-        cache.writeQuery({
-          query: GET_COMMENTS,
-          data: {
-            comments: [postProductReview, ...data.comments.comments],
-          },
-        });
-      },
+      variables: { productId },
     },
   );
 
-  console.log(data, reviewData, reviewLoading);
+  const [postReview, { data, loading }] = useMutation(POST_REVIEW);
+
   if (!data && !loading && !POST_REVIEW) {
     return <Redirect to="/error" />;
   }
@@ -36,13 +25,21 @@ const CommentsContainer = ({ comments }) => {
     if (data.postProductReview.__typename === 'Review') {
       return <Redirect to={`/products/${productId}`} />;
     }
+    if (
+      data.postProductReview.__typename ===
+      ' NotAuthenticatedUserError'
+    ) {
+      logout();
+    }
   }
-  console.log(data, commentsData, loading, error);
-  return (
-    <Comments
-      post={postReview}
-      comments={commentsData.comments.comments}
-    />
-  );
+
+  if (!reviewLoading) {
+    return (
+      <Comments
+        post={postReview}
+        comments={reviewData.product.reviews}
+      />
+    );
+  }
 };
 export default CommentsContainer;
