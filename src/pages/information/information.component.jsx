@@ -27,9 +27,11 @@ const Information = () => {
             </Typography>
           </Grid>
           <Grid>
-            <Typography className={classes.description}>
-              {coffee.coffeeCharacteristics}
-            </Typography>
+          {coffee.coffeeCharacteristics.map((desc)=>
+                      <Typography className={classes.description}>
+                            {desc}
+                      </Typography>)}
+
           </Grid>
           <Grid>
             {' '}
@@ -39,9 +41,29 @@ const Information = () => {
           </Grid>
           <Grid>
             {' '}
-            <Typography className={classes.description}>
-              {coffee.coffeeDesignations}
+            {coffee.coffeeDesignations.map((paragraph)=>(
+               <Typography className={classes.description}>
+                  {paragraph}
+               </Typography>
+            ))}
+           
+            <Grid  
+            className={classes.listContainer}
+            container
+              direction="column"
+              justify="center"
+              alignItems="center">
+                <Grid container item xs={8}>
+            {coffee.coffeeDesignationsList.map((item=>(
+              <Grid item >
+              <Typography className={classes.list}>
+              {`${item[0]}: ${item[1]}`}
             </Typography>
+              </Grid>
+
+            )))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       ))}

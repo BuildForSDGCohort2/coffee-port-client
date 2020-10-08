@@ -139,7 +139,7 @@ const Details = ({
                       >
                         {requestLoading ? (
                           <CircularProgress
-                            color="white"
+                          
                             size="1.2rem"
                           />
                         ) : null}

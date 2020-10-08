@@ -17,6 +17,7 @@ const NotificationBadge = () => {
     variables: { ...getProperty(role, id) },
   });
 
+
   if (loading)
     return (
       <div className={classes.root}>

@@ -16,9 +16,18 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     color: '#2e3e45',
-    paddingTop: '3%',
-    paddingBottom: '5%',
+    paddingTop: '2%',
+    paddingBottom: '2%',
     fontSize: '20px',
+  },
+  list: {
+    color: '#888888',
+    fontSize: '20px',
+
+  },
+  listContainer: {
+    marginBottom: theme.spacing(8),
+    paddingTop: '2%',
   },
 
 }));
