@@ -9,6 +9,7 @@ import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
+import { GET_ALL_PRODUCTS } from '../../apollo/product/product.operations';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CustomAlert from '../custom-alert/custom-alert.component';
@@ -70,6 +71,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
         postProductProduct: {
           ...selectedProperties,
         },
+
       },
     });
     if (!loading) {
@@ -78,6 +80,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
         productPrice: '',
         productQuantity: '',
         productMeasurementUnit: '',
+        productDescription: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
       });
     }
@@ -284,7 +287,6 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                 {loading === true ? (
                   <CircularProgress
                     // className={classes.progress}
-                    color="white"
                     size="1.2rem"
                   />
                 ) : null}

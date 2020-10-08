@@ -11,23 +11,22 @@ const PostProductContainer = () => {
     message: '',
   };
   const [postProduct, { data, loading }] = useMutation(POST_PRODUCT);
-
   if (data) {
     if (data.postProduct.__typename === 'Product') {
       alert.severity = 'success';
       alert.message = 'You have successfully posted this product';
     } else if (
-      data.postProduct.__typename === ' ProductNotAddedError'
+      data.postProduct.__typename === 'ProductNotAddedError'
     ) {
       alert.severity = 'error';
       alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct.__typename === ' on ProductInputError'
+      data.postProduct.__typename === 'ProductInputError'
     ) {
       alert.severity = 'error';
       alert.message = 'There seems to be some problem';
     } else if (
-      data.postProduct.__typename === ' on NotAuthenticatedUserError'
+      data.postProduct.__typename === 'NotAuthenticatedUserError'
     ) {
       alert.severity = 'error';
       alert.message = 'You are not Authenticated. Please log in';

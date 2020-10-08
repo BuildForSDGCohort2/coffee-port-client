@@ -17,7 +17,7 @@ const ProductHomeCardList = () => {
 
       <Grid container justify="center" alignItems="center">
         {TYPE_WITH_INTRO.map((type, index) => (
-          <ProductHomeCard type={type} index={index} />
+          <ProductHomeCard key={type.name} type={type} index={index} />
         ))}
       </Grid>
     </div>
