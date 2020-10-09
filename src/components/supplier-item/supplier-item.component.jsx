@@ -26,11 +26,11 @@ const CompanyItem = ({ user }) => {
                 {user.company.companyName}
               </Typography>
               <Rating name="read-only" value={3} readOnly />
-
-              <Grid>
-                <Chip color="secondary" label="Coffee" />
-                <Chip color="secondary" label="Flower" />
-              </Grid>
+{user.products.length>0? <Grid>
+  {user.products.map((product)=><Chip color="secondary" label={product.productName} />)}
+             
+              </Grid>:null}
+             
 
               <ListComponent
                 avatar

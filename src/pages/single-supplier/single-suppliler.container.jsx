@@ -11,7 +11,7 @@ const SingleSupplierContainer = () => {
   const { loading, data } = useQuery(GET_USER, {
     variables: { supplierId },
   });
-
+console.log(data,loading);
   if (loading)
     return (
       <Grid container alignItems="center" justify="center">

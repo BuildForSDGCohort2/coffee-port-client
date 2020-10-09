@@ -41,37 +41,7 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
 
         <FormControl>
           <Grid container spacing={1}>
-            {/* <CustomButton
-        
-            facebookSignIn
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
-            Continue with FaceBook
-          </CustomButton>
-          <CustomButton
-            googleSignIn
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
-            Continue with Google
-          </CustomButton>  */}
-            {/* <Grid container item>
-            <Grid item xs={5}>
-              <hr />
-            </Grid>
-            <Grid item xs={2} className={classes.divider}>
-              or
-            </Grid>
 
-            <Grid item xs={5}>
-              <hr />
-             </Grid>
-          </Grid> */}
             <hr />
             <Grid item xs={12}>
               <CustomInputField
@@ -87,6 +57,7 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
                 id="email"
                 label="Email Address"
                 name="email"
+                variant="outlined"
                 autoComplete="email"
                 fullWidth
                 value={fieldValues.email}
@@ -106,6 +77,7 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
                 helperText={inputErrors ? inputErrors.password : null}
                 id="password"
                 label="Password"
+                variant="outlined"
                 name="password"
                 type="password"
                 fullWidth

@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import PostedProductItem from '../../components/posted-product-item/posted-product-item.component';
 
-const PostedProduct = ({ data }) => {
+const PostedProduct = ({ products }) => {
   const classes = useStyles();
 
   return (
@@ -17,7 +17,7 @@ const PostedProduct = ({ data }) => {
       >
         Posts
       </Typography>
-      {data.products.length === 0 ? (
+      {products.length === 0 ? (
         <Typography
           gutterBottom
           variant="subtitle1"
@@ -26,9 +26,9 @@ const PostedProduct = ({ data }) => {
           No Posts yet
         </Typography>
       ) : (
-        data.products.map((product) => (
+        products.map((product) => (
           <div>
-            <PostedProductItem /> <Divider variant="middle" />
+            <PostedProductItem product={product}/> <Divider variant="middle" />
           </div>
         ))
       )}

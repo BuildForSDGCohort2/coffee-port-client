@@ -11,6 +11,9 @@ query getAllSuppliers {
         lastName
         email
         phoneNumber
+        products {
+          productName
+        }
         company {
           websiteUrl
           companyName
@@ -18,9 +21,8 @@ query getAllSuppliers {
           address{
             country
             city
-            postalCode
-            
-          }
+            postalCode           
+          }     
         }
       }
     }
@@ -46,11 +48,14 @@ query getOneUser($supplierId: ID!) {
         role
         createdAt
         isVerified
+        products {
+          productName
+          productPrice
+        }
         company {
           websiteUrl
           companyName
           companyEmail
-          products
           address {
             country
             city
