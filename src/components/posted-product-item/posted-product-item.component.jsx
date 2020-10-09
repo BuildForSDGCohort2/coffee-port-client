@@ -27,7 +27,7 @@ const PostedProductItem = ({product}) => {
         </Typography>
       </Grid>
       <Grid item sm={12} md={4}>
-        <Chip color="primary" label={product.productPrice}/>
+        <Chip color="primary" label={`$${product.productPrice}`}/>
       </Grid>
     </Grid>
   );
