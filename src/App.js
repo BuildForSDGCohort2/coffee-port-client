@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { storeUser } from './utils';
+import { storeUser,logout } from './utils';
 import Header from './components/header/header.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Buyers from './pages/buyers/buyers.component';
@@ -24,7 +24,14 @@ function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token');
     if (token) {
+      const expireDate = window.localStorage.getItem('expire');
+      const now = new Date();
+      if (now.getTime() >= expireDate) {
+        logout();
+
+      }else{
       storeUser(token);
+      }
     }
   }, []);
 

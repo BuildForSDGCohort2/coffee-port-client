@@ -41,7 +41,6 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
 
         <FormControl>
           <Grid container spacing={1}>
-
             <hr />
             <Grid item xs={12}>
               <CustomInputField
@@ -99,7 +98,6 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
               {loading === true ? (
                 <CircularProgress
                   className={classes.progress}
-                  
                   size="1.2rem"
                 />
               ) : null}

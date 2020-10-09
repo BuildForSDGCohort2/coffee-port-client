@@ -14,6 +14,7 @@ const useStyles = makeStyles({
   },
   progress: {
     marginRight: '3%',
+    color: 'white',
   },
   input: {
     color: 'white',

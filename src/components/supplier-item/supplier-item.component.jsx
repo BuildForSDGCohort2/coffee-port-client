@@ -26,21 +26,20 @@ const CompanyItem = ({ user }) => {
                 {user.company.companyName}
               </Typography>
               <Rating name="read-only" value={3} readOnly />
-{user.products.length>0? <Grid>
-  {user.products.map((product)=><Chip color="secondary" label={product.productName} />)}
-             
-              </Grid>:null}
-             
+              {user.productsType.length > 0 ? (
+                <Grid>
+                  {user.productsType.map((product) => (
+                    <Chip color="secondary" label={product} />
+                  ))}
+                </Grid>
+              ) : null}
 
               <ListComponent
                 avatar
                 sales
                 primary="Total sales"
-                secondary="13 items"
+                secondary={`${user.totalSale} items`}
               />
-              {/* <Typography variant="body2" color="textSecondary">
-                {user.id}
-              </Typography> */}
             </Grid>
           </Grid>
         </CardActionArea>

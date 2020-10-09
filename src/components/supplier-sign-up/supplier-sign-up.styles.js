@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   progress: {
+    color: 'white',
     marginRight: '3%',
   },
   country: {

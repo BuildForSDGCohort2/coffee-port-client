@@ -17,7 +17,7 @@ const CommentsContainer = () => {
   );
 
   const [postReview, { data, loading }] = useMutation(POST_REVIEW);
-  // console.log(data,loading);
+   console.log(data,loading);
   if (!data && !loading && !POST_REVIEW) {
     return <Redirect to="/error" />;
   }

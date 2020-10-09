@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   progress: {
     marginRight: '3%',
+    color: 'white',
   },
   phone: {
     height: '100%',

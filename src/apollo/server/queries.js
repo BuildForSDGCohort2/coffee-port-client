@@ -11,6 +11,8 @@ query getAllSuppliers {
         lastName
         email
         phoneNumber
+        totalSale
+        productsType
         products {
           productName
         }
