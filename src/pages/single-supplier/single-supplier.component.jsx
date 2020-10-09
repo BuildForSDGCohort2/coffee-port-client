@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { default as PostedProduct } from '../../components/posted-product/posted-product.container';
+import  PostedProduct  from '../../components/posted-product/posted-product.component';
 const SingleSupplierPage = ({ data }) => {
   const classes = useStyles();
 
@@ -90,7 +90,7 @@ const SingleSupplierPage = ({ data }) => {
                   variant="body1"
                   className={classes.estimate}
                 >
-                  2
+                 {data.products.length}
                 </Typography>
                 <Typography
                   color="primary"
@@ -114,7 +114,7 @@ const SingleSupplierPage = ({ data }) => {
                   variant="h6"
                   className={classes.estimate}
                 >
-                  4247
+                  {data.products.length}
                 </Typography>
                 <Typography
                   color="primary"
@@ -122,14 +122,14 @@ const SingleSupplierPage = ({ data }) => {
                   variant="body1"
                   className={classes.description}
                 >
-                  All time clients
+                Type of products
                 </Typography>
               </Grid>
             </Grid>
           </CardContent>
         </Card>
       </div>
-      <PostedProduct />
+      <PostedProduct products={data.products}/>
     </div>
   );
 };
