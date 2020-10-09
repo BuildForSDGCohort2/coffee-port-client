@@ -13,7 +13,6 @@ const ProductPreview = () => {
   const { data: productData, loading: productLoading } = useQuery(
     GET_ALL_PRODUCTS,
   );
- console.log(productData,productLoading);
   if (!productData && !productLoading) {
     return <Redirect to="/error" />;
   }
