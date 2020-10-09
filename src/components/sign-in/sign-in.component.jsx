@@ -99,7 +99,7 @@ const SignIn = ({ loginUser, loading, message, inputErrors }) => {
               {loading === true ? (
                 <CircularProgress
                   className={classes.progress}
-                  color="white"
+                  
                   size="1.2rem"
                 />
               ) : null}

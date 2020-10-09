@@ -413,7 +413,7 @@ const EditProfile = ({
                     {updateloading === true ? (
                       <CircularProgress
                         className={classes.progress}
-                        color="white"
+                        
                         size="1.2rem"
                       />
                     ) : null}
@@ -438,7 +438,7 @@ const EditProfile = ({
                     {deleteloading === true ? (
                       <CircularProgress
                         className={classes.progress}
-                        color="white"
+                      
                         size="1.2rem"
                       />
                     ) : null}

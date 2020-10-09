@@ -4,11 +4,31 @@ import { useMutation } from '@apollo/client';
 import NotificationItem from './notification-item.component';
 
 const NotificationItemContainer = ({ request }) => {
-  const [updateRequest, { loading }] = useMutation(UPDATE_REQUEST);
+  const [updateRequest, { loading ,data}] = useMutation(UPDATE_REQUEST);
   const alert = {
     severity: '',
     message: '',
   };
+
+   
+  if (data){
+    if(data.updateProductRequest.__typename==="UpdateRequestSuccess"){
+      alert.severity="success";
+      alert.message="Success!";
+    }
+    else if(data.updateProductRequest.__typename==="GetRequestError"){
+      alert.severity="error";
+      alert.message=data.updateProductRequest.message;
+    }
+    else if(data.updateProductRequest.__typename==="NotAuthenticatedUserError"){
+      alert.severity="error";
+      alert.message=data.updateProductRequest.message;
+    }
+    else if(data.updateProductRequest.__typename==="UpdateProductRequestError"){
+      alert.severity="error";
+      alert.message=data.updateProductRequest.message;
+    }
+  }
 
   return (
     <NotificationItem

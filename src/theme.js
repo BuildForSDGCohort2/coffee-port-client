@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: `'Nunito', sans-serif`,
+    fontFamily: `'Josefin Sans', sans-serif`,
     subtitle2: {
       fontWeight: 600,
     },

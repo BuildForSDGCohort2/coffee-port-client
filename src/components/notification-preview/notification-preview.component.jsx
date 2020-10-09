@@ -23,7 +23,7 @@ const NotificationPreview = ({ role, requests }) => (
       <Grid
         container
         style={{ background: '#f6f6f6', margin: '30px' }}
-        alignItem="center"
+        alignItems="center"
         justify="center"
       >
         <Typography
