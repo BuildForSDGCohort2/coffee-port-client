@@ -17,8 +17,8 @@ const NotificationBadge = () => {
     variables: { ...getProperty(role, id) },
   });
 
-
-  if (loading)
+  console.log(data,loading,"notificationBadge");
+  if (loading && id)
     return (
       <div className={classes.root}>
         <Badge color="secondary" badgeContent={0}>
@@ -29,7 +29,7 @@ const NotificationBadge = () => {
 
   if (id && data && data.requests.__typename === 'Requests') {
     return (
-      <div className={classes.root}>
+      <div onClick={(e)=>console.log('Clickeddddddddddd')} className={classes.root}>
         <Badge
           color="secondary"
           badgeContent={notificationFilter(data, role).length}

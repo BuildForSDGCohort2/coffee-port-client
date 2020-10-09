@@ -16,11 +16,10 @@ import CustomAlert from '../custom-alert/custom-alert.component';
 
 const PostProduct = ({ alert, postProduct, data, loading }) => {
   const classes = useStyles();
-
   const [selectedProperties, setSelectedProperties] = useState({
     productName: 'Coffee',
-    productPrice: '',
-    productQuantity: '',
+    productPrice: 0,
+    productQuantity: 0,
     productDescription: '',
     productMeasurementUnit: '',
     uniqueAttributes: {
@@ -74,11 +73,12 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
 
       },
     });
+    console.log("Product Inputs",selectedProperties);
     if (!loading) {
       setSelectedProperties({
         productName: 'Coffee',
-        productPrice: '',
-        productQuantity: '',
+        productPrice: 0,
+        productQuantity: 0,
         productMeasurementUnit: '',
         productDescription: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
@@ -89,9 +89,22 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
   const handleChange = (event) => {
     let { value, name } = event.target;
     if (name === 'productQuantity') {
-      value = parseInt(value);
+      if (value===""){
+          value=0;
+      }
+      else{
+        value = parseInt(value);
+      }
+
+
     } else if (name === 'productPrice') {
+      if (value===""){
+        value=0;
+    }
+    else{
       value = parseFloat(value);
+    }
+ 
     }
 
     setSelectedProperties({ ...selectedProperties, [name]: value });
@@ -131,9 +144,13 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   wide={true}
                   value={productName}
                   onChange={(event, newValue) => {
+                    let modifiedValue=newValue;
+                    if (newValue===null){
+                        modifiedValue='';
+                    }
                     setSelectedProperties({
                       ...selectedProperties,
-                      productName: newValue,
+                      productName: modifiedValue,
                     });
                     //  newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
                     //  filtersVar({...filtersVar(), type:newValue})
