@@ -11,6 +11,7 @@ const PostProductContainer = () => {
     message: '',
   };
   const [postProduct, { data, loading }] = useMutation(POST_PRODUCT);
+  console.log(data);
   if (data) {
     if (data.postProduct.__typename === 'Product') {
       alert.severity = 'success';

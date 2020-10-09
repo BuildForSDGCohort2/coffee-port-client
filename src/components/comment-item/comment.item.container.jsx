@@ -8,14 +8,12 @@ import CommentItem from './comment-item.component';
 
 const CommentItemContainer = ({comment}) => {
   const { data:currentUserData } = useQuery(GET_CURRENT_USER);
-  const [deleteReview, { data, loading, error }] = useMutation(
+  const [deleteReview, { data, loading }] = useMutation(
     DELETE_REVIEW,
   );
   if(!data && !loading && !deleteReview){
     return <Redirect to="/error" />
   }
-
-  console.log(data,loading,error);
   return <CommentItem email={currentUserData.currentuser.email}deleteReview={deleteReview} comment={comment}/>;
 };
 export default CommentItemContainer;

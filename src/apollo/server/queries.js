@@ -50,6 +50,8 @@ query getOneUser($supplierId: ID!) {
         role
         createdAt
         isVerified
+        totalSale
+        productsType
         products {
           productName
           productPrice

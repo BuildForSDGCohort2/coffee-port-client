@@ -66,7 +66,7 @@ const SingleSupplierPage = ({ data }) => {
                   gutterBottom
                   variant="h6"
                 >
-                  4
+                  {data.products.length}
                 </Typography>
                 <Typography
                   color="primary"
@@ -90,7 +90,7 @@ const SingleSupplierPage = ({ data }) => {
                   variant="body1"
                   className={classes.estimate}
                 >
-                 {data.products.length}
+                {data.totalSale}
                 </Typography>
                 <Typography
                   color="primary"
@@ -114,7 +114,7 @@ const SingleSupplierPage = ({ data }) => {
                   variant="h6"
                   className={classes.estimate}
                 >
-                  {data.products.length}
+                  {data.productsType.length}
                 </Typography>
                 <Typography
                   color="primary"

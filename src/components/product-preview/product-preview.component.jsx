@@ -16,7 +16,6 @@ const ProductPreview = () => {
   if (!productData && !productLoading) {
     return <Redirect to="/error" />;
   }
-
   if (productLoading)
     return (
       <Grid container alignItems="center" justify="center">
