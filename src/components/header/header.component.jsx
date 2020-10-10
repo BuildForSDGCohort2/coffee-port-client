@@ -7,6 +7,7 @@ import GET_CURRENT_USER from '../../apollo/client/queries';
 import useStyles from './header.styles';
 import CustomToggleMenu from '../custom-toggle-menu/custom-toggle-menu.component';
 import NotificationBadgeContainer from '../notification-badge/notification-badge.container';
+import { ReactComponent as CoffeePort } from '../../assets/coffee-port.svg';
 
 const Header = () => {
   const { root,appBar, logo, link, linkText } = useStyles();
@@ -21,7 +22,9 @@ const Header = () => {
         }
       >
         <Toolbar>
-          <Typography className={logo}>Logo</Typography>
+          <div className={logo}>
+          <CoffeePort width="45px"/>
+          </div>
 
           <Route>
             <Link className={link} to="/">
