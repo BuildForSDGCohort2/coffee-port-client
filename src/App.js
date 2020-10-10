@@ -30,7 +30,7 @@ function App() {
 
   const { data, loading } = useQuery(GET_CURRENT_USER);
 
-  if (loading) {
+  if (loading ) {
     return <div>...loading</div>;
   }
   return (

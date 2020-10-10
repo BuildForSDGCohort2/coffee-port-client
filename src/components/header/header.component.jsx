@@ -6,24 +6,19 @@ import { logout } from '../../utils';
 import GET_CURRENT_USER from '../../apollo/client/queries';
 import useStyles from './header.styles';
 import CustomToggleMenu from '../custom-toggle-menu/custom-toggle-menu.component';
-import NotificationBadge from '../notification-badge/notification-badge.component';
+import NotificationBadgeContainer from '../notification-badge/notification-badge.container';
 
 const Header = () => {
-  const { root, logo, link, linkText } = useStyles();
-  const currentUser = { TYPE: 'BUYER' };
-  const { data } = useQuery(GET_CURRENT_USER);
+  const { root,appBar, logo, link, linkText } = useStyles();
+  const { data ,loading} = useQuery(GET_CURRENT_USER);
   const loggedIn = data.currentuser.loggedIn;
   return (
     <div className={root}>
       <AppBar
         position="static"
-        style={{
-          background: 'transparent',
-          boxShadow: 'none',
-          borderBottom: 'solid',
-          borderBottomColor: '#546e7a22',
-          borderWidth: 'thin',
-        }}
+        className={
+          appBar
+        }
       >
         <Toolbar>
           <Typography className={logo}>Logo</Typography>
@@ -39,24 +34,18 @@ const Header = () => {
                 Products
               </Typography>{' '}
             </Link>
-            {currentUser.TYPE === 'BUYER' ? (
+           
               <Link className={link} to="/suppliers">
                 {' '}
                 <Typography className={linkText}>
                   Suppliers
                 </Typography>{' '}
               </Link>
-            ) : currentUser.TYPE === 'SUPPLIER' ? (
-              <Link className={link} to="/buyers">
-                {' '}
-                <Typography className={linkText}>
-                  Buyers
-                </Typography>{' '}
-              </Link>
-            ) : null}
+            
             <Link className={link} to="/notification">
               {' '}
-              <NotificationBadge />{' '}
+              {((!loading)&&(data.currentuser.id))?<NotificationBadgeContainer userData={data}/>:null}
+              {' '}
             </Link>
             {loggedIn ? (
               <div className={link} to="/profile">

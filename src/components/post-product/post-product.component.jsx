@@ -14,8 +14,14 @@ import { GET_ALL_PRODUCTS } from '../../apollo/product/product.operations';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CustomAlert from '../custom-alert/custom-alert.component';
 
-const PostProduct = ({ alert, postProduct, data, loading }) => {
+const PostProduct = ({inputErrors,error, alert, postProduct, data, loading }) => {
   const classes = useStyles();
+  let intError=error?error.graphQLErrors.find((err)=>err.message.includes("Int")):null;
+  let floatError=error?error.graphQLErrors.find((err)=>err.message.includes("Float")):null;
+console.log(intError,"intError");
+console.log(floatError,"floatError");
+  console.log(error,"err");
+  console.log(inputErrors,"errors");
   const [selectedProperties, setSelectedProperties] = useState({
     productName: 'Coffee',
     productPrice: 0,
@@ -64,15 +70,17 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    postProduct({
-      variables: {
-        postProductProduct: {
-          ...selectedProperties,
-        },
-
+  postProduct({
+    variables: {
+      postProductProduct: {
+        ...selectedProperties,
       },
-    });
+
+    },
+  });
+  
+
+    
     console.log("Product Inputs",selectedProperties);
     if (!loading) {
       setSelectedProperties({
@@ -138,9 +146,12 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Product Name
+                  Product Name (*)
                 </Typography>
                 <CustomComboBox
+            
+                error={inputErrors?inputErrors.productName?true:false:null}
+                helperText={inputErrors ?inputErrors.productName:null}
                   wide={true}
                   value={productName}
                   onChange={(event, newValue) => {
@@ -166,9 +177,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Quantity
+                  Quantity (*)
                 </Typography>
                 <CustomInputField
+                  error={intError?intError.message?true:false:null}
+                  helperText={intError ?intError.message:null}
                   placeholder="400"
                   forPostForm={true}
                   size="small"
@@ -185,9 +198,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Measurement Unit
+                  Measurement Unit (*)
                 </Typography>
                 <CustomComboBox
+                 error={inputErrors?inputErrors.productMeasurementUnit?true:false:null}
+                 helperText={inputErrors ?inputErrors.productMeasurementUnit:null}
                   wide={true}
                   value={productMeasurementUnit}
                   id="productMeasurementUnit"
@@ -207,9 +222,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Price in USD
+                  Price in USD (*)
                 </Typography>
                 <CustomInputField
+                  error={floatError?floatError.message?true:false:null}
+                  helperText={floatError ?floatError.message:null}
                   forPostForm={true}
                   size="small"
                   placeholder="327.5"
@@ -245,7 +262,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                           variant="subtitle2"
                           color="textSecondary"
                         >
-                          {label}
+                          {`${label} (Optional but recommended)`}
                         </Typography>
                         <CustomComboBox
                           value={
@@ -280,7 +297,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Additional Info
+                  Additional Info (Optional)
                 </Typography>
                 <CustomInputField
                   forPostForm={true}
