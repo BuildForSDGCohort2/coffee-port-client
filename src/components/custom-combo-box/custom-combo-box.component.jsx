@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import useStyles from './custom-combo-box.styles';
 
-const CustomComboBox = ({ label, wide, ...allProps }) => {
+const CustomComboBox = ({ label,error,helperText, wide, ...allProps }) => {
   const classes = useStyles();
   return (
     <Autocomplete
@@ -17,6 +17,8 @@ const CustomComboBox = ({ label, wide, ...allProps }) => {
           InputLabelProps={{
             shrink: true,
           }}
+          error={error}
+          helperText={helperText}
           label={label}
           variant="outlined"
         />

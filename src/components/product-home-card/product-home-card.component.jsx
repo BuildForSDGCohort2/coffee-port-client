@@ -21,6 +21,8 @@ const ProductHomeCard = ({ type, index }) => {
           >
             #{index + 1}
           </Typography>
+          <Grid  container justify="center" alignItems="center">
+            <Grid item>
           {type.name === 'Coffee' ? (
             <CoffeeIcon />
           ) : type.name === 'Sesame' ? (
@@ -28,6 +30,8 @@ const ProductHomeCard = ({ type, index }) => {
           ) : type.name === 'Flower' ? (
             <FlowerIcon />
           ) : null}
+          </Grid>
+          </Grid>
           <Typography variant="h5" component="h2">
             {type.name}
           </Typography>

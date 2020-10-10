@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
 
   },
   description: {
-    paddingLeft: theme.spacing(10),
-    paddingRight: theme.spacing(10),
+    paddingLeft: '9%',
+    paddingRight: '9%',
     marginTop: theme.spacing(4),
     color: '#546e7a',
   },
