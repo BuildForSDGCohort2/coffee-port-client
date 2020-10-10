@@ -11,6 +11,7 @@ const Suppliers = () => {
       <Route exact path={`${match.path}`}>
         <CompanyPreview />
       </Route>
+      
       <Route exact path={`${match.path}/:supplierId`}>
         <SingleSupplierPage />
       </Route>
