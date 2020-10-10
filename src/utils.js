@@ -8,8 +8,14 @@ export const logout = () => {
   });
 };
 export const storeUser = (token) => {
+  const checktoken = window.localStorage.getItem('token');
+  const now = new Date();
+  const expireDate = now.getTime() + 30 * 60000;
+  if (!checktoken) {
+    window.localStorage.setItem('token', token);
+    window.localStorage.setItem('expire', expireDate);
+  }
   const decoded = jwt_decode(token);
-  window.localStorage.setItem('token', token);
   currentUserVar({
     ...currentUserVar(),
     id: decoded.id,

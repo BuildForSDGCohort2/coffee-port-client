@@ -9,8 +9,6 @@ import CustomComboBox from '../custom-combo-box/custom-combo-box.component';
 import useStyles from './post-product.styles';
 import CustomButton from '../custom-button/custom-button.component';
 import CustomInputField from '../custom-input-field/custom-input-field.component';
-import { GET_ALL_PRODUCTS } from '../../apollo/product/product.operations';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CustomAlert from '../custom-alert/custom-alert.component';
 

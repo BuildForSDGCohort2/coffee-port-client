@@ -9,14 +9,14 @@ import { useParams } from 'react-router-dom';
 const ConfirmPage = () => {
   const { token } = useParams();
   const [verifyUser, { loading, data }] = useMutation(VERIFY);
-
   useEffect(() => {
-    try {
-      verifyUser({
-        variables: { token: token },
-      });
-    } catch (e) {}
+    verifyUser({
+      variables: { token: token },
+    });
   }, [token, verifyUser]);
+  if (!data && !loading) {
+    return <Redirect to="/error" />;
+  }
   if (loading) {
     return (
       <Grid container alignItems="center" justify="center">
@@ -26,14 +26,19 @@ const ConfirmPage = () => {
   } else {
     if (data) {
       if (data.verifyUser.__typename === 'VerifiedMessage') {
-        storeUser(data.verifyUser.token);
+        storeUser(token);
         return <Redirect to="/" />;
+      } else if (data.verifyUser.__typename === 'TokenError') {
+        return <Redirect to="/signup" />;
+      } else if (data.verifyUser.__typename === 'VerifiedUserError') {
+        return <Redirect to="/signup" />;
       } else {
         return <Redirect to="/signup" />;
       }
+    } else {
+      return <div>loading...</div>;
     }
   }
-  return <div>Some text</div>;
 };
 
 export default ConfirmPage;
