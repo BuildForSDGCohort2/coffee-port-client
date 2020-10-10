@@ -15,9 +15,7 @@ export const storeUser = (token) => {
     window.localStorage.setItem('token', token);
     window.localStorage.setItem('expire', expireDate);
   }
-
   const decoded = jwt_decode(token);
-
   currentUserVar({
     ...currentUserVar(),
     id: decoded.id,
