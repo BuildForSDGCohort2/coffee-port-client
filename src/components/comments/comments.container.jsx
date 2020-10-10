@@ -17,13 +17,12 @@ const CommentsContainer = () => {
   );
 
   const [postReview, { data, loading }] = useMutation(POST_REVIEW);
-   console.log(data,loading);
+  console.log(data);
   if (!data && !loading && !POST_REVIEW) {
     return <Redirect to="/error" />;
   }
   if (data) {
     if (data.postProductReview.__typename === 'Review') {
-      
     }
     if (
       data.postProductReview.__typename ===

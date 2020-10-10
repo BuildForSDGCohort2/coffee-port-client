@@ -23,6 +23,7 @@ const Comments = ({ post, comments }) => {
 
   const { comment } = fieldValues;
   const handleSubmit = () => {
+    console.log(productId);
     post({
       variables: {
         productId: productId,

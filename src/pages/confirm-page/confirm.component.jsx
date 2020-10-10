@@ -33,7 +33,7 @@ const ConfirmPage = () => {
       }
     }
   }
-  return <div>Some text</div>;
+  return <div>loading...</div>;
 };
 
 export default ConfirmPage;
