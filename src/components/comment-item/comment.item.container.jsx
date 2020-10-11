@@ -1,19 +1,40 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import {  Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { DELETE_REVIEW } from '../../apollo/server/mutations';
 import GET_CURRENT_USER from '../../apollo/client/queries';
 import { useQuery } from '@apollo/client';
 import CommentItem from './comment-item.component';
+import { GET_COMMENTS } from '../../apollo/client/queries';
 
-const CommentItemContainer = ({comment}) => {
-  const { data:currentUserData } = useQuery(GET_CURRENT_USER);
+import { commentsVar } from '../../apollo/cache';
+
+const CommentItemContainer = ({ comment }) => {
+  const { data: currentUserData } = useQuery(GET_CURRENT_USER);
   const [deleteReview, { data, loading }] = useMutation(
     DELETE_REVIEW,
   );
-  if(!data && !loading && !deleteReview){
-    return <Redirect to="/error" />
+  const { data: commentData, loading: commentLoading } = useQuery(
+    GET_COMMENTS,
+  );
+  if (data && commentData && !commentLoading) {
+    commentsVar({
+      ...commentsVar(),
+      comments: commentData.comments.comments.filter(
+        (commentItem) => commentItem.id !== comment.id,
+      ),
+    });
   }
-  return <CommentItem email={currentUserData.currentuser.email}deleteReview={deleteReview} comment={comment}/>;
+  if (!data && !loading && !deleteReview) {
+    return <Redirect to="/error" />;
+  }
+  return (
+    <CommentItem
+      email={currentUserData.currentuser.email}
+      deleteReview={deleteReview}
+      comment={comment}
+      loading={loading}
+    />
+  );
 };
 export default CommentItemContainer;
