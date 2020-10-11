@@ -10,7 +10,7 @@ const SingleProductContainer = () => {
   const { loading, data } = useQuery(GET_PRODUCT, {
     variables: { productId },
   });
-  console.log(data);
+
   if (!data && !loading) {
     return <Redirect to="/error" />;
   }

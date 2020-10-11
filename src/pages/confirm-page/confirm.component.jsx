@@ -15,7 +15,7 @@ const ConfirmPage = () => {
     });
   }, [token, verifyUser]);
   if (!data && !loading) {
-    return <Redirect to="/error" />;
+ 
   }
   if (loading) {
     return (
@@ -36,7 +36,7 @@ const ConfirmPage = () => {
         return <Redirect to="/signup" />;
       }
     } else {
-      return <div>loading...</div>;
+      return <div>something went wrong</div>;
     }
   }
 };
