@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   introductionGrid: {
     background: '#f7f9fa',
-    height: '450px',
+    minHeight: '450px',
     marginBottom: theme.spacing(4),
 
   },
@@ -18,11 +18,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#121037',
     fontWeight: 100,
     marginTop: '-15px',
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: '22px',
     color: '#F9B934',
     fontWeight: 50,
+    textAlign: 'center',
   },
 
 }));

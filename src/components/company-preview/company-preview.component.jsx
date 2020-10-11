@@ -9,7 +9,7 @@ const CompanyPreview = ({ data }) => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         {data.map((user) => (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <CompanyItem user={user} />
           </Grid>
         ))}

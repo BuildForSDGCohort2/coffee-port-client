@@ -8,7 +8,7 @@ import useStyle from './product-home-card.data';
 const ProductHomeCardList = () => {
   const classes = useStyle();
   return (
-    <div className={classes.root}>
+    <Grid container className={classes.root}>
       <Grid container justify="center" alignItems="center">
         <Typography variant="h4" className={classes.title}>
           Did you know?
@@ -20,7 +20,7 @@ const ProductHomeCardList = () => {
           <ProductHomeCard key={type.name} type={type} index={index} />
         ))}
       </Grid>
-    </div>
+    </Grid>
   );
 };
 
