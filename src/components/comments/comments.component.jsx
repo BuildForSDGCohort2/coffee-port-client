@@ -13,10 +13,12 @@ import useStyles from './comments.styles';
 
 const Comments = ({ post, comments }) => {
   const { productId } = useParams();
-
+  let counter=-1;
+  if(counter>=8){
+    counter=0;
+  }
   const classes = useStyles();
   const [value, setValue] = useState(0);
-
   const { handleChange, fieldValues } = useForm({
     comment: '',
   });
@@ -85,9 +87,20 @@ const Comments = ({ post, comments }) => {
                 No comments yet
               </Typography>
             ) : (
-              comments.map((comment) => (
-                <CommentItem key={comment.id} comment={comment} />
-              ))
+              comments.map((comment) => {
+                if(counter>=8){
+                  counter=-1;
+                }
+                counter++;
+                return (
+                  <CommentItem
+                    counter={ counter}
+                    key={comment.id}
+                    comment={comment}
+                  />
+                );
+              
+              })
             )}
           </List>
         </Grid>

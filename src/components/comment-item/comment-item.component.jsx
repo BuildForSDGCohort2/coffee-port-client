@@ -10,7 +10,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
 import useStyles from './comment.item.styles';
 
-const CommentItem = ({ email, comment, deleteReview, loading }) => {
+const CommentItem = ({ email, comment, deleteReview, loading,counter }) => {
   const { productId } = useParams();
   const handleClick = () => {
     deleteReview({
@@ -31,12 +31,12 @@ const CommentItem = ({ email, comment, deleteReview, loading }) => {
     classes.blueGray,
     classes.teal,
   ];
-  var x = Math.floor(Math.random() * 8 + 0);
+ 
   return (
     <div>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar className={colors[x]}>
+          <Avatar className={colors[counter]}>
             {' '}
             {comment.reviewerEmail.charAt(0).toUpperCase()}
           </Avatar>
