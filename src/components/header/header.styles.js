@@ -7,6 +7,13 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     flexGrow: 1,
   },
+  appBar: {
+    background: 'transparent',
+    boxShadow: 'none',
+    borderBottom: 'solid',
+    borderBottomColor: '#546e7a22',
+    borderWidth: 'thin',
+  },
   link: {
     textDecoration: 'none',
     fontStyle: 'none',

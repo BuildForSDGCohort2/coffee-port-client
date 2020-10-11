@@ -10,15 +10,15 @@ const ErrorPage = () => {
     <div className={classes.root}>
       {' '}
       <Typography
-        variant="h3"
+        variant="h4"
         color="text.primary"
         className={classes.title}
       >
-        You don't seem to have an internet connection
+        You don't seem to have an internet connection :(
       </Typography>
       <CustomButton
         type="submit"
-        variant="contained"
+        variant="outlined"
         onClick={() => history.push('/')}
         className={classes.button}
       >

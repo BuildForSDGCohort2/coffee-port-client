@@ -12,13 +12,18 @@ import CustomInputField from '../custom-input-field/custom-input-field.component
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CustomAlert from '../custom-alert/custom-alert.component';
 
-const PostProduct = ({ alert, postProduct, data, loading }) => {
+const PostProduct = ({inputErrors,error, alert, postProduct, data, loading }) => {
   const classes = useStyles();
-
+  let intError=error?error.graphQLErrors.find((err)=>err.message.includes("Int")):null;
+  let floatError=error?error.graphQLErrors.find((err)=>err.message.includes("Float")):null;
+console.log(intError,"intError");
+console.log(floatError,"floatError");
+  console.log(error,"err");
+  console.log(inputErrors,"errors");
   const [selectedProperties, setSelectedProperties] = useState({
     productName: 'Coffee',
-    productPrice: '',
-    productQuantity: '',
+    productPrice: 0,
+    productQuantity: 0,
     productDescription: '',
     productMeasurementUnit: '',
     uniqueAttributes: {
@@ -63,20 +68,23 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    postProduct({
-      variables: {
-        postProductProduct: {
-          ...selectedProperties,
-        },
-
+  postProduct({
+    variables: {
+      postProductProduct: {
+        ...selectedProperties,
       },
-    });
+
+    },
+  });
+  
+
+    
+    console.log("Product Inputs",selectedProperties);
     if (!loading) {
       setSelectedProperties({
         productName: 'Coffee',
-        productPrice: '',
-        productQuantity: '',
+        productPrice: 0,
+        productQuantity: 0,
         productMeasurementUnit: '',
         productDescription: '',
         uniqueAttributes: emptyAttributes(uniqueAttributes),
@@ -87,9 +95,22 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
   const handleChange = (event) => {
     let { value, name } = event.target;
     if (name === 'productQuantity') {
-      value = parseInt(value);
+      if (value===""){
+          value=0;
+      }
+      else{
+        value = parseInt(value);
+      }
+
+
     } else if (name === 'productPrice') {
+      if (value===""){
+        value=0;
+    }
+    else{
       value = parseFloat(value);
+    }
+ 
     }
 
     setSelectedProperties({ ...selectedProperties, [name]: value });
@@ -123,15 +144,22 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Product Name
+                  Product Name (*)
                 </Typography>
                 <CustomComboBox
+            
+                error={inputErrors?inputErrors.productName?true:false:null}
+                helperText={inputErrors ?inputErrors.productName:null}
                   wide={true}
                   value={productName}
                   onChange={(event, newValue) => {
+                    let modifiedValue=newValue;
+                    if (newValue===null){
+                        modifiedValue='';
+                    }
                     setSelectedProperties({
                       ...selectedProperties,
-                      productName: newValue,
+                      productName: modifiedValue,
                     });
                     //  newValue===null?filtersVar({uniqueAttributes:emptyAttributes(filtersVar().uniqueAttributes),type:newValue}):
                     //  filtersVar({...filtersVar(), type:newValue})
@@ -147,9 +175,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Quantity
+                  Quantity (*)
                 </Typography>
                 <CustomInputField
+                  error={intError?intError.message?true:false:null}
+                  helperText={intError ?intError.message:null}
                   placeholder="400"
                   forPostForm={true}
                   size="small"
@@ -166,9 +196,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Measurement Unit
+                  Measurement Unit (*)
                 </Typography>
                 <CustomComboBox
+                 error={inputErrors?inputErrors.productMeasurementUnit?true:false:null}
+                 helperText={inputErrors ?inputErrors.productMeasurementUnit:null}
                   wide={true}
                   value={productMeasurementUnit}
                   id="productMeasurementUnit"
@@ -188,9 +220,11 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Price in USD
+                  Price in USD (*)
                 </Typography>
                 <CustomInputField
+                  error={floatError?floatError.message?true:false:null}
+                  helperText={floatError ?floatError.message:null}
                   forPostForm={true}
                   size="small"
                   placeholder="327.5"
@@ -226,7 +260,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                           variant="subtitle2"
                           color="textSecondary"
                         >
-                          {label}
+                          {`${label} (Optional but recommended)`}
                         </Typography>
                         <CustomComboBox
                           value={
@@ -261,7 +295,7 @@ const PostProduct = ({ alert, postProduct, data, loading }) => {
                   variant="subtitle2"
                   color="textSecondary"
                 >
-                  Additional Info
+                  Additional Info (Optional)
                 </Typography>
                 <CustomInputField
                   forPostForm={true}
