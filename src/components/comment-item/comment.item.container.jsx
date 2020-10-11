@@ -9,7 +9,7 @@ import { GET_COMMENTS } from '../../apollo/client/queries';
 
 import { commentsVar } from '../../apollo/cache';
 
-const CommentItemContainer = ({ comment }) => {
+const CommentItemContainer = ({ comment,counter }) => {
   const { data: currentUserData } = useQuery(GET_CURRENT_USER);
   const [deleteReview, { data, loading }] = useMutation(
     DELETE_REVIEW,
@@ -34,6 +34,7 @@ const CommentItemContainer = ({ comment }) => {
       deleteReview={deleteReview}
       comment={comment}
       loading={loading}
+      counter={counter}
     />
   );
 };
