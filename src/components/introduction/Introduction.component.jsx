@@ -9,11 +9,13 @@ const Introduction = () => {
     <div>
       <Grid
         className={classes.introductionGrid}
-        direction="column"
         justify="center"
         alignItems="center"
         container
+     
+
       >
+        <Grid  item>
         <Typography className={classes.subtitle}>
           --about Ethiopia
         </Typography>
@@ -42,6 +44,7 @@ const Introduction = () => {
           zones, extensive arable land and high population in rural
           areas make Ethiopia an agrarian country
         </Typography>
+        </Grid>
       </Grid>
     </div>
   );

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   root: {
     height: '30vh',
-    background: 'linear-gradient(to bottom, #fff, #373B44)',
+    background: '#e2e2e2',
   },
   title: {
     paddingLeft: '15%',
